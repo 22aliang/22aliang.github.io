@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: 艸良 等於 莨
+subtitle: 前端技術筆記部落格
+description: Front-End-Enginner
 keywords:
-author: John Doe
-language: en
+author: 22zl
+language: zh-TW
 timezone: ''
 
 # URL
@@ -102,4 +102,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/22aliang/22aliang.github.io.git # https://github.com/[你的 GitHub 帳號]/[你的 GitHub 帳號].github.io.git
+  branch: master # 在這邊我是使用 mster 當作主要分支
+  message: 'ithelpt'
