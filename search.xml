@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Web 網頁入門初心者 | 學習筆記</title>
-    <url>/2023/03/13/Web%20%E7%B6%B2%E9%A0%81%E5%85%A5%E9%96%80%E5%88%9D%E5%BF%83%E8%80%85/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  本身是一個非本科的轉職仔，本科是設計科，資質愚鈍，很多東西只看文件需要輔助很多文章才比較能理解。</p>
-<p>  因此想透過用自己的文字撰寫來統整目前的知識，再用自己比較熟悉的圖像記憶整理一下，日後讓自己回憶方便。</p>
+    <title>Note | Web 網頁入門初心者進大觀園</title>
+    <url>/2023/03/13/Note_Web%20%E7%B6%B2%E9%A0%81%E5%85%A5%E9%96%80%E5%88%9D%E5%BF%83%E8%80%85%E9%80%B2%E5%A4%A7%E8%A7%80%E5%9C%92/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  文章系列標題是借用「劉姥姥進大觀園」這句比喻人初次到某場所，對事事皆感到新奇，<del>或用來取笑別人沒見過世面</del> 的俗諺來作自嘲。</p>
+<p>  順便背景介紹一下，我是設計科的非本科的轉職仔，自認資質愚鈍，很多東西除了看文件，還需要輔助很多額外的文章、實作踩雷才會有種比較理解的感覺。</p>
+<p>  因此想透過用自己的文字撰寫來統整目前的知識，再用比較熟悉的圖像記憶整理一下，日後回憶也方便，這文章應該會一直編輯更新，直到有新的主題寫下去。</p>
 <p>  若文章中有錯誤也歡迎糾正，感謝大家！</p>
 <h2 id="Web-是怎麼運作的呢"><a href="#Web-是怎麼運作的呢" class="headerlink" title="Web 是怎麼運作的呢 ?"></a>Web 是怎麼運作的呢 ?</h2><p>  <img src="https://i.imgur.com/eavypn1.jpg" alt="Server-side website programming"></p>
 <ul>
