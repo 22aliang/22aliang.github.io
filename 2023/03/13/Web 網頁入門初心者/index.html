@@ -14,28 +14,29 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言  本身是一個非本科的轉職仔，本科是設計科，資質愚鈍，很多東西只看文件需要輔助很多文章才比較能理解。   因此想透過用自己的文字撰寫來統整目前的知識，再用自己比較熟悉的圖像記憶整理一下，日後讓自己回憶方便。   若文章中有錯誤也歡迎糾正，感謝大家！ Web 是如何運作的呢 ?    網頁瀏覽器 → 使用超文本傳輸協定（HyperText Transfer Protocol, HTTP）網頁伺服">
+  <meta name="description" content="前言  本身是一個非本科的轉職仔，本科是設計科，資質愚鈍，很多東西只看文件需要輔助很多文章才比較能理解。   因此想透過用自己的文字撰寫來統整目前的知識，再用自己比較熟悉的圖像記憶整理一下，日後讓自己回憶方便。   若文章中有錯誤也歡迎糾正，感謝大家！ Web 是怎麼運作的呢 ?    網頁瀏覽器 → 使用超文本傳輸協定（HyperText Transfer Protocol, HTTP）網頁伺服">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web 網頁入門初心者 | 學習筆記">
 <meta property="og:url" content="https://22aliang.github.io/2023/03/13/Web%20%E7%B6%B2%E9%A0%81%E5%85%A5%E9%96%80%E5%88%9D%E5%BF%83%E8%80%85/index.html">
 <meta property="og:site_name" content="艸良 等於 莨">
-<meta property="og:description" content="前言  本身是一個非本科的轉職仔，本科是設計科，資質愚鈍，很多東西只看文件需要輔助很多文章才比較能理解。   因此想透過用自己的文字撰寫來統整目前的知識，再用自己比較熟悉的圖像記憶整理一下，日後讓自己回憶方便。   若文章中有錯誤也歡迎糾正，感謝大家！ Web 是如何運作的呢 ?    網頁瀏覽器 → 使用超文本傳輸協定（HyperText Transfer Protocol, HTTP）網頁伺服">
+<meta property="og:description" content="前言  本身是一個非本科的轉職仔，本科是設計科，資質愚鈍，很多東西只看文件需要輔助很多文章才比較能理解。   因此想透過用自己的文字撰寫來統整目前的知識，再用自己比較熟悉的圖像記憶整理一下，日後讓自己回憶方便。   若文章中有錯誤也歡迎糾正，感謝大家！ Web 是怎麼運作的呢 ?    網頁瀏覽器 → 使用超文本傳輸協定（HyperText Transfer Protocol, HTTP）網頁伺服">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/eavypn1.jpg">
-<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4895143e-2f54-499c-abbb-33cb9acbd778/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T033804Z&X-Amz-Expires=86400&X-Amz-Signature=70a63afb9d3d107d51c4ff754621bd57141173bc5d5ed118a0303c495e2677e6&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject">
-<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ae63c93e-1317-4bfa-baaa-c5a38eab418b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T033952Z&X-Amz-Expires=86400&X-Amz-Signature=32c67e5e3cf6b15e00a221f13793dc1e0399113b4d4bb9c6fe5492c6c21d6a7e&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject">
-<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/95882cfc-c227-4e7a-ac72-f96dd2242744/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034444Z&X-Amz-Expires=86400&X-Amz-Signature=1cc230ef9960f23f00ae4329c059e84c3760613cfbb95260a170ff0bc30479c7&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject">
-<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e3165fc0-e744-4d39-b5e7-c7892f5f93b8/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034534Z&X-Amz-Expires=86400&X-Amz-Signature=d9bb90c63d8e31b05cf809cea0c9961ab536084c0f7aaab4edfe39b45b7a9c5f&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject">
-<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/075b3b5a-24fc-4b00-b5ff-ca867c4d07df/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034620Z&X-Amz-Expires=86400&X-Amz-Signature=347d876ed63fa0f0e7de214dbe74bd02549a94c70e026d2527beea0f2af95b67&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject">
-<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a08e92e4-b096-47fa-b42d-1c5848925208/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034657Z&X-Amz-Expires=86400&X-Amz-Signature=991f996bf6fbcd2279ddee7453f06712833f1b321058a81a409d37684801bc05&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject">
-<meta property="article:published_time" content="2023-03-13T04:43:57.000Z">
-<meta property="article:modified_time" content="2023-03-13T04:58:17.062Z">
+<meta property="og:image" content="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview/basic_static_app_server.png">
+<meta property="og:image" content="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview/web_application_with_html_and_steps.png">
+<meta property="og:image" content="https://i.imgur.com/kZpUL4S.png">
+<meta property="og:image" content="https://i.imgur.com/7tce7Bd.jpg">
+<meta property="og:image" content="https://i.imgur.com/fLJuBDZ.jpg">
+<meta property="og:image" content="https://i.imgur.com/WEr6feK.png">
+<meta property="article:published_time" content="2023-03-13T04:58:17.062Z">
+<meta property="article:modified_time" content="2023-03-14T15:22:25.848Z">
 <meta property="article:author" content="22zl">
 <meta property="article:tag" content="HTTP Note">
 <meta name="twitter:card" content="summary">
@@ -222,10 +223,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-03-13 12:43:57 / 修改時間：12:58:17" itemprop="dateCreated datePublished" datetime="2023-03-13T12:43:57+08:00">2023-03-13</time>
+              <time title="創建時間：2023-03-13 12:58:17" itemprop="dateCreated datePublished" datetime="2023-03-13T12:58:17+08:00">2023-03-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-03-14 23:22:25" itemprop="dateModified" datetime="2023-03-14T23:22:25+08:00">2023-03-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,20 +244,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/03/13/Web%20%E7%B6%B2%E9%A0%81%E5%85%A5%E9%96%80%E5%88%9D%E5%BF%83%E8%80%85/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/03/13/Web 網頁入門初心者/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -264,14 +257,14 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  本身是一個非本科的轉職仔，本科是設計科，資質愚鈍，很多東西只看文件需要輔助很多文章才比較能理解。</p>
 <p>  因此想透過用自己的文字撰寫來統整目前的知識，再用自己比較熟悉的圖像記憶整理一下，日後讓自己回憶方便。</p>
 <p>  若文章中有錯誤也歡迎糾正，感謝大家！</p>
-<h2 id="Web-是如何運作的呢"><a href="#Web-是如何運作的呢" class="headerlink" title="Web 是如何運作的呢 ?"></a>Web 是如何運作的呢 ?</h2><p>  <img src="https://i.imgur.com/eavypn1.jpg" alt="img"></p>
+<h2 id="Web-是怎麼運作的呢"><a href="#Web-是怎麼運作的呢" class="headerlink" title="Web 是怎麼運作的呢 ?"></a>Web 是怎麼運作的呢 ?</h2><p>  <img src="https://i.imgur.com/eavypn1.jpg" alt="Server-side website programming"></p>
 <ul>
 <li>網頁瀏覽器 → 使用超文本傳輸協定（HyperText Transfer Protocol, HTTP）網頁伺服器（web servers）→ 發送HTTP 請求（request）→ 網頁伺服器→ HTTP 回應（response）</li>
 </ul>
-<h3 id="靜態網頁"><a href="#靜態網頁" class="headerlink" title="靜態網頁"></a>靜態網頁</h3><p>  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4895143e-2f54-499c-abbb-33cb9acbd778/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T033804Z&X-Amz-Expires=86400&X-Amz-Signature=70a63afb9d3d107d51c4ff754621bd57141173bc5d5ed118a0303c495e2677e6&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject" alt="img"></p>
-<h3 id="動態網頁"><a href="#動態網頁" class="headerlink" title="動態網頁"></a>動態網頁</h3><p>  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ae63c93e-1317-4bfa-baaa-c5a38eab418b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T033952Z&X-Amz-Expires=86400&X-Amz-Signature=32c67e5e3cf6b15e00a221f13793dc1e0399113b4d4bb9c6fe5492c6c21d6a7e&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject" alt="img"></p>
+<h3 id="靜態網頁-Static-sites"><a href="#靜態網頁-Static-sites" class="headerlink" title="靜態網頁 Static sites"></a>靜態網頁 Static sites</h3><p>  <img src="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview/basic_static_app_server.png" alt="Static sites | 圖源1"></p>
+<h3 id="動態網頁-Dynamic-sites"><a href="#動態網頁-Dynamic-sites" class="headerlink" title="動態網頁 Dynamic sites"></a>動態網頁 Dynamic sites</h3><p>  <img src="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview/web_application_with_html_and_steps.png" alt="Dynamic sites | 圖源1 "></p>
 <h3 id="用戶端-Client-side"><a href="#用戶端-Client-side" class="headerlink" title="用戶端 Client side"></a>用戶端 Client side</h3><ul>
-<li>程式語言由HTML、CSS、JaveScript撰寫。 </li>
+<li>程式語言由HTML、CSS、JaveScript撰寫。</li>
 <li>我們看到的網頁長怎樣</li>
 </ul>
 <h3 id="伺服器端-Sever-side"><a href="#伺服器端-Sever-side" class="headerlink" title="伺服器端 Sever-side"></a>伺服器端 Sever-side</h3><ul>
@@ -284,15 +277,24 @@
 <li>利用SSL&#x2F;TLS來加密封包傳輸</li>
 <li>預設port為443</li>
 </ul>
-<p>| 推薦服用Will <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Taq5TV1K4XU">保哥｜初學者都該學會的 HTTP 通訊協定基礎</a></p>
+<blockquote>
+<p>推薦服用Will <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Taq5TV1K4XU">保哥｜初學者都該學會的 HTTP 通訊協定基礎</a></p>
+</blockquote>
 <h3 id="HTTP請求方式-Http-Request-Method"><a href="#HTTP請求方式-Http-Request-Method" class="headerlink" title="HTTP請求方式 Http Request Method"></a>HTTP請求方式 Http Request Method</h3><ul>
-<li>當你在網路點擊一個連結、提交一個表單、進行一次搜索等…瀏覽器都會發送一個HTTP給伺服器。</li>
-<li><code>GET</code> 拿取資料 (應只用在顯示、讀取用途)</li>
-<li><code>POST</code> 上傳資料，請求伺服器處理 ( 如提交表單、上傳檔案，可能建立、修改現有資源)</li>
-<li><code>PUT</code> 覆蓋資料(全部)</li>
-<li><code>PATCH</code> 更新資料(可部分更新)</li>
-<li><code>DELETE</code> 刪除資料</li>
-<li><code>OPTIONS</code> 使伺服器回傳該資源支援的所有HTTP請求方法</li>
+<li><p>當你在網路點擊一個連結、提交一個表單、進行一次搜索等…瀏覽器都會發送一個HTTP給伺服器。</p>
+</li>
+<li><p><code>GET</code> 拿取資料 (應只用在顯示、讀取用途)</p>
+</li>
+<li><p><code>POST</code> 上傳資料，請求伺服器處理 ( 如提交表單、上傳檔案，可能建立、修改現有資源)</p>
+</li>
+<li><p><code>PUT</code> 覆蓋資料(全部)</p>
+</li>
+<li><p><code>PATCH</code> 更新資料(可部分更新)</p>
+</li>
+<li><p><code>DELETE</code> 刪除資料</p>
+</li>
+<li><p><code>OPTIONS</code> 使伺服器回傳該資源支援的所有HTTP請求方法</p>
+</li>
 </ul>
 <h3 id="HTTP回應-HTTP-Response"><a href="#HTTP回應-HTTP-Response" class="headerlink" title="HTTP回應 HTTP Response"></a>HTTP回應 HTTP Response</h3><ul>
 <li><code>1xx</code> ：信息 Informational 接收到request了 需要繼續處理100 Continue：Server 成功接收、但 Client 還要進行一些處理。</li>
@@ -301,22 +303,15 @@
 <li><code>4xx</code>：用戶端的錯誤 (Client Errors) 可能格式寫錯或漏寫400 Bad Request：請求格式寫錯、資源太大401 Unauthorized：未取得授權、檢視 API 的授權方式、登入等…、403 Forbidden：使用錯誤的驗證404：找不到資源，通常是路徑錯誤，大多是前端的路徑輸入錯誤、422：請求是正確的，可能不符合操作流程（大多可從後端的回應中找到問題）、429：請求次數過多，後端封鎖。</li>
 <li><code>5xx</code>：伺服器端錯誤 (Server Errors) 伺服器當機、機台燒掉、500 Internal Server Error：伺服器出錯，搶票之類的</li>
 </ul>
-<p>  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/95882cfc-c227-4e7a-ac72-f96dd2242744/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034444Z&X-Amz-Expires=86400&X-Amz-Signature=1cc230ef9960f23f00ae4329c059e84c3760613cfbb95260a170ff0bc30479c7&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject" alt="img"><br>  使用google瀏覽器按F12，開啟開發者工具，可在Network中瀏覽，這個網頁下了什麼樣的Request，status欄為Response的狀態，可藉此找出優化網頁速度該從哪裡下手。</p>
-<h2 id="Program-Process-Thread-三者關係"><a href="#Program-Process-Thread-三者關係" class="headerlink" title="Program, Process, Thread 三者關係"></a>Program, Process, Thread 三者關係</h2><p>  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e3165fc0-e744-4d39-b5e7-c7892f5f93b8/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034534Z&X-Amz-Expires=86400&X-Amz-Signature=d9bb90c63d8e31b05cf809cea0c9961ab536084c0f7aaab4edfe39b45b7a9c5f&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject" alt="img"></p>
-<ul>
-<li>為加深理解，在圖片中加了劇本去理解這之間的關係</li>
-</ul>
-<p>  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/075b3b5a-24fc-4b00-b5ff-ca867c4d07df/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034620Z&X-Amz-Expires=86400&X-Amz-Signature=347d876ed63fa0f0e7de214dbe74bd02549a94c70e026d2527beea0f2af95b67&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject" alt="img"></p>
-<ul>
-<li>也可以打開工作管理員，不同頁籤中相互對照，幫助了解邏輯。</li>
-</ul>
-<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a08e92e4-b096-47fa-b42d-1c5848925208/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230313/us-west-2/s3/aws4_request&X-Amz-Date=20230313T034657Z&X-Amz-Expires=86400&X-Amz-Signature=991f996bf6fbcd2279ddee7453f06712833f1b321058a81a409d37684801bc05&X-Amz-SignedHeaders=host&response-content-disposition=filename=%22Untitled.png%22&x-id=GetObject" alt="img"></p>
-<h2 id="參考-Reference"><a href="#參考-Reference" class="headerlink" title="參考 Reference"></a>參考 Reference</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps/Introduction">MDN</a></p>
-<h3 id="學習資料"><a href="#學習資料" class="headerlink" title="學習資料"></a>學習資料</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QuCu4iDpPTU&t=1871s">六角學院｜前後端都該理解的計算機概論</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=7_LPdttKXPc">Aaron｜How the Internet Works in 5 Minutes</a><br><a target="_blank" rel="noopener" href="https://hulitw.medium.com/learning-tcp-ip-http-via-sending-letter-5d3299203660">Huli｜從傳紙條輕鬆學習基本網路概念</a></p>
-<h3 id="讀書清單"><a href="#讀書清單" class="headerlink" title="讀書清單"></a>讀書清單</h3><ul>
-<li>恐龍書 Operation System Concepts</li>
-<li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc2616">RFC 2616</a></li>
-</ul>
+<p><img src="https://i.imgur.com/kZpUL4S.png" alt="chrome devtools"><br>使用google瀏覽器按F12，開啟開發者工具，可在Network中瀏覽，這個網頁下了什麼樣的Request，status欄為Response的狀態，可藉此找出優化網頁速度該從哪裡下手。</p>
+<h2 id="Program-Process-Thread-三者關係"><a href="#Program-Process-Thread-三者關係" class="headerlink" title="Program, Process, Thread 三者關係"></a>Program, Process, Thread 三者關係</h2><p><img src="https://i.imgur.com/7tce7Bd.jpg" alt="Program, Process, Thread"></p>
+<p>為加深理解，在圖片中加了劇本去理解這之間的關係</p>
+<p><img src="https://i.imgur.com/fLJuBDZ.jpg" alt="Program, Process, Thread"></p>
+<p>也可以打開工作管理員，不同頁籤中相互對照，幫助了解邏輯。</p>
+<p><img src="https://i.imgur.com/WEr6feK.png" alt="工作管理員"></p>
+<h2 id="參考-Reference"><a href="#參考-Reference" class="headerlink" title="參考 Reference"></a>參考 Reference</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps/Introduction">MDN</a><br>圖源 1 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN | Client-Server Overview</a></p>
+<h2 id="學習資料"><a href="#學習資料" class="headerlink" title="學習資料"></a>學習資料</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QuCu4iDpPTU&t=1871s">六角學院｜前後端都該理解的計算機概論</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=7_LPdttKXPc">Aaron｜How the Internet Works in 5 Minutes</a><br><a target="_blank" rel="noopener" href="https://hulitw.medium.com/learning-tcp-ip-http-via-sending-letter-5d3299203660">Huli｜從傳紙條輕鬆學習基本網路概念</a></p>
+<h2 id="讀書清單"><a href="#讀書清單" class="headerlink" title="讀書清單"></a>讀書清單</h2><p>恐龍書 Operation System Concepts<br><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc2616">RFC 2616</a></p>
 
     </div>
 
@@ -344,13 +339,13 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-  </div>
-  
+<script src="https://utteranc.es/client.js"
+        repo="https://github.com/22aliang/22aliang.github.io.git"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -397,7 +392,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-%E6%98%AF%E5%A6%82%E4%BD%95%E9%81%8B%E4%BD%9C%E7%9A%84%E5%91%A2"><span class="nav-number">2.</span> <span class="nav-text">Web 是如何運作的呢 ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9C%E6%85%8B%E7%B6%B2%E9%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">靜態網頁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">動態網頁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B6%E7%AB%AF-Client-side"><span class="nav-number">2.3.</span> <span class="nav-text">用戶端 Client side</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AB%AF-Sever-side"><span class="nav-number">2.4.</span> <span class="nav-text">伺服器端 Sever-side</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AFHTTP"><span class="nav-number">3.</span> <span class="nav-text">什麼是HTTP ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8F-Http-Request-Method"><span class="nav-number">3.1.</span> <span class="nav-text">HTTP請求方式 Http Request Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%9B%9E%E6%87%89-HTTP-Response"><span class="nav-number">3.2.</span> <span class="nav-text">HTTP回應 HTTP Response</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Process-Thread-%E4%B8%89%E8%80%85%E9%97%9C%E4%BF%82"><span class="nav-number">4.</span> <span class="nav-text">Program, Process, Thread 三者關係</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83-Reference"><span class="nav-number">5.</span> <span class="nav-text">參考 Reference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E8%B3%87%E6%96%99"><span class="nav-number">5.1.</span> <span class="nav-text">學習資料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%80%E6%9B%B8%E6%B8%85%E5%96%AE"><span class="nav-number">5.2.</span> <span class="nav-text">讀書清單</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-%E6%98%AF%E6%80%8E%E9%BA%BC%E9%81%8B%E4%BD%9C%E7%9A%84%E5%91%A2"><span class="nav-number">2.</span> <span class="nav-text">Web 是怎麼運作的呢 ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9C%E6%85%8B%E7%B6%B2%E9%A0%81-Static-sites"><span class="nav-number">2.1.</span> <span class="nav-text">靜態網頁 Static sites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81-Dynamic-sites"><span class="nav-number">2.2.</span> <span class="nav-text">動態網頁 Dynamic sites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B6%E7%AB%AF-Client-side"><span class="nav-number">2.3.</span> <span class="nav-text">用戶端 Client side</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AB%AF-Sever-side"><span class="nav-number">2.4.</span> <span class="nav-text">伺服器端 Sever-side</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AFHTTP"><span class="nav-number">3.</span> <span class="nav-text">什麼是HTTP ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8F-Http-Request-Method"><span class="nav-number">3.1.</span> <span class="nav-text">HTTP請求方式 Http Request Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%9B%9E%E6%87%89-HTTP-Response"><span class="nav-number">3.2.</span> <span class="nav-text">HTTP回應 HTTP Response</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Process-Thread-%E4%B8%89%E8%80%85%E9%97%9C%E4%BF%82"><span class="nav-number">4.</span> <span class="nav-text">Program, Process, Thread 三者關係</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83-Reference"><span class="nav-number">5.</span> <span class="nav-text">參考 Reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">學習資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%80%E6%9B%B8%E6%B8%85%E5%96%AE"><span class="nav-number">7.</span> <span class="nav-text">讀書清單</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -475,6 +470,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -514,37 +511,6 @@
   
 
   
-
-<script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://wwwliang.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://22aliang.github.io/2023/03/13/Web%20%E7%B6%B2%E9%A0%81%E5%85%A5%E9%96%80%E5%88%9D%E5%BF%83%E8%80%85/";
-    this.page.identifier = "2023/03/13/Web 網頁入門初心者/";
-    this.page.title = "Web 網頁入門初心者 | 學習筆記";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://wwwliang.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>
