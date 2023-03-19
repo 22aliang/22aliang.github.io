@@ -6,6 +6,8 @@
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前跟著 Ray 的 <a href="https://israynotarray.com/">試著學 Hexo</a> 系列架好了這個 Hexo 部落格</p>
 <p>原本是使用 NexT 內建就有支援的 <a href="https://blog.disqus.com/">DISQUS</a> 這個留言板來使用，但它的版面有不實用又佔空間的奇怪互動表情符號 …</p>
 <p>剛好看到使用 Hexo 架站的大大們部落格中，那乾淨的 utterances ，就被被燒得不要不要的了，雖然<a href="https://utteranc.es/">官方的網址</a>已經把流程寫得很清楚了，但相信金魚腦的我可能過一陣子就忘光光，寫成文章記錄過程。</p>
+<span id="more"></span>
+
 <h2 id="utterances-有什麼優點"><a href="#utterances-有什麼優點" class="headerlink" title="utterances 有什麼優點 ?"></a>utterances 有什麼優點 ?</h2><p>在 Hexo 用 utterances 有以下官網介紹比較吸引我的優點</p>
 <ul>
 <li>No tracking, no ads, always free. </li>
@@ -56,6 +58,8 @@
 <p>  順便背景介紹一下，我是設計科的非本科的轉職仔，自認資質愚鈍，很多東西除了看文件，還需要輔助很多額外的文章、實作踩雷才會有種比較理解的感覺。</p>
 <p>  因此想透過用自己的文字撰寫來統整目前的知識，再用比較熟悉的圖像記憶整理一下，日後回憶也方便，這文章應該會一直編輯更新，直到有新的主題寫下去。</p>
 <p>  若文章中有錯誤也歡迎糾正，感謝大家！</p>
+  <span id="more"></span>
+
 <h2 id="Web-是怎麼運作的呢"><a href="#Web-是怎麼運作的呢" class="headerlink" title="Web 是怎麼運作的呢 ?"></a>Web 是怎麼運作的呢 ?</h2><p>  <img src="https://i.imgur.com/eavypn1.jpg" alt="Server-side website programming"></p>
 <ul>
 <li>網頁瀏覽器 → 使用超文本傳輸協定（HyperText Transfer Protocol, HTTP）網頁伺服器（web servers）→ 發送HTTP 請求（request）→ 網頁伺服器→ HTTP 回應（response）</li>
