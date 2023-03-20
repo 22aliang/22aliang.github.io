@@ -6,7 +6,7 @@
   <link href="https://22aliang.github.io/atom.xml" rel="self"/>
   
   <link href="https://22aliang.github.io/"/>
-  <updated>2023-03-17T20:13:12.964Z</updated>
+  <updated>2023-03-20T05:34:36.478Z</updated>
   <id>https://22aliang.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>(1)MySQL 菜雞學習筆記 | 什麼是資料庫 ? 進入語法的前情提要</title>
+    <link href="https://22aliang.github.io/2023/03/20/(1)MySQL%20%E8%8F%9C%E9%9B%9E%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%20_%E4%BB%80%E9%BA%BC%E6%98%AF%E8%B3%87%E6%96%99%E5%BA%AB/"/>
+    <id>https://22aliang.github.io/2023/03/20/(1)MySQL%20%E8%8F%9C%E9%9B%9E%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%20_%E4%BB%80%E9%BA%BC%E6%98%AF%E8%B3%87%E6%96%99%E5%BA%AB/</id>
+    <published>2023-03-20T01:48:15.000Z</published>
+    <updated>2023-03-20T05:34:36.478Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在資策會上 SQL 一周，大概 16 小時，對資料庫有初步的認識，希望能透過筆記整理所學，並把懂弄到能打出 code 解問題 ! 溫馨提醒 : 本系列為菜雞學習筆記，若有錯誤歡迎指正 ! </p><h2 id="什麼是資料庫系統"><a href="#什麼是資料庫系統" class="headerlink" title="什麼是資料庫系統 ?"></a>什麼是資料庫系統 ?</h2><p>資料庫系統可以說是，<code>資料庫 Database</code>存放資料的地方，和 <code>資料庫系統 Database Management System</code> 控制資料存取和權限組成。</p><span id="more"></span><h3 id="資料庫-Database"><a href="#資料庫-Database" class="headerlink" title="資料庫 Database"></a>資料庫 Database</h3><p>資料存在你我的生活之中，只是把資訊給表格化像 excel 的表格，但根據資料庫的設計，邏輯會更加複雜</p><table><thead><tr><th>名字</th><th>帳號</th></tr></thead><tbody><tr><td>莨</td><td>22zl</td></tr></tbody></table><h3 id="資料庫系統"><a href="#資料庫系統" class="headerlink" title="資料庫系統"></a>資料庫系統</h3><p>管理資料庫的應用程式就叫資料庫系統</p><p>其中又分成<code>關聯式資料庫 Relational Database 又稱 RDBMS</code> 像是MySQL、Miceosoft SQL Sever、和<code>非關聯式資料庫 Non-SQL</code> 像是 mongodb ，有這兩種資料庫系統。</p><h4 id="非關聯式資料庫-NoSQL"><a href="#非關聯式資料庫-NoSQL" class="headerlink" title="非關聯式資料庫 NoSQL"></a>非關聯式資料庫 NoSQL</h4><p>跟RDBMS相比，彈性高、速度快，資料通常儲存在 JSON 或類似的資料結構裡，最大特色是 :<br><code>不要求資料同步，只要求最後結果一致。</code><br>不需要定義 schema，資料之間沒有關聯關係，有名的NoSQL有MongoDB、Redis等，且NoSQL為水平擴展(增加另一台雲端設備)，擴展成本較低。</p><p>適用情況 : NoSQL大多為開源軟體，所以適用沒什麼經費的小型專案，及開發初期需要頻繁變動資料庫時、或儲存大量資料時。</p><h4 id="關聯式資料庫-RDBMS"><a href="#關聯式資料庫-RDBMS" class="headerlink" title="關聯式資料庫 RDBMS"></a>關聯式資料庫 RDBMS</h4><p>特色如其名，資料與資料之間可以用 FK 做一對一 ( 1 :1 ) 、一對多 ( 1 : N )、多對多( M : N )的關聯，且好的資料庫會有 ACID 來確保完整性。</p><ul><li><code>Atomicity 原子性</code> : 一次的交易 transaction 只能有兩種結果，全部完成 commit、全部不完成 rollback，不會卡一半。</li><li><code>Consistency 一致性</code> :transaction 中會驗證是否符合 schema 規範，不會讓不一樣的格式進入資料庫中。</li><li><code>Isolation 隔離性</code> : 多筆交易 transaction 可以同時進行，但不會在交易完成前互相干擾。</li><li><code>Durability 耐久性</code> : transaction 完成後對資料的修改，不會因為重新啟動或錯誤而改變。</li></ul><p>適用情況 : 在系統資料龐大、商業邏輯複雜、存取嚴謹度要求高的需求下，使用關聯式資料庫應該是比較好的選擇。</p><p>關聯式資料庫也有以下幾個缺點 : </p><ul><li>費用較高</li><li>邏輯複雜、維護成本比較高、弄不好會有死鎖 Deadlock 的問題。</li><li>資料庫通常是產品運作的命脈，所以通常都會選效能最強的設備來當資料庫的伺服器，但後續擴展困難，通常式垂直擴展 (電腦硬體設備)</li></ul><h3 id="資料庫管理模組"><a href="#資料庫管理模組" class="headerlink" title="資料庫管理模組"></a>資料庫管理模組</h3><p>一個關聯式資料庫通常包括以下四個模組</p><ul><li>儲存管理 Storage Manager</li><li>查詢處理模組 Query Processor</li><li>交易管理 Transaction Manger</li><li>回復管理 Recovery Manger</li></ul><h2 id="Keys-關係鍵"><a href="#Keys-關係鍵" class="headerlink" title="Keys 關係鍵"></a>Keys 關係鍵</h2><ul><li>關聯式資料庫重要的組成部分，在 DBMS 中，主要的 Keys 有 :</li></ul><ol><li>主鍵 primaty key ( 簡稱PK )<br> 唯一的表示每一筆資料，一筆資料只能有一個主鍵，而且不能是空 Null 的，它也可以是連接到其他表格的PK。</li><li>外鍵 Foreign Key ( 簡稱FK )<br> 指向其他表格主鍵的欄位，確保兩張表格的關聯性，只能對應到 PK ( 避免有其他數值導致錯誤 )</li><li>自然鍵 Natural key<br> 真實生活中唯一確定一個事物的標誌，來當作主鍵 primary key 可被稱為 natural key ， ex : 身分證字號</li><li>代理鍵 Sirrogate key<br> 資料表格中，所有欄位都不適合當主鍵時，就會製作一個無意義的欄位來當作主鍵</li><li>複合主鍵 comopsite key<br> 一筆資料只能有一個主鍵，( 但可以由兩個以上的行組成PK )</li></ol><h2 id="SQL-Data-Types-資料類型"><a href="#SQL-Data-Types-資料類型" class="headerlink" title="SQL Data Types 資料類型"></a>SQL Data Types 資料類型</h2><table><thead><tr><th>Data Types</th><th>Bytes</th></tr></thead><tbody><tr><td>INT 整數</td><td>4 Bytes</td></tr><tr><td>DECIMAL 帶有小數點的數</td><td>視精確度而定</td></tr><tr><td>VARCHAR 變動長度</td><td>max &#x3D; 2GB</td></tr><tr><td>DATATIME 時間</td><td>8 Bytes</td></tr></tbody></table><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a href="https://tw.alphacamp.co/blog/mysql-and-mongodb-comparison">alphacamp|是否該用 MongoDB？選擇資料庫前你該了解的事</a></p><p><a href="https://medium.com/@eric248655665/rdbms-vs-nosql-%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-vs-%E9%9D%9E%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-1423c9fbb91a">HS | RDBMS vs. NOSQL | 關聯式資料庫 vs. 非關聯式資料庫</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在資策會上 SQL 一周，大概 16 小時，對資料庫有初步的認識，希望能透過筆記整理所學，並把懂弄到能打出 code 解問題 ! 溫馨提醒 : 本系列為菜雞學習筆記，若有錯誤歡迎指正 ! &lt;/p&gt;
+&lt;h2 id=&quot;什麼是資料庫系統&quot;&gt;&lt;a href=&quot;#什麼是資料庫系統&quot; class=&quot;headerlink&quot; title=&quot;什麼是資料庫系統 ?&quot;&gt;&lt;/a&gt;什麼是資料庫系統 ?&lt;/h2&gt;&lt;p&gt;資料庫系統可以說是，&lt;code&gt;資料庫 Database&lt;/code&gt;存放資料的地方，和 &lt;code&gt;資料庫系統 Database Management System&lt;/code&gt; 控制資料存取和權限組成。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="MySQL Note" scheme="https://22aliang.github.io/tags/MySQL-Note/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo | 就算沒人留言也要裝一個 utterances 留言板吧</title>
