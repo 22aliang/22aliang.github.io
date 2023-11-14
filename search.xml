@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo | 就算沒人留言也要裝一個 utterances 留言板吧</title>
+    <title>Hexo | 試裝 utterances 留言板</title>
     <url>/2023/03/15/Hexo_%E5%B0%B1%E7%AE%97%E6%B2%92%E4%BA%BA%E7%95%99%E8%A8%80%E4%B9%9F%E8%A6%81%E8%A3%9D%E4%B8%80%E5%80%8B%20utterances%20%E7%95%99%E8%A8%80%E6%9D%BF%E5%90%A7/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前跟著 Ray 的 <a href="https://israynotarray.com/">試著學 Hexo</a> 系列架好了這個 Hexo 部落格</p>
 <p>原本是使用 NexT 內建就有支援的 <a href="https://blog.disqus.com/">DISQUS</a> 這個留言板來使用，但它的版面有不實用又佔空間的奇怪互動表情符號 …</p>
