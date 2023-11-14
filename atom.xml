@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>艸良 等於 莨</title>
+  <title>Nell.22ZL</title>
   
-  <subtitle>網頁技術筆記部落格</subtitle>
+  <subtitle>踩踩坑，寫寫扣</subtitle>
   <link href="https://22aliang.github.io/atom.xml" rel="self"/>
   
   <link href="https://22aliang.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://22aliang.github.io/</id>
   
   <author>
-    <name>22zl</name>
+    <name>Nell</name>
     
   </author>
   
