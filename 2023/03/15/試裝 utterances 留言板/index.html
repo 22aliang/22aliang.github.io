@@ -21,15 +21,23 @@
     var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nell.22ZL">
-<meta property="og:url" content="https://22aliang.github.io/tags/HTTP/index.html">
-<meta property="og:site_name" content="Nell.22ZL">
+  <meta name="description" content="前言之前跟著 Ray 的 試著學 Hexo 系列架好了這個 Hexo 部落格 原本是使用 NexT 內建就有支援的 DISQUS 這個留言板來使用，但它的版面有不實用又佔空間的奇怪互動表情符號 … 剛好看到使用 Hexo 架站的大大們部落格中，那乾淨的 utterances ，就被被燒得不要不要的了，雖然官方的網址已經把流程寫得很清楚了，但相信金魚腦的我可能過一陣子就忘光光，寫成文章記錄過程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo | 試裝 utterances 留言板">
+<meta property="og:url" content="https://22aliang.github.io/2023/03/15/%E8%A9%A6%E8%A3%9D%20utterances%20%E7%95%99%E8%A8%80%E6%9D%BF/index.html">
+<meta property="og:site_name" content="22Nell&#39;s Blog">
+<meta property="og:description" content="前言之前跟著 Ray 的 試著學 Hexo 系列架好了這個 Hexo 部落格 原本是使用 NexT 內建就有支援的 DISQUS 這個留言板來使用，但它的版面有不實用又佔空間的奇怪互動表情符號 … 剛好看到使用 Hexo 架站的大大們部落格中，那乾淨的 utterances ，就被被燒得不要不要的了，雖然官方的網址已經把流程寫得很清楚了，但相信金魚腦的我可能過一陣子就忘光光，寫成文章記錄過程。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/4uwcueA.png">
+<meta property="og:image" content="https://i.imgur.com/BiFpHda.png">
+<meta property="article:published_time" content="2023-03-14T16:47:28.304Z">
+<meta property="article:modified_time" content="2024-05-11T13:20:45.534Z">
 <meta property="article:author" content="Nell">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/4uwcueA.png">
 
-<link rel="canonical" href="https://22aliang.github.io/tags/HTTP/">
+<link rel="canonical" href="https://22aliang.github.io/2023/03/15/%E8%A9%A6%E8%A3%9D%20utterances%20%E7%95%99%E8%A8%80%E6%9D%BF/">
 
 
 <script id="page-configurations">
@@ -37,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>標籤: HTTP | Nell.22ZL</title>
+  <title>Hexo | 試裝 utterances 留言板 | 22Nell's Blog</title>
   
 
 
@@ -73,7 +81,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Nell.22ZL" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="22Nell's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -94,10 +102,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Nell.22ZL</h1>
+      <h1 class="site-title">22Nell's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">踩踩坑，寫寫扣</p>
+      <p class="site-subtitle" itemprop="description">Notes of a Rookie Engineer</p>
   </div>
 
   <div class="site-nav-right">
@@ -184,57 +192,159 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">HTTP
-          <small>標籤</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://22aliang.github.io/2023/03/15/%E8%A9%A6%E8%A3%9D%20utterances%20%E7%95%99%E8%A8%80%E6%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/person.jpg">
+      <meta itemprop="name" content="Nell">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="22Nell's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo | 試裝 utterances 留言板
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2023-03-15 00:47:28" itemprop="dateCreated datePublished" datetime="2023-03-15T00:47:28+08:00">2023-03-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">Hexo 系列</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前跟著 Ray 的 <a target="_blank" rel="noopener" href="https://israynotarray.com/">試著學 Hexo</a> 系列架好了這個 Hexo 部落格</p>
+<p>原本是使用 NexT 內建就有支援的 <a target="_blank" rel="noopener" href="https://blog.disqus.com/">DISQUS</a> 這個留言板來使用，但它的版面有不實用又佔空間的奇怪互動表情符號 …</p>
+<p>剛好看到使用 Hexo 架站的大大們部落格中，那乾淨的 utterances ，就被被燒得不要不要的了，雖然<a target="_blank" rel="noopener" href="https://utteranc.es/">官方的網址</a>已經把流程寫得很清楚了，但相信金魚腦的我可能過一陣子就忘光光，寫成文章記錄過程。</p>
+<span id="more"></span>
+
+<h2 id="utterances-有什麼優點"><a href="#utterances-有什麼優點" class="headerlink" title="utterances 有什麼優點 ?"></a>utterances 有什麼優點 ?</h2><p>在 Hexo 用 utterances 有以下官網介紹比較吸引我的優點</p>
+<ul>
+<li>No tracking, no ads, always free. </li>
+<li>Dark theme. </li>
+<li>Lightweight. Vanilla TypeScript.</li>
+</ul>
+<blockquote>
+<p>菜雞註記 Vanilla TypeScript 是指在不使用任何框架或第三方庫的情況下，直接使用 TypeScript 編寫原生 JavaScript 代碼</p>
+</blockquote>
+<h2 id="安裝步驟"><a href="#安裝步驟" class="headerlink" title="安裝步驟"></a>安裝步驟</h2><ol>
+<li><p>在 Github 上檢查你要存放留言 issue 的 repository 是不是 public ，這樣 utterances 才可以放issues</p>
+</li>
+<li><p>同意在你的 Github 上安裝 <a target="_blank" rel="noopener" href="https://github.com/apps/utterances">utterances app</a></p>
+<p><img src="https://i.imgur.com/4uwcueA.png" alt="utterances app Repository assess"></p>
+<p>Repository access 的 radio option 選擇 Only select repositories，下拉選單 dropdown menu 選擇你要放 issues 的資料庫 repository，有看到別人的部落格是新建一個專門放置 issues 的 repository。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://utteranc.es/">utteranc</a> 的官網填上 repo <code>owner/repo</code> <del>不是跟我一開始一樣，無腦複製 https 那一串</del></p>
+</li>
+<li><p>Blog Post ↔️ Issue Mapping 這裡會決定在 issues 中的標題，我是選 Issue title contains page title 他會顯示文章標題，選擇pathname會如圖最下面 Issue 一樣醜醜的。<br><img src="https://i.imgur.com/BiFpHda.png" alt="Issue title contains page title(上) &amp; pathname(下)"></p>
+</li>
+<li><p>Theme 就是留言板的樣式</p>
+</li>
+<li><p>Enable Utterances 這一串產生script tag，需要把他貼在下面路徑找到的 comments.swig 檔案裡面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">themes\next\layout\_partials\comments.<span class="property">swig</span></span><br><span class="line"><span class="comment">//路徑中的 next 替換成你目前使用的樣式</span></span><br></pre></td></tr></table></figure>
+<p>在 comments.swig 找到下面這句的下方貼上 我們得到的那一串 script tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if page.comments %&#125;</span><br></pre></td></tr></table></figure>
+<p>以下是我<del>到處拼湊</del>的 script tag </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">&quot;comments&quot;</span> <span class="attr">class</span>=<span class="string">&quot;comments&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.utterances</span>&#123;<span class="attribute">max-width</span>: <span class="number">100%</span>;&#125;</span></span><br><span class="line"><span class="language-css">   </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://utteranc.es/client.js&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">repo</span>=<span class="string">&quot;owner/repo&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">issue-term</span>=<span class="string">&quot;title&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">label</span>=<span class="string">&quot;💬&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">theme</span>=<span class="string">&quot;github-dark&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">async</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>之後在主題路徑下找到 _config.yml 檔案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">themes\next\_config.yml</span><br></pre></td></tr></table></figure>
+<p>開啟後在最下面加入以下程式碼</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">utterances:</span><br><span class="line">   enable: true</span><br></pre></td></tr></table></figure></li>
+<li><p>恭喜你 ! 最後執行 <code>hexo clean</code> 、 <code>hexo g</code> 、<code>hexo d</code> 部屬完成，沒意外部落格就會有香香乾淨的留言板囉 !</p>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-03-13T12:58:17+08:00"
-              content="2023-03-13">
-          03-13
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/03/13/Note_Web%20%E7%B6%B2%E9%A0%81%E5%85%A5%E9%96%80%E5%88%9D%E5%BF%83%E8%80%85%E9%80%B2%E5%A4%A7%E8%A7%80%E5%9C%92/" itemprop="url">
-            <span itemprop="name">Note | Web 網頁入門初心者進大觀園</span>
-          </a>
-      </div>
 
-    </header>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+<div>
+    <section id="comments" class="comments">
+    <style>
+        .utterances{max-width: 100%;}
+      </style>
+      <script src="https://utteranc.es/client.js"
+              repo="22aliang/22aliang.github.io"
+              issue-term="title"
+              label="💬"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+      </script>
+  </section>
+</div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -281,6 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#utterances-%E6%9C%89%E4%BB%80%E9%BA%BC%E5%84%AA%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">utterances 有什麼優點 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%AD%A5%E9%A9%9F"><span class="nav-number">3.</span> <span class="nav-text">安裝步驟</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -296,20 +407,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -347,7 +458,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
