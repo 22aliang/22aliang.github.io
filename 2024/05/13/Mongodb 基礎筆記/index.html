@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"width":150,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="儲存格式NoSQL 是用 object 來儲存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongodb 基礎筆記">
+<meta property="og:url" content="https://22aliang.github.io/2024/05/13/Mongodb%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="22Nell&#39;s Blog">
+<meta property="og:description" content="儲存格式NoSQL 是用 object 來儲存">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-05-13T12:37:24.891Z">
+<meta property="article:modified_time" content="2024-05-13T12:54:21.329Z">
+<meta property="article:author" content="Nell">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://22aliang.github.io/2024/05/13/Mongodb%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Mongodb 基礎筆記 | 22Nell's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="22Nell's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">22Nell's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Notes of a Rookie Engineer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/22aliang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://22aliang.github.io/2024/05/13/Mongodb%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nell">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="22Nell's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mongodb 基礎筆記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2024-05-13 20:37:24" itemprop="dateCreated datePublished" datetime="2024-05-13T20:37:24+08:00">2024-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B6%85%E6%96%B0%E6%89%8B%E6%99%82%E6%9C%9F%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">超新手時期基礎筆記</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="儲存格式"><a href="#儲存格式" class="headerlink" title="儲存格式"></a>儲存格式</h3><p>NoSQL 是用 object 來儲存</p>
+<span id="more"></span>
+
+<h3 id="JSON-amp-BSON"><a href="#JSON-amp-BSON" class="headerlink" title="JSON &amp; BSON"></a>JSON &amp; BSON</h3><p>JavaScript Object Notation 通常被稱為 JSON </p>
+<p>JavaScript 物件是簡單的容器，其中一個 String key 可以映射到一個 value ( 可以是 number、string、function、object … )</p>
+<p>JSON 普遍性，成為 MongoDB 開發數據結構第一選擇</p>
+<p>但有幾個問題讓 JSON 不太適合使用在數據庫</p>
+<ol>
+<li>JSON 是純文字格式、解析慢</li>
+<li>JSON 高可讀性無法節省儲存空間</li>
+<li>JSON 僅支援有限數量基本 data types</li>
+</ol>
+<p>所以人們發明了 BSON 代表 Binary JSON</p>
+<p>BSON 二進制結構對 data types 和 長度信息進行編碼，可以快解析</p>
+<h3 id="MongoDB-Shell-mongosh"><a href="#MongoDB-Shell-mongosh" class="headerlink" title="MongoDB Shell ( mongosh )"></a>MongoDB Shell ( mongosh )</h3><p>是一個功能齊全的 JavaScript 、 Node.js 16x REPL ( Read, Evaluate, Pint, Loop ) 環境</p>
+<p>一次擁有多個 database，內部可以有多個 collections 等於是 MySQL 的一個 Table</p>
+<ol>
+<li><p>安裝 <strong><a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">MongoDB Community Server Download</a></strong></p>
+</li>
+<li><p>再安裝 <strong><a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/shell">MongoDB Shell Download</a> ，</strong>解壓縮後放到 C:\Program Files 裡面，並在環境變數的 path 中新增到 bin 的路徑</p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">C</span>:\<span class="title class_">Program</span> <span class="title class_">Files</span>\mongosh-<span class="number">1.8</span><span class="number">.0</span>-win32-x64\bin</span><br></pre></td></tr></table></figure>
+
+<p>or 下載 MSI 版本可以省略上面的步驟</p>
+<h3 id="使用語法"><a href="#使用語法" class="headerlink" title="使用語法"></a>使用語法</h3><p>查看版本</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">version</span>()</span><br></pre></td></tr></table></figure>
+
+<p>查看資料庫</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show databases</span><br><span class="line">show dbs <span class="comment">//簡寫</span></span><br></pre></td></tr></table></figure>
+
+<p>展示目前所在的資料庫</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></figure>
+
+<p>切換到 database 如果不存在會直接新增</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &lt;db&gt;</span><br></pre></td></tr></table></figure>
+
+<p>顯示目前資料庫裡所有 collections</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show collections</span><br></pre></td></tr></table></figure>
+
+<p>再MondoDB 中 document 指的是數據的基本單元或基本結構塊<br>跟 CRUD 相關的語法 </p>
+<ul>
+<li>新增一筆資料 | 參數為一筆物件</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">insertOne</span>(&lt;<span class="variable language_">document</span>&gt;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//示範</span></span><br><span class="line"></span><br><span class="line">exampleDB&gt; </span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">insertOne</span>(<span class="params">&#123;name:<span class="string">&quot;Grace&quot;</span>, age:<span class="number">27</span>, major:<span class="string">&quot;Computer&quot;</span>, schlarship:&#123;merit:<span class="number">3000</span>, other:<span class="number">1500</span>&#125;&#125;</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">acknowledged</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">insertedId</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;6434f9fb6894bfb6d8854174&quot;</span>) <span class="comment">//自動加的 primary key</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新增一筆或多筆資料 | 參數是一個由物件組成的 array</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">insertMany</span>([&lt;document1&gt;,&lt;document2&gt;...])</span><br><span class="line"></span><br><span class="line"><span class="comment">//示範</span></span><br><span class="line"></span><br><span class="line">exampleDB&gt; </span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">insertOne</span>([&#123;<span class="attr">name</span>:<span class="string">&quot;Grace&quot;</span>, <span class="attr">age</span>:<span class="number">27</span>, <span class="attr">major</span>:<span class="string">&quot;Computer&quot;</span>, <span class="attr">schlarship</span>:&#123;<span class="attr">merit</span>:<span class="number">3000</span>, <span class="attr">other</span>:<span class="number">1500</span>&#125;&#125;,&#123;<span class="attr">name</span>:<span class="string">&quot;Grace&quot;</span>, <span class="attr">age</span>:<span class="number">27</span>, <span class="attr">major</span>:<span class="string">&quot;Computer&quot;</span>, <span class="attr">schlarship</span>:&#123;<span class="attr">merit</span>:<span class="number">3000</span>, <span class="attr">other</span>:<span class="number">1500</span>&#125;&#125;])</span><br><span class="line"></span><br><span class="line"><span class="comment">//檢查一下</span></span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">find</span>() </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>萬用新增數據 | 參數是一個物件，或是一個由物件組成的 array</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">insert</span>([&lt;document1&gt;,&lt;document2&gt;...])</span><br><span class="line">db.<span class="property">collection</span>.<span class="title function_">insert</span>(&lt;<span class="variable language_">document</span>&gt;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>數據查詢 | Query 的 data type 是 object，用來過濾找的資料</p>
+<p>  要獲得所有 collection 資料可以是 empty object 、或不給參數</p>
+<p>  特別的是裡面可以放比較值，必須看<a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/manual/reference/operator/query/lt/">官網</a></p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collcetion</span>.<span class="title function_">find</span>(&lt;query&gt;)</span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">find</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;Grace&quot;</span>&#125;)</span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;schlarship.merit&quot;</span>:&#123;<span class="attr">$lt</span>: <span class="number">1000</span>&#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//取得所有 collection</span></span><br><span class="line">db.<span class="property">collcetion</span>.<span class="title function_">find</span>()</span><br><span class="line">db.<span class="property">collcetion</span>.<span class="title function_">find</span>(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>更新一筆數據 | 更新 collection 第一筆找到的資料</p>
+<p>  data type 是 object，跟 find() 中 query 功能一樣</p>
+<p>  第一筆參數尋找要更改的資料</p>
+<p>  第二筆參數通常會加這個 $set : {} 括弧裡面放更新的資料</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">updateOne</span>(&lt;filter&gt;,&lt;update&gt;)</span><br><span class="line"></span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">updateOne</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;Esther&quot;</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="attr">name</span>:<span class="string">&quot;Eason&quot;</span>,<span class="attr">age</span>:<span class="number">36</span>&#125;&#125;)</span><br><span class="line"></span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">updateOne</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;Eason&quot;</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="attr">age</span>:<span class="number">26</span>&#125;,<span class="attr">$currentDate</span>:&#123;<span class="attr">lastModified</span>: <span class="literal">true</span>&#125;&#125;)</span><br><span class="line"><span class="comment">//會記錄最後更新的時間</span></span><br><span class="line"><span class="attr">lastModified</span>: <span class="title class_">ISODate</span>(<span class="string">&quot;2023-04-11T13:49:55.577Z&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新多筆數據 | 可以一次更新符合 filter 的資料</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">updateMany</span>(&lt;filter&gt;,&lt;update&gt;)</span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">updateMany</span>(&#123;<span class="attr">major</span>:<span class="string">&quot;Math&quot;</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="attr">major</span>:<span class="string">&quot;chinese&quot;</span>&#125;&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>刪除單筆數據 | 第一筆符合資料刪除</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">deleteOne</span>(&lt;filter&gt;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>刪除多筆數據 | 刪除所有符合的資料</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">deleteMany</span>(&lt;filter&gt;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><h3 id="Mongoose-1"><a href="#Mongoose-1" class="headerlink" title="Mongoose"></a>Mongoose</h3><p>若要再程式語言中使用或存取 MongoDB 需要工具讓資料庫可以跟 JS 程式碼連結</p>
+<p>能夠將 JS 中的 Object 轉換成 MongoDB 中的 document </p>
+<p>因此這類工具叫做 object-document mapping ( ODM ) </p>
+<p>使用 ODM 的好處有 :</p>
+<ol>
+<li>資料庫結構能被追蹤</li>
+<li>ORM ( SQL資料庫使用的工具叫做ORM 像 JAVA 就會用 Hibernate )、ODM 會內建保護機制、保護型語法，不用擔心 SQL Injection 之類的攻擊</li>
+<li>讓 Projecet 更符合 MVC 模型 : Mongoose 是 model 用來跟 MongoDB互動獲得資料，View 是 EJS、Controller 是 app.js</li>
+</ol>
+<h3 id="Model-amp-Schema"><a href="#Model-amp-Schema" class="headerlink" title="Model &amp; Schema"></a>Model &amp; Schema</h3><ol>
+<li>Schema : 每個 Schema 對應到 MongoDB 的 Collection ，並定義裡面 document 的架構，像是最大值、最小值等..，就像MySQL 中 creat table 的步驟</li>
+<li>Model : 包裝 Schema 的容器，可以用 Model 來對 Collection CRUD</li>
+</ol>
+<p>Schema  語法為</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">&quot;mongoose&quot;</span>; <span class="comment">// 等於 const mongoose = require(&quot;mongoose&quot;);</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Schema</span> &#125; = mongoose; <span class="comment">// ohject constructor 這個可用的變數 Schema  </span></span><br><span class="line"><span class="keyword">const</span> blogSchema = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123; <span class="comment">//這是 new object 的語法</span></span><br><span class="line">  <span class="attr">title</span>: <span class="title class_">String</span>, <span class="comment">// String is shorthand for &#123; type:String&#125;</span></span><br><span class="line">  <span class="attr">date</span>: &#123; <span class="attr">type</span>: <span class="title class_">Date</span>, <span class="attr">default</span>: <span class="title class_">Date</span>.<span class="property">now</span> &#125;,</span><br><span class="line">  <span class="attr">meta</span>: &#123; <span class="attr">votes</span>: <span class="title class_">Number</span>, <span class="attr">favs</span>: <span class="title class_">Number</span> &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>再 blogSchema  的 constructor 中，參數為一個物件</p>
+<p>每個 key 都定義了 blogSchema   當中 document 的屬性</p>
+<p>每個 key 賦予的 value 為一個屬性，為 Schema Type的物件 </p>
+<p>常見 Schema Type 物件 : String、Number、Date、Boolean、ObjectId、Array、Decimal123、Map … ( 第一個字都大寫 )</p>
+<p>Model 語法為</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Blog</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Blog&#x27;</span>,blogSchema)</span><br></pre></td></tr></table></figure>
+
+<p>注意事項 : mongoose.model() 第一個參數為 String，為 collection 的名稱，開頭要大寫、且為單數 ( 舉例 : student 會轉換成 Students、people 會轉換成 Pserson，Mongoose會自己轉 )</p>
+<p>第二個參數是前面製作的 Schema</p>
+<h3 id="Query-Object-跟-Promise-比較"><a href="#Query-Object-跟-Promise-比較" class="headerlink" title="Query Object 跟 Promise 比較"></a>Query Object 跟 Promise 比較</h3><p>Query Object : </p>
+<p>是一種thenable object，代表後面可以串接.then()以及.catch()<br>find()以及findOne()兩個method的return值都是Query Object<br>因此就算把 .exec() 刪掉也可以運作</p>
+<p>Promise : </p>
+<p>可以用 .then()、.catch()</p>
+<p>不管在哪種情況，在Query Object後面加上.exec()，讓它變成Promise都是比較好的</p>
+<h3 id="Mongooes-中常見的-CRUD"><a href="#Mongooes-中常見的-CRUD" class="headerlink" title="Mongooes 中常見的 CRUD"></a>Mongooes 中常見的 CRUD</h3><p>儲存 MongoDB 的 document</p>
+<p>return prmise ，並儲存資料</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">doucument.<span class="title function_">save</span>()</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">saveDoc</span> =&gt;</span> &#123;</span><br><span class="line">	saveDoc === doc; <span class="comment">//true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示範的部分</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"><span class="keyword">const</span> newObject = <span class="keyword">new</span> <span class="title class_">Student</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Lisa&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">major</span>: <span class="string">&quot;Math&quot;</span>,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123;</span><br><span class="line">    <span class="attr">merit</span>: <span class="number">5000</span>,</span><br><span class="line">    <span class="attr">other</span>: <span class="number">1000</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">newObject</span><br><span class="line">  .<span class="title function_">save</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">saveObject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;資料儲存是:&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(saveObject);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">伺服器正在prot3000...</span><br><span class="line">成功連結mongoDB</span><br><span class="line">資料儲存是:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Lisa&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">major</span>: <span class="string">&#x27;Math&#x27;</span>,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123; <span class="attr">merit</span>: <span class="number">5000</span>, <span class="attr">other</span>: <span class="number">1000</span> &#125;,</span><br><span class="line">  <span class="attr">_id</span>: <span class="keyword">new</span> <span class="title class_">ObjectId</span>(<span class="string">&quot;64357352434482976e4fae00&quot;</span>),</span><br><span class="line">  <span class="attr">__v</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在 mongo 中</span><br><span class="line">db.<span class="property">students</span>.<span class="title function_">find</span>()</span><br><span class="line">可以看到有沒有成功</span><br></pre></td></tr></table></figure>
+
+<p>在 Mongoose 中許多 methods return 都是 Query 是 Mongoose 特有的 Class</p>
+<p>可用在 find、update、delete documents 等操作</p>
+<p>如果要讓這些 methods 的 return type 變成 promise 可以用要加</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="title function_">exec</span>()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>篩選全部資料 | 找到所有符合條件的物件</p>
+<p>  可以用 $去設定要篩選的資料</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">find</span>(filter)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">find</span>(&#123; <span class="string">&quot;scholarship.merit&quot;</span>: &#123; <span class="attr">$gte</span>: <span class="number">5000</span> &#125; &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(data))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>篩選第一筆資料 | 找到符合的第一筆資料</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">findOne</span>(filter)</span><br></pre></td></tr></table></figure>
+
+<aside>
+💡 在 mongooes 中 
+update 並不會管 schema 的設定，必須要加第三個參數
+{ runValidators: true } 才會檢查
+但.save() 會被擋下來
+
+</aside>
+
+<ul>
+<li><p>更新資料 | 第一個符合的物件，並將資料 update</p>
+<p>  filter、update 這個參數都是 object ，.then() 內 callback 被執行帶入參數是更新的訊息</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">updateOne</span>(filter, update, options)</span><br><span class="line"><span class="title class_">Model</span>.<span class="title function_">updateOne</span>(filter, update, options).<span class="title function_">exec</span>() </span><br><span class="line"><span class="comment">//return Promise .then()、.catch()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//---- 範例</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">updateOne</span>(</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Eason&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Eason Lam&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">runValidators</span>: <span class="literal">true</span> , <span class="attr">new</span>: <span class="literal">true</span>&#125; <span class="comment">//nwe: true 是無效的</span></span><br><span class="line">)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">mes</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(mes);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確回饋 </span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">acknowledged</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">modifiedCount</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">upsertedId</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">upsertedCount</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">matchedCount</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 檢查</span></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">find</span>(&#123;&#125;)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新多筆資料 | 符合的所有物件，將資料 update</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">updateMany</span>(filter, update, options)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新資料 | 找到第一個符合條件的物件並更新</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">findOneAndUpdate</span>(condition, update, option)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">findOneAndUpdate</span>(</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Grace&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Grace Xie&quot;</span> &#125;,</span><br><span class="line">	<span class="comment">//new 控制找到的屬性是不是更新前的</span></span><br><span class="line">  &#123; <span class="attr">runValidator</span>: <span class="literal">true</span>, <span class="attr">new</span>: <span class="literal">true</span> &#125; </span><br><span class="line">)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">newData</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(newData);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>updateOne() 適合在不需要顯示更新後資料狀況、findOneAndUpdate() ，設定 new: true 在需要確認更新後狀況時很好用</p>
+<ul>
+<li><p>刪除資料 | 從 collection 刪除和 conditions 匹配的第一個 document</p>
+<p>  return 一個 deletedConnt 屬性的 Object</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">deleteOnd</span>(conditions)</span><br><span class="line"></span><br><span class="line"><span class="comment">//示範</span></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">deleteOne</span>(&#123; <span class="attr">name</span>: <span class="string">&quot;Lisa&quot;</span> &#125;)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">msg</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//回傳</span></span><br><span class="line">&#123; <span class="attr">acknowledged</span>: <span class="literal">true</span>, <span class="attr">deletedCount</span>: <span class="number">1</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>刪除多筆資料 | 從 collection 刪除和 conditions 匹配的所有 document</p>
+<p>  return 一個 deletedConnt 屬性的 Object</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>.<span class="title function_">deleteMany</span>(conditions)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Schema-Validtors-驗證器"><a href="#Schema-Validtors-驗證器" class="headerlink" title="Schema Validtors 驗證器"></a>Schema Validtors 驗證器</h3><p>希望 Collection 的資料在被放進去之前，都可以經過驗證，就可以在 schema 中設定屬性驗證器 validators </p>
+<p>Schema 屬性設定語法通常是 : </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name</span>: <span class="title class_">String</span></span><br><span class="line"><span class="attr">name</span>: &#123; type : <span class="title class_">String</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加入 Validtors 的寫法</span></span><br><span class="line"><span class="attr">name</span>: &#123;</span><br><span class="line">type : <span class="title class_">String</span>,</span><br><span class="line"><span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因為每種 data type 所用的驗證器不同，對每個 data type 通用有 2 種</p>
+<ol>
+<li>required : 可放入一個 boolean、或 array、或 function</li>
+<li>default : 設定屬性的預設值</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//範例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userSchema = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">minlength</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">maxlength</span>: <span class="number">50</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">email</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">unique</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">match</span>: <span class="regexp">/^([\w-\.]+@([\w-]+\.)+[\w-]&#123;2,4&#125;)?$/</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">age</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">max</span>: <span class="number">100</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">role</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">enum</span>: [<span class="string">&#x27;admin&#x27;</span>, <span class="string">&#x27;user&#x27;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//範例</span></span><br><span class="line"><span class="keyword">const</span> studentSchema = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: &#123;<span class="attr">name</span>: <span class="title class_">String</span> ,<span class="attr">required</span>: [<span class="literal">true</span>,<span class="string">&quot;每個學生都有名字&quot;</span>]&#125;,</span><br><span class="line">  <span class="comment">//min 是一個限制，array 第一個參數是限制、第二個參數是錯誤訊息</span></span><br><span class="line">  <span class="attr">age</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">min</span>: [<span class="number">0</span>, <span class="string">&quot;年齡不能小於0&quot;</span>] &#125;,</span><br><span class="line">	<span class="attr">major</span>: <span class="title class_">String</span>,<span class="attr">require</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> &gt;= <span class="number">3000</span></span><br><span class="line">  &#125;, <span class="comment">// &lt; 3000 就可以不用填這個值</span></span><br><span class="line">	<span class="attr">enum</span>: [<span class="string">&quot;Math&quot;</span>, <span class="string">&quot;undecided&quot;</span>, <span class="string">&quot;Chinese&quot;</span>], <span class="comment">//只能新增這幾個</span></span><br><span class="line">	<span class="attr">scholarship</span>: &#123;</span><br><span class="line">		<span class="comment">//預設是 0 </span></span><br><span class="line">    <span class="attr">merit</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">default</span>: <span class="number">0</span> &#125;,</span><br><span class="line">    <span class="attr">other</span>: <span class="title class_">Number</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="跟-String-有關的-Schema-Validtors-驗證器"><a href="#跟-String-有關的-Schema-Validtors-驗證器" class="headerlink" title="跟 String 有關的 Schema Validtors 驗證器"></a>跟 String 有關的 Schema Validtors 驗證器</h3><ol>
+<li><p>uppercase ( boolean)</p>
+</li>
+<li><p>lowercase ( boolean)</p>
+</li>
+<li><p>enum (array of strings) </p>
+<p> 只能新增指定的值 enum : [”指定”,”指定”]</p>
+</li>
+<li><p>minlength (number)</p>
+</li>
+<li><p>maxlength (number)</p>
+</li>
+</ol>
+<h3 id="跟-Number-有關的-Schema-Validtors-驗證器"><a href="#跟-Number-有關的-Schema-Validtors-驗證器" class="headerlink" title="跟 Number 有關的 Schema Validtors 驗證器"></a>跟 Number 有關的 Schema Validtors 驗證器</h3><ol>
+<li>min</li>
+<li>max</li>
+<li>enum</li>
+</ol>
+<h3 id="Instance-Method"><a href="#Instance-Method" class="headerlink" title="Instance Method"></a>Instance Method</h3><p>在 Mongoose Model 當中每筆資料叫做 documnet ，document 又叫做 instance </p>
+<p>若我們想要某個 model  所有 documents 都可以使用某個 method<br>共用 methods 的概念跟物件導向有一點像<br>就可以將 Method 定義在 schema 上，這樣被稱為 instance method </p>
+<p>Instance 的語法有兩種</p>
+<ol>
+<li>Schema 內設定 methods 屬性並給予一個 Object</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> animalSchema = <span class="keyword">new</span> <span class="title class_">Schema</span> (&#123;</span><br><span class="line">	<span class="attr">methods</span>: &#123;</span><br><span class="line">		<span class="attr">findSimilor</span>:</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//示範</span></span><br><span class="line"><span class="keyword">const</span> studentSchema = <span class="keyword">new</span> <span class="title class_">Schema</span>(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="comment">//min 是一個限制，array 第一個參數是限制、第二個參數是錯誤訊息</span></span><br><span class="line">    <span class="attr">age</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">min</span>: [<span class="number">0</span>, <span class="string">&quot;年齡不能小於0&quot;</span>] &#125;,</span><br><span class="line">    <span class="attr">major</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">require</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> &gt;= <span class="number">3000</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">scholarship</span>: &#123;</span><br><span class="line">      <span class="attr">merit</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">default</span>: <span class="number">0</span> &#125;,</span><br><span class="line">      <span class="attr">other</span>: <span class="title class_">Number</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;<span class="comment">//第二個物件放一個 methods</span></span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">      <span class="title function_">printTotalScholarship</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">//這個 this 指的是 Student model 製作出的 object</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> + <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">other</span>;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">find</span>(&#123;&#125;)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">    arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">student</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(student.<span class="property">name</span> + <span class="string">&quot;總學金是&quot;</span> + student.<span class="title function_">printTotalScholarship</span>());</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>直接設定 Schema 的 methods 屬性</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> studentSchema = <span class="keyword">new</span> <span class="title class_">Schema</span>(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123; <span class="attr">type</span>: <span class="title class_">String</span>, <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">maxlength</span>: <span class="number">25</span> &#125;,</span><br><span class="line">    <span class="attr">age</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">min</span>: [<span class="number">0</span>, <span class="string">&quot;年齡不能小於0&quot;</span>] &#125;,</span><br><span class="line">    <span class="attr">major</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">      <span class="attr">required</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> &gt;= <span class="number">3000</span>;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">enum</span>: [</span><br><span class="line">        <span class="string">&quot;Chemistry&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Computer Science&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Mathematics&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Civil Engineering&quot;</span>,</span><br><span class="line">        <span class="string">&quot;undecided&quot;</span>,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">scholarship</span>: &#123;</span><br><span class="line">      <span class="attr">merit</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">default</span>: <span class="number">0</span> &#125;,</span><br><span class="line">      <span class="attr">other</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">default</span>: <span class="number">0</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">studentSchema.<span class="property">method</span>.<span class="property">printTotalScholarship</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> + <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">other</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">find</span>(&#123;&#125;)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">    arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">student</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(student.<span class="property">name</span> + <span class="string">&quot;總學金是&quot;</span> + student.<span class="title function_">printTotalScholarship</span>());</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Static-Methods"><a href="#Static-Methods" class="headerlink" title="Static Methods"></a>Static Methods</h3><p>定義專於 Schema 使用的 method 可以使用 static method，並屬於 Schema 本身</p>
+<p>不屬於 Mongoose Model 內部的 documents，概念來自物件導向，有 3 種寫法</p>
+<h2 id="開啟一個專案"><a href="#開啟一個專案" class="headerlink" title="開啟一個專案"></a>開啟一個專案</h2><p>對資料夾</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p>再下載</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i express ejs</span><br></pre></td></tr></table></figure>
+
+<p>再 app.js 寫入</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">set</span>(<span class="string">&quot;view engine&quot;</span>, <span class="string">&quot;ejs&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;伺服器正在prot3000...&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>再開啟伺服器</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon app.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+
+<p>再安裝套件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mongoose</span><br></pre></td></tr></table></figure>
+
+<p>詳細連接伺服器方法可以看<a target="_blank" rel="noopener" href="https://mongoosejs.com/">官網</a></p>
+<p>確認一下 mongosh 的位置</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$mongosh </span><br><span class="line"></span><br><span class="line"><span class="title class_">Connecting</span> <span class="attr">to</span>:          </span><br><span class="line"><span class="attr">mongodb</span>:<span class="comment">//127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+1.8.0</span></span><br></pre></td></tr></table></figure>
+
+<p>確認一下要連結到哪個DB</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">啟動 mopngosh 的情況</span><br><span class="line"></span><br><span class="line">show dbs</span><br></pre></td></tr></table></figure>
+
+<p>再新增</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"></span><br><span class="line">mongoose</span><br><span class="line">  .<span class="title function_">connect</span>(<span class="string">&quot;mongodb://127.0.0.1:27017/exampleDB&quot;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;成功連結mongoDB&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>再終端機開啟 mongosh 的情況下 再開一個終端機執行 去看有沒有跑</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nodemon app.<span class="property">js</span></span><br><span class="line"></span><br><span class="line">[nodemon] restarting due to changes...</span><br><span class="line">[nodemon] starting <span class="string">`node app.js`</span></span><br><span class="line">伺服器正在prot3000...</span><br><span class="line">成功連結mongoDB</span><br></pre></td></tr></table></figure>
+
+<p>設定 schema </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Schema</span> &#125; = mongoose;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> studentSchema = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="title class_">Number</span>,</span><br><span class="line">  <span class="attr">major</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123;</span><br><span class="line">    <span class="attr">merit</span>: <span class="title class_">Number</span>,</span><br><span class="line">    <span class="attr">other</span>: <span class="title class_">Number</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"><span class="keyword">const</span> newObject = <span class="keyword">new</span> <span class="title class_">Student</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Esther&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">15</span>,</span><br><span class="line">  <span class="attr">major</span>: <span class="string">&quot;Math&quot;</span>,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123;</span><br><span class="line">    <span class="attr">merit</span>: <span class="number">6000</span>,</span><br><span class="line">    <span class="attr">other</span>: <span class="number">7000</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">newObject</span><br><span class="line">  .<span class="title function_">save</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">saveObject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;資料已經儲存完畢，儲存的資料是&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(saveObject);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>執行 node.js 新增資料</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">node app.<span class="property">js</span></span><br><span class="line"></span><br><span class="line">伺服器正在prot3000...</span><br><span class="line">成功連結mongoDB</span><br><span class="line">資料已經儲存完畢，儲存的資料是</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Esther&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">15</span>,</span><br><span class="line">  <span class="attr">major</span>: <span class="string">&#x27;Math&#x27;</span>,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123; <span class="attr">merit</span>: <span class="number">6000</span>, <span class="attr">other</span>: <span class="number">7000</span> &#125;,</span><br><span class="line">  <span class="attr">_id</span>: <span class="keyword">new</span> <span class="title class_">ObjectId</span>(<span class="string">&quot;64350a818696853779c27ad0&quot;</span>),</span><br><span class="line">  <span class="attr">__v</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再 mogodb 可以用 db.students.find() 找到</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">_id</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;6434f9fb6894bfb6d8854174&quot;</span>),</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Grace&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">    <span class="attr">major</span>: <span class="string">&#x27;Computer&#x27;</span>,</span><br><span class="line">    <span class="attr">schlarship</span>: &#123; <span class="attr">merit</span>: <span class="number">3000</span>, <span class="attr">other</span>: <span class="number">1500</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">_id</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;64350a065bd049d1f30c1230&quot;</span>),</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Esther&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">major</span>: <span class="string">&#x27;Math&#x27;</span>,</span><br><span class="line">    <span class="attr">scholarship</span>: &#123; <span class="attr">merit</span>: <span class="number">6000</span>, <span class="attr">other</span>: <span class="number">7000</span> &#125;,</span><br><span class="line">    <span class="attr">__v</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">_id</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;64350a818696853779c27ad0&quot;</span>),</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Esther&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">major</span>: <span class="string">&#x27;Math&#x27;</span>,</span><br><span class="line">    <span class="attr">scholarship</span>: &#123; <span class="attr">merit</span>: <span class="number">6000</span>, <span class="attr">other</span>: <span class="number">7000</span> &#125;,</span><br><span class="line">    <span class="attr">__v</span>: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>查詢資料</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">find</span>(&#123;&#125;)</span><br><span class="line">  .<span class="title function_">exec</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//------ 可以改寫 async ------- </span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> <span class="title class_">Student</span>.<span class="title function_">find</span>().<span class="title function_">exec</span>();</span><br><span class="line">    res.<span class="title function_">send</span>(data);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//加篩選條件</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> <span class="title class_">Student</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&quot;Grace&quot;</span> &#125;).<span class="title function_">exec</span>();</span><br><span class="line">    res.<span class="title function_">send</span>(data);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mongooese-Middleware"><a href="#Mongooese-Middleware" class="headerlink" title="Mongooese Middleware"></a>Mongooese Middleware</h3><p>Mongoose Middleware 也就是 pre, post hooks 是在異步含是執行期間傳遞控制權的函數，Middleware是定義在Schema上的。</p>
+<p>pre 就是什麼什麼之前</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定義一個 Middleware</span></span><br><span class="line"><span class="title class_">Schema</span>.<span class="title function_">pre</span>(<span class="string">&#x27;save&#x27;</span>,callbackFn)</span><br><span class="line"></span><br><span class="line"><span class="comment">//任何與這個 Schema 有關的物件要被儲存前，這個 hook 內的 callbackFn會先被執行</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//範例</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Schema</span> &#125; = mongoose;</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">set</span>(<span class="string">&quot;view engine&quot;</span>, <span class="string">&quot;ejs&quot;</span>);</span><br><span class="line"></span><br><span class="line">mongoose</span><br><span class="line">  .<span class="title function_">connect</span>(<span class="string">&quot;mongodb://localhost:27017/exampleDB&quot;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;成功連結mongoDB....&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> studentSchema = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: &#123; <span class="attr">type</span>: <span class="title class_">String</span>, <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">maxlength</span>: <span class="number">25</span> &#125;,</span><br><span class="line">  <span class="attr">age</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">min</span>: [<span class="number">0</span>, <span class="string">&quot;年齡不能小於0&quot;</span>] &#125;,</span><br><span class="line">  <span class="attr">major</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> &gt;= <span class="number">3000</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">enum</span>: [</span><br><span class="line">      <span class="string">&quot;Chemistry&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Computer Science&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Mathematics&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Civil Engineering&quot;</span>,</span><br><span class="line">      <span class="string">&quot;undecided&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123;</span><br><span class="line">    <span class="attr">merit</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">default</span>: <span class="number">0</span> &#125;,</span><br><span class="line">    <span class="attr">other</span>: &#123; <span class="attr">type</span>: <span class="title class_">Number</span>, <span class="attr">default</span>: <span class="number">0</span> &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// studentSchema.statics.findAllMajorStudents = function (major) &#123;</span></span><br><span class="line"><span class="comment">//   return this.find(&#123; major: major &#125;).exec();</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line">studentSchema.<span class="title function_">static</span>(<span class="string">&quot;findAllMajorStudents&quot;</span>, <span class="keyword">function</span> (<span class="params">major</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">find</span>(&#123; <span class="attr">major</span>: major &#125;).<span class="title function_">exec</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">studentSchema.<span class="property">methods</span>.<span class="property">printTotalScholarship</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">merit</span> + <span class="variable language_">this</span>.<span class="property">scholarship</span>.<span class="property">other</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">studentSchema.<span class="title function_">pre</span>(<span class="string">&quot;save&quot;</span>, <span class="function">() =&gt;</span> &#123; <span class="comment">//在 save 之前要做的動作</span></span><br><span class="line">  fs.<span class="title function_">writeFile</span>(<span class="string">&quot;record.txt&quot;</span>, <span class="string">&quot;A new data will be saved...&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Student</span> = mongoose.<span class="title function_">model</span>(<span class="string">&quot;Student&quot;</span>, studentSchema); <span class="comment">//  students</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newStudent = <span class="keyword">new</span> <span class="title class_">Student</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;小明&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">  <span class="attr">major</span>: <span class="string">&quot;Computer Science&quot;</span>,</span><br><span class="line">  <span class="attr">scholarship</span>: &#123;</span><br><span class="line">    <span class="attr">merit</span>: <span class="number">5000</span>,</span><br><span class="line">    <span class="attr">other</span>: <span class="number">1000</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">newStudent</span><br><span class="line">  .<span class="title function_">save</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;資料已經儲存&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;伺服器正在聆聽port 3000....&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/database/" rel="tag"><i class="fa fa-tag"></i> database</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/13/MVC%E6%A8%A1%E5%BC%8F%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="prev" title="MVC 模式">
+      <i class="fa fa-chevron-left"></i> MVC 模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/13/java%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98_1/" rel="next" title="java 基礎筆記_1">
+      java 基礎筆記_1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+<div>
+    <section id="comments" class="comments">
+    <style>
+        .utterances{max-width: 100%;}
+      </style>
+      <script src="https://utteranc.es/client.js"
+              repo="22aliang/22aliang.github.io"
+              issue-term="title"
+              label="💬"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+      </script>
+  </section>
+</div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%84%B2%E5%AD%98%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">儲存格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-amp-BSON"><span class="nav-number">2.</span> <span class="nav-text">JSON &amp; BSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-Shell-mongosh"><span class="nav-number">3.</span> <span class="nav-text">MongoDB Shell ( mongosh )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AA%9E%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">使用語法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mongoose"><span class="nav-number"></span> <span class="nav-text">Mongoose</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongoose-1"><span class="nav-number">1.</span> <span class="nav-text">Mongoose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-amp-Schema"><span class="nav-number">2.</span> <span class="nav-text">Model &amp; Schema</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Query-Object-%E8%B7%9F-Promise-%E6%AF%94%E8%BC%83"><span class="nav-number">3.</span> <span class="nav-text">Query Object 跟 Promise 比較</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongooes-%E4%B8%AD%E5%B8%B8%E8%A6%8B%E7%9A%84-CRUD"><span class="nav-number">4.</span> <span class="nav-text">Mongooes 中常見的 CRUD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schema-Validtors-%E9%A9%97%E8%AD%89%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">Schema Validtors 驗證器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9F-String-%E6%9C%89%E9%97%9C%E7%9A%84-Schema-Validtors-%E9%A9%97%E8%AD%89%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">跟 String 有關的 Schema Validtors 驗證器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9F-Number-%E6%9C%89%E9%97%9C%E7%9A%84-Schema-Validtors-%E9%A9%97%E8%AD%89%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">跟 Number 有關的 Schema Validtors 驗證器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instance-Method"><span class="nav-number">8.</span> <span class="nav-text">Instance Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-Methods"><span class="nav-number">9.</span> <span class="nav-text">Static Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E5%95%9F%E4%B8%80%E5%80%8B%E5%B0%88%E6%A1%88"><span class="nav-number"></span> <span class="nav-text">開啟一個專案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongooese-Middleware"><span class="nav-number">1.</span> <span class="nav-text">Mongooese Middleware</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nell</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/22aliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;22aliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lisa5566407@gmail.com" title="E-Mail → mailto:lisa5566407@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nell</span>
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

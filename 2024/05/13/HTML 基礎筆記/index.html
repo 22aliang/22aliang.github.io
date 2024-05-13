@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"width":150,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="VS Code 官網 ｜ github ｜ 擴充元件  Visual Studio Code（簡稱 VS Code）是一個使用 Monaco Editor 作為其底層的免費原始碼程式碼編輯器，會選擇作為開發用軟體，有以下幾個優點  程式碼重構 內建命令列工具 內建Git版本控制系統 支援Emmt 豐富的擴充元件等…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html基礎筆記">
+<meta property="og:url" content="https://22aliang.github.io/2024/05/13/HTML%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="22Nell&#39;s Blog">
+<meta property="og:description" content="VS Code 官網 ｜ github ｜ 擴充元件  Visual Studio Code（簡稱 VS Code）是一個使用 Monaco Editor 作為其底層的免費原始碼程式碼編輯器，會選擇作為開發用軟體，有以下幾個優點  程式碼重構 內建命令列工具 內建Git版本控制系統 支援Emmt 豐富的擴充元件等…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220907/20151122N8LPTNUOkU.jpg">
+<meta property="article:published_time" content="2024-05-13T11:15:10.045Z">
+<meta property="article:modified_time" content="2024-05-13T11:24:08.449Z">
+<meta property="article:author" content="Nell">
+<meta property="article:tag" content="html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png">
+
+<link rel="canonical" href="https://22aliang.github.io/2024/05/13/HTML%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>html基礎筆記 | 22Nell's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="22Nell's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">22Nell's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Notes of a Rookie Engineer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/22aliang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://22aliang.github.io/2024/05/13/HTML%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nell">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="22Nell's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          html基礎筆記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2024-05-13 19:15:10" itemprop="dateCreated datePublished" datetime="2024-05-13T19:15:10+08:00">2024-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B6%85%E6%96%B0%E6%89%8B%E6%99%82%E6%9C%9F%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">超新手時期基礎筆記</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="VS-Code"><a href="#VS-Code" class="headerlink" title="VS Code"></a>VS Code</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">官網</a> ｜ <a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode">github</a> ｜ <a href="https://marketplace.visualstudio.com/search?target=VSCode&category=Keymaps&sortBy=Relevance">擴充元件</a></p>
+</blockquote>
+<p>Visual Studio Code（簡稱 VS Code）是一個使用 Monaco Editor 作為其底層的免費原始碼程式碼編輯器，會選擇作為開發用軟體，有以下幾個優點</p>
+<ul>
+<li>程式碼重構</li>
+<li>內建命令列工具</li>
+<li>內建Git版本控制系統</li>
+<li>支援Emmt</li>
+<li>豐富的擴充元件等…</li>
+</ul>
+<span id="more"></span>
+
+<blockquote>
+<p>官方安裝流程<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/learn/modules/develop-web-apps-with-vs-code/2-installation-and-tour">官方文件</a></p>
+</blockquote>
+<hr>
+<h3 id="快捷鍵"><a href="#快捷鍵" class="headerlink" title="快捷鍵"></a>快捷鍵</h3><p>列幾個特別、好用的快捷鍵<br><code>Ctrl + D</code> 快速選取下一個同名變數<br><code>Ctrl + H</code> 取代<br><code>Ctrl + P </code> 選取檔案<br><code>Ctrl+ Shift+ L</code> 一次選取檔案內所有相同文字<br><code>Ctrl + Shift + K</code> 整行刪除<br><code>Ctrl + Alt + ↑/↓</code> 垂直選取<br><code>Alt + 左鍵 </code>多重選取<br><code>Alt + ↑/↓ </code>程式碼整行搬動<br><code>F2</code> 重新命名變數名稱</p>
+<blockquote>
+<p>詳細<a target="_blank" rel="noopener" href="https://github.com/Microsoft/vscode-tips-and-tricks">官方文件</a></p>
+</blockquote>
+<hr>
+<h3 id="擴充元件-Extensions"><a href="#擴充元件-Extensions" class="headerlink" title="擴充元件 Extensions"></a>擴充元件 Extensions</h3><ul>
+<li><p><strong>Chinese (Traditional)</strong> 中文化</p>
+</li>
+<li><p><strong>Live Server</strong> 啟動本機端伺服器，每次存檔後，會自動更新瀏覽器畫面</p>
+</li>
+<li><p><strong>Code Spell Checker</strong> 幫你抓錯字呀</p>
+</li>
+<li><p><strong>GitLins</strong> Git版本控制系統工具 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/shows/vs-code-livestreams/10-things-about-gitlens">官方影片</a></p>
+</li>
+<li><p><strong>Material Icon Theme</strong> 美美的icon</p>
+</li>
+<li><p><strong>indent-rainbow</strong> 縮排給你一道彩虹</p>
+</li>
+<li><p><strong>prettier</strong> 排版程式碼</p>
+</li>
+<li><p><strong>ESLint</strong> 檢查JavaScript程式碼是否符合規則</p>
+</li>
+</ul>
+<blockquote>
+<p>prettier、ESLint不相容，同時啟用會有問題，卡斯伯部落格解 <a target="_blank" rel="noopener" href="https://www.casper.tw/development/2021/04/11/vscode-eslint-prettier/">這樣做</a></p>
+</blockquote>
+<hr>
+<h3 id="Emmt"><a href="#Emmt" class="headerlink" title="Emmt"></a>Emmt</h3><blockquote>
+<p>學習可以增加開發速度，以下列一些基本的應用<a target="_blank" rel="noopener" href="https://docs.emmet.io/cheat-sheet/">官方文件</a></p>
+</blockquote>
+<p><strong>子元素 Child : <code>&gt;</code><strong>｜</strong>舉例</strong> <code>div&gt;ul&gt;li</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>同一層 Sibling : <code>+</code><strong>｜</strong>舉例</strong> <code>div+p+bq</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;p&gt;&lt;/p&gt;</span><br><span class="line">&lt;blockquote&gt;&lt;/blockquote&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>重複 Multiplication : <code>*</code><strong>｜</strong>舉例</strong> <code>ul&gt;li*5</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>群組 Grouping : <code>()</code><strong>｜</strong>舉例</strong> <code>(div&gt;dl&gt;(dt+dd)*3)+footer&gt;p</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;dl&gt;</span><br><span class="line">        &lt;dt&gt;&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;&lt;/dd&gt;</span><br><span class="line">        &lt;dt&gt;&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;&lt;/dd&gt;</span><br><span class="line">        &lt;dt&gt;&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;&lt;/dd&gt;</span><br><span class="line">    &lt;/dl&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;footer&gt;</span><br><span class="line">    &lt;p&gt;&lt;/p&gt;</span><br><span class="line">&lt;/footer&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>Class : <code>.</code></strong> 、<strong>ID : <code>#</code><strong>｜</strong>舉例</strong> <code>div#header+div.page+div#footer.class1.class2.class3</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;page&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;footer&quot; class=&quot;class1 class2 class3&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>Class加變數 Item numbering : <code>$</code><strong>｜</strong>舉例</strong> <code>ul&gt;li.item$*5</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li class=&quot;item1&quot;&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;item3&quot;&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;item4&quot;&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;item5&quot;&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>標籤內文字 Text : <code>&#123;&#125;</code><strong>｜</strong>舉例</strong> <code>a&#123;Click me&#125;</code><strong>+tab</strong> ，會變成 ↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&quot;&gt;Click me&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="推薦Google-Chrome插件"><a href="#推薦Google-Chrome插件" class="headerlink" title="推薦Google Chrome插件"></a>推薦Google Chrome插件</h3><ul>
+<li><p><strong>Dark Reader</strong> 網頁啟用黑夜模式 愛護你的眼睛</p>
+</li>
+<li><p><strong>JSON Formatter</strong> 網頁開json不再眼花</p>
+</li>
+<li><p><strong>Wappalyzer - Technology profiler</strong>可以看網頁使用什麼樣的語言、技術</p>
+</li>
+<li><p><strong>Wappalyzer - Technology profiler</strong> 漂亮的截圖整個頁面</p>
+</li>
+</ul>
+<hr>
+<h3 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h3><ul>
+<li>前端開發你們都用空白鍵還是TAB ? <a target="_blank" rel="noopener" href="https://jason-memo.dev/posts/prefer-tab-over-space-for-a11y/">延伸閱讀</a></li>
+<li>程式語言有沒有支援 ? <a target="_blank" rel="noopener" href="https://caniuse.com/">CAN I USE ___ ? </a></li>
+<li>我不懂，但我就怕被罵，到底該怎麼發問 ? <a target="_blank" rel="noopener" href="https://israynotarray.com/learnexp/20200112/1752686187/">讓RAY教你</a></li>
+</ul>
+<h2 id="HyperText-Markup-Language-超文本標記語言"><a href="#HyperText-Markup-Language-超文本標記語言" class="headerlink" title="HyperText Markup Language 超文本標記語言"></a>HyperText Markup Language 超文本標記語言</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Getting_started">MDN</a> ｜<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/indices.html#element-content-categories">官方文件</a>｜<a target="_blank" rel="noopener" href="https://www.w3schools.com/html/html_intro.asp">W3C</a><br>　以一個人來做比喻，描述網頁中三大巨頭的關係就會像是: HTML為網頁中的骨架，CSS為網頁中的外皮、JavaScript為網頁的動作。<br>　html看起來很簡單，要用div打完一個文件網頁也可以運作。但html標籤(Tag)寫得好、用的好，不僅能幫助瀏覽器(Web Browser)、網路(Network)、網頁(Web site)了解你在寫什麼，也可以增加維護(Management)的方便性 !</p>
+</blockquote>
+<hr>
+<h3 id="什麼是HTML"><a href="#什麼是HTML" class="headerlink" title="什麼是HTML ?"></a>什麼是HTML ?</h3><ul>
+<li>超文本標記語言 (非程式語言)</li>
+<li>告訴瀏覽器如何顯示內容</li>
+<li>尖括號(angle brackets)包圍HTML元素(tag) ex: <code>&lt;html&gt;</code></li>
+<li>組成如圖<img src="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png"><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png">圖源</a> ｜內容(content) 、 元素(element)、標籤(Tag)</li>
+<li>HTML元素不分英文大小寫，建議使用小寫英文方便維護、乾淨、易寫</li>
+<li>避免太長的代碼行、空白以space兩格為主流</li>
+<li>由<a target="_blank" rel="noopener" href="https://www.daconote.com/html-nested/">巢狀HTML元素(Nesting elements)</a>組成</li>
+<li>為<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10202689">DOM樹</a> 結構</li>
+<li>分為塊狀元素(block elements)、行內元素(inline elements)</li>
+<li>特殊字元，要使用必須以&amp;(ampersand)開頭，並以分號 ; (semi-colon)結尾｜<a target="_blank" rel="noopener" href="https://www.w3schools.com/html/html_entities.asp">符號</a>｜<a target="_blank" rel="noopener" href="https://www.w3schools.com/html/html_emojis.asp">Emojis</a>｜</li>
+</ul>
+<h3 id="什麼是HTML的屬性-attribute"><a href="#什麼是HTML的屬性-attribute" class="headerlink" title="什麼是HTML的屬性(attribute) ?"></a>什麼是HTML的屬性(attribute) ?</h3><ul>
+<li>任何HTML元素都可以有元素</li>
+<li>屬性提供元素附加訊息</li>
+<li>在開始標籤中指定</li>
+<li>以名稱&#x2F;值的寫法，例<code>class=&quot;food&quot;</code></li>
+<li>HTML的屬性使用雙引號<code>class=&quot; &quot;</code>、單引號都可以<code>class=&#39; &#39;</code>、建議使用雙引號方便維護</li>
+<li><code>class</code>屬性可共用、可併用、不能數字開頭</li>
+<li><code>id</code>屬性不可共用、不可併用、不能數字開頭、只能使用一次</li>
+<li><code>title</code> 定義有關元素額外信息</li>
+</ul>
+<hr>
+<h3 id="HTML-語義元素-Semantic-Elements"><a href="#HTML-語義元素-Semantic-Elements" class="headerlink" title="HTML 語義元素(Semantic Elements)"></a>HTML 語義元素(Semantic Elements)</h3><p>HTML5出現之後，改變以往用<code>&lt;div&gt;</code>來做寫整份文件有所不同，正確使用這些帶有語意的標籤，可以快速抓到網頁架構和每個區塊的位置、達成<code>SEO優化</code>，讓瀏覽器、搜尋引擎更好閱讀文件，爬蟲更好爬到你的文章。<br><img src="https://ithelp.ithome.com.tw/upload/images/20220907/20151122N8LPTNUOkU.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20220907/20151122N8LPTNUOkU.jpg"><br>上圖 ↑ 是方便整理邏輯，自己做的架構圖(很粗略)，語意化標籤內可使用的元素只是舉例，有其他錯誤歡迎糾正</p>
+<h4 id="lt-main-gt-｜重點區塊"><a href="#lt-main-gt-｜重點區塊" class="headerlink" title="&lt;main&gt;｜重點區塊"></a><code>&lt;main&gt;</code>｜重點區塊</h4><ul>
+<li>網頁的主要內容，一頁HTML只能出現一次</li>
+<li>注意不要規劃到整份HTML都是重點</li>
+</ul>
+<h4 id="lt-nav-gt-｜導覽列"><a href="#lt-nav-gt-｜導覽列" class="headerlink" title="&lt;nav&gt;｜導覽列"></a><code>&lt;nav&gt;</code>｜導覽列</h4><ul>
+<li>包含的內容通常都是連結到其他頁面、或重點區塊<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>首頁<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/about.html&quot;</span>&gt;</span>關於我們<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/contact.html&quot;</span>&gt;</span>聯繫我們<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="lt-header-gt-｜標題"><a href="#lt-header-gt-｜標題" class="headerlink" title="&lt;header&gt;｜標題"></a><code>&lt;header&gt;</code>｜標題</h4><ul>
+<li>為<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#flow_content">Flow content</a></li>
+<li>可視為標題區塊，可在網頁多次出現</li>
+<li>不能放在<code>&lt;footer&gt;</code>、<code>&lt;address&gt;</code>或另一個<code>&lt;header&gt;</code>裡面<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>什麼是原子習慣 ? <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>細微改變帶來巨大成就的實證法則<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">p</span>&gt;</span>作者： 詹姆斯‧克利爾<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="lt-aside-gt-｜側邊欄"><a href="#lt-aside-gt-｜側邊欄" class="headerlink" title="&lt;aside&gt;｜側邊欄"></a><code>&lt;aside&gt;</code>｜側邊欄</h4><ul>
+<li>用在放與網頁主要內容無關的東西，像推薦文章、廣告等…<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>鐵人賽好難<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>亞馬遜賣家教學<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>你相信這東西在亞馬遜只要賣1美元嗎<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="lt-section-gt-｜定義文檔中的一個部分"><a href="#lt-section-gt-｜定義文檔中的一個部分" class="headerlink" title="&lt;section&gt;｜定義文檔中的一個部分"></a><code>&lt;section&gt;</code>｜定義文檔中的一個部分</h4><ul>
+<li>使用主題分組，通常帶有標題</li>
+<li>標籤作用單純為排版需求，應改用<code>div</code></li>
+<li>標籤作用為分類文章區塊，推薦改用<code>&lt;article&gt;</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>標題1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>標題1的介紹<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>標題2<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>標題2的介紹<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="lt-article-gt-｜指定獨立的、自包含的內容"><a href="#lt-article-gt-｜指定獨立的、自包含的內容" class="headerlink" title="&lt;article&gt;｜指定獨立的、自包含的內容"></a><code>&lt;article&gt;</code>｜指定獨立的、自包含的內容</h4><ul>
+<li>常用在報紙文章、用戶評論、產品資訊、部落格文章<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>文章1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>文章1的內文<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>文章2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>文章2的內文<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>文章3<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>文章3的內文<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><code>&lt;section&gt;</code>可以包<code>&lt;article&gt;</code>、<code>&lt;article&gt;</code>也可以包<code>&lt;section&gt;</code>，使用時機可以參考 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/sections.html#outline">官方文件最底下有解釋</a> ｜ <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7549561/section-vs-article-html5">stack overflow討論</a></li>
+<li>另外<code>&lt;h1&gt;</code>可以在各<code>&lt;article&gt;</code>、<code>&lt;article&gt;</code>區塊中出現，不用限制一份文件只能出現一次。</li>
+</ul>
+<h4 id="lt-figure-gt-、-lt-figcaption-gt-｜獨立的插圖、圖表、照片等、及它的標題"><a href="#lt-figure-gt-、-lt-figcaption-gt-｜獨立的插圖、圖表、照片等、及它的標題" class="headerlink" title="&lt;figure&gt;、&lt;figcaption&gt;｜獨立的插圖、圖表、照片等、及它的標題"></a><code>&lt;figure&gt;</code>、<code>&lt;figcaption&gt;</code>｜獨立的插圖、圖表、照片等、及它的標題</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;pic_frog.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;呱吉&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>呱吉很可愛<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="lt-footer-gt-｜定義文檔或部分的頁腳"><a href="#lt-footer-gt-｜定義文檔或部分的頁腳" class="headerlink" title="&lt;footer&gt;｜定義文檔或部分的頁腳"></a><code>&lt;footer&gt;</code>｜定義文檔或部分的頁腳</h4><ul>
+<li>常用在作者、版權、聯繫、網站地圖、相關文件等…<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>作者艸良<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mailto:lisa5566407@gmail.com&quot;</span>&gt;</span>聯絡我 :lisa5566407@gmail.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="lt-details-gt-｜定義用戶可以打開關閉其他詳細信息"><a href="#lt-details-gt-｜定義用戶可以打開關閉其他詳細信息" class="headerlink" title="&lt;details&gt;｜定義用戶可以打開關閉其他詳細信息"></a><code>&lt;details&gt;</code>｜定義用戶可以打開關閉其他詳細信息</h4><ul>
+<li><code>&lt;summary&gt;</code>定義<code>&lt;details&gt;</code>元素的標頭</li>
+</ul>
+<blockquote>
+<p>延伸閱讀 :<br><code>&lt;head&gt;</code>跟<code>&lt;header&gt;</code>差在哪 ?  <a target="_blank" rel="noopener" href="https://stackoverflow.com/search?q=%5Bhtml%5D+head+header&s=17d11844-6240-49ae-b7f3-a4332dd8c9f3&s=4e55ee54-8067-48df-b93d-6d0e92ceb7e2">stack overflow討論</a> ｜ <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header">MDN header</a> ｜ <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head">MDN head</a> ｜ <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/sections.html#outline">官方文件</a><br><a target="_blank" rel="noopener" href="http://diveintohtml5.info/semantics.html">MARK PILGRIM｜詳細解釋HTML5的文件</a></p>
+</blockquote>
+<hr>
+<h3 id="額外收入-meta-tag"><a href="#額外收入-meta-tag" class="headerlink" title="額外收入 meta tag"></a>額外收入 meta tag</h3><p><code>&lt;meta&gt;</code>是給瀏覽器、搜尋引擎看的，作用在<code>SEO優化</code>用，寫在<code>＜head＞</code>裡面，以下整理了一些<code>&lt;meta&gt;</code>作為範例。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- FOR Goole的&lt;meta&gt;參考 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;關鍵詞&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;author&quot;</span> <span class="attr">content</span>=<span class="string">&quot;作者&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;網頁描述，不超過150字符&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- RWD用 隨著設備的不同而變化 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;</span> /&gt;</span></span><br><span class="line">width=device-width——自動符合不同螢幕預設最佳解析度</span><br><span class="line">initial-scale=1——螢幕畫面的初始縮放比例為 100%</span><br><span class="line">maximum-scale=1——設定畫面的最大縮放比例</span><br><span class="line">minimum-scale=1——設定畫面的最小縮放比例</span><br><span class="line">user-scalable=no——不允許使用者改變縮放比例</span><br><span class="line"><span class="comment">&lt;!-- 搜尋引擎索引方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;robots&quot;</span> <span class="attr">content</span>=<span class="string">&quot;index,follow&quot;</span> /&gt;</span></span><br><span class="line">all：文件將被檢索，且頁面上的連結可以被查詢</span><br><span class="line">none：文件將不被檢索，且頁面上的連結不可以被查詢</span><br><span class="line">index：文件將被檢索</span><br><span class="line">follow：頁面上的連結可以被查詢</span><br><span class="line">noindex：文件將不被檢索</span><br><span class="line">nofollow：頁面上的連結不可以被查詢。</span><br></pre></td></tr></table></figure>
+<p>更多關於<code>&lt;meta&gt;</code>標籤的寫法可以參考 <a target="_blank" rel="noopener" href="https://moz.com/blog/meta-data-templates-123">這裡</a></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=AlLwsrTOAgU">學習影片</a></p>
+</blockquote>
+<h3 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a><strong>基礎</strong></h3><h4 id="lt-DOCTYPE-html-gt-｜聲明此文檔HTML5文檔"><a href="#lt-DOCTYPE-html-gt-｜聲明此文檔HTML5文檔" class="headerlink" title="&lt;!DOCTYPE html&gt;｜聲明此文檔HTML5文檔"></a><code>&lt;!DOCTYPE html&gt;</code>｜聲明此文檔HTML5文檔</h4><ul>
+<li>不分大小寫，一個文件出現一次，寫在頁面最頂部</li>
+</ul>
+<h4 id="lt-html-gt-｜根元素"><a href="#lt-html-gt-｜根元素" class="headerlink" title="&lt;html&gt;｜根元素"></a><code>&lt;html&gt;</code>｜根元素</h4><ul>
+<li><code>lang</code><strong>語言屬性</strong>｜聲明網頁的語言，幫助搜索引擎和瀏覽器更好搜尋到你的網頁</li>
+</ul>
+<h4 id="lt-head-gt-｜"><a href="#lt-head-gt-｜" class="headerlink" title="&lt;head&gt;｜"></a><code>&lt;head&gt;</code>｜</h4><ul>
+<li>父元素只能是 <code>&lt;html&gt;</code> ，用來放 <code>&lt;title&gt;</code>、<code>&lt;style&gt;</code>、<code>&lt;meta&gt;</code>、<code>&lt;link&gt;</code>、<code>&lt;script&gt;</code>和<code>&lt;base&gt;</code>等元數據的容器</li>
+<li>一個網頁只能出現一個</li>
+<li><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>為避免亂碼，必放 <a target="_blank" rel="noopener" href="https://www.w3schools.com/html/html_charset.asp">UTF-8介紹</a></li>
+</ul>
+<h4 id="lt-title-gt-｜定義瀏覽器頁籤、添加到我的最愛、搜尋引擎等標題"><a href="#lt-title-gt-｜定義瀏覽器頁籤、添加到我的最愛、搜尋引擎等標題" class="headerlink" title="&lt;title&gt;｜定義瀏覽器頁籤、添加到我的最愛、搜尋引擎等標題"></a><code>&lt;title&gt;</code>｜定義瀏覽器頁籤、添加到我的最愛、搜尋引擎等標題</h4><ul>
+<li><code>對SEO重要</code>，必須的屬性</li>
+<li>更換顯示在頁籤的icon，在<code>&lt;title&gt;</code>寫上<ul>
+<li><code>&lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;/images/favicon.ico&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="行內、塊級元素"><a href="#行內、塊級元素" class="headerlink" title="行內、塊級元素"></a><strong>行內、塊級元素</strong></h3><ul>
+<li>塊級元素(Block-level Elements)<ul>
+<li>塊狀元素 : 預設有邊距、左右稱滿、跳行新開始<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 以下為塊狀元素 --&gt;</span></span><br><span class="line">/大區塊/ <span class="tag">&lt;<span class="name">header</span>&gt;</span> <span class="tag">&lt;<span class="name">nav</span>&gt;</span> <span class="tag">&lt;<span class="name">article</span>&gt;</span> <span class="tag">&lt;<span class="name">section</span>&gt;</span> <span class="tag">&lt;<span class="name">main</span>&gt;</span> <span class="tag">&lt;<span class="name">aside</span>&gt;</span> <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">/小區塊/ <span class="tag">&lt;<span class="name">address</span>&gt;</span> <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span> <span class="tag">&lt;<span class="name">video</span>&gt;</span> <span class="tag">&lt;<span class="name">figure</span>&gt;</span> <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">/列表、表格/<span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">ul</span>&gt;</span> <span class="tag">&lt;<span class="name">ol</span>&gt;</span> <span class="tag">&lt;<span class="name">table</span>&gt;</span> <span class="tag">&lt;<span class="name">dd</span>&gt;</span> <span class="tag">&lt;<span class="name">dl</span>&gt;</span> <span class="tag">&lt;<span class="name">dt</span>&gt;</span> <span class="tag">&lt;<span class="name">form</span>&gt;</span> <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span> </span><br><span class="line">/文本用/ <span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;<span class="name">blockquote</span>&gt;</span> <span class="tag">&lt;<span class="name">h1</span>&gt;</span>-<span class="tag">&lt;<span class="name">h6</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span>&gt;</span> <span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">/圖形/ <span class="tag">&lt;<span class="name">canvas</span>&gt;</span></span><br><span class="line">/其他/<span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>行內元素(Inline Elements)<ul>
+<li>行內元素 : 能和其他元素同行、只佔內容寬度</li>
+<li><code>行內元素</code>裡面不能有<code>塊狀元素</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 以下為行內元素 --&gt;</span></span><br><span class="line">/可點擊/ <span class="tag">&lt;<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">button</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span>&gt;</span> <span class="tag">&lt;<span class="name">map</span>&gt;</span> <span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">/輸入/ <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">/圖片用/ <span class="tag">&lt;<span class="name">img</span>&gt;</span></span><br><span class="line">/定義文本內容中的特殊字句用/ <span class="tag">&lt;<span class="name">abbr</span>&gt;</span> <span class="tag">&lt;<span class="name">cite</span>&gt;</span> <span class="tag">&lt;<span class="name">dfn</span>&gt;</span> <span class="tag">&lt;<span class="name">textarea</span>&gt;</span> <span class="tag">&lt;<span class="name">var</span>&gt;</span></span><br><span class="line">/文本樣式/ <span class="tag">&lt;<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">b</span>&gt;</span> <span class="tag">&lt;<span class="name">bdo</span>&gt;</span> <span class="tag">&lt;<span class="name">code</span>&gt;</span> <span class="tag">&lt;<span class="name">em</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span>&gt;</span> <span class="tag">&lt;<span class="name">kbd</span>&gt;</span> <span class="tag">&lt;<span class="name">q</span>&gt;</span> <span class="tag">&lt;<span class="name">samp</span>&gt;</span> <span class="tag">&lt;<span class="name">small</span>&gt;</span> <span class="tag">&lt;<span class="name">strong</span>&gt;</span> <span class="tag">&lt;<span class="name">sub</span>&gt;</span> <span class="tag">&lt;<span class="name">sup</span>&gt;</span> <span class="tag">&lt;<span class="name">time</span>&gt;</span></span><br><span class="line">/空元素/<span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">/執行計算顯示/ <span class="tag">&lt;<span class="name">output</span>&gt;</span></span><br><span class="line">/引入/ <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">/HTML不支援的傢伙們/ <span class="tag">&lt;<span class="name">acronym</span>&gt;</span> <span class="tag">&lt;<span class="name">big</span>&gt;</span> <span class="tag">&lt;<span class="name">object</span>&gt;</span> <span class="tag">&lt;<span class="name">tt</span>&gt;</span></span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a><strong>連結</strong></h3><h4 id="lt-a-gt-｜定義一個超連結"><a href="#lt-a-gt-｜定義一個超連結" class="headerlink" title="&lt;a&gt;｜定義一個超連結"></a><code>&lt;a&gt;</code>｜定義一個超連結</h4><ul>
+<li><code>href</code><strong>屬性</strong>｜指定連結到指定的URL，常在<code>&lt;a&gt;</code>、<code>&lt;link&gt;</code>等元素上使用<ul>
+<li>網頁載入<code>href</code>時，不會停止繼續渲染<ul>
+<li>未點擊過的連結｜下劃線、藍色</li>
+<li>點擊過的連結｜下劃線、紫色</li>
+<li>持續點擊｜下劃線、紅色</li>
+</ul>
+</li>
+<li><code>target</code><strong>屬性</strong>｜打開連結的位置<ul>
+<li><code>target=&quot;_self&quot;</code>｜預設，點擊後顯示在目前的視窗</li>
+<li><code>target=&quot;_blank&quot;</code>｜點擊後開啟新視窗</li>
+<li><code>target=&quot;_parent&quot;</code>｜點擊後開啟在目前的視窗</li>
+<li><code>target=&quot;_top&quot;</code>｜點擊後頂端開啟視窗</li>
+</ul>
+</li>
+<li><code>title</code><strong>屬性</strong>｜滑鼠移到元素上顯示的文本</li>
+</ul>
+</li>
+<li><code>href</code><strong>屬性</strong>｜在屬性內部寫上以下屬性，可以做到特殊效果<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;(連結的URL)&quot;</span> <span class="attr">download</span>=<span class="string">&quot;(檔名)&quot;</span>&gt;</span>下載圖片<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;lisa5566407@gmail.com&quot;</span>&gt;</span>寄信到我的信箱<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;tel:(電話號碼)&quot;</span>&gt;</span>撥打電話<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://line.me/ti/p/@你的LINE ID&quot;</span>&gt;</span>加入LINE好友<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用<code>ID</code>建立快速跳轉長頁面章節的書籤<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">首先使用ID創建書籤</span><br><span class="line">`<span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;C4&quot;</span>&gt;</span>章節4<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>`</span><br><span class="line">可在導覽列寫一個按鈕</span><br><span class="line">`<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#C4&quot;</span>&gt;</span>跳到章節4<span class="tag">&lt;/<span class="name">a</span>&gt;</span>`</span><br><span class="line">或寫在另外一個頁面</span><br><span class="line">`<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;html_demo.html#C4&quot;</span>&gt;</span>跳到章節4<span class="tag">&lt;/<span class="name">a</span>&gt;</span>`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a><strong>圖片</strong></h3><h4 id="lt-img-gt-｜在-HTML-頁面中加入圖像"><a href="#lt-img-gt-｜在-HTML-頁面中加入圖像" class="headerlink" title="&lt;img&gt;｜在 HTML 頁面中加入圖像"></a><code>&lt;img&gt;</code>｜在 HTML 頁面中加入圖像</h4><ul>
+<li>每張圖片都指定<code>alt</code>、<code>width</code>、<code>height</code>、取名使用小寫英文，減少錯誤空間。</li>
+</ul>
+<ol>
+<li><code>src</code> <strong>屬性</strong>(Source File)｜指定 URL，常在<code>&lt;img&gt;</code>、<code>&lt;script&gt;</code>、<code>&lt;iframe&gt;</code>等元素上使用<ul>
+<li>網頁載入<code>src</code>時，會暫停瀏覽器渲染，直到該資源載入完畢。</li>
+<li>相對(Absolute)路徑 : 指向外部圖像連結 ( 注意圖片失效、版權 )</li>
+<li>絕對(Relative)路徑 : 指向本機或託管平台的連結 <code>推薦</code><ul>
+<li>同層目錄中的 img檔 <code>src=&quot;img.png&quot;</code></li>
+<li>同層目錄中 pic資料夾的 img檔 <code>src=&quot;./pic/img.png&quot;</code></li>
+<li>上一層目錄中的 pic資料夾的 img檔 <code>src=&quot;../pic/img.png&quot;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>alt</code> <strong>屬性</strong> (Alternative Text)｜無法顯示圖片時顯示的文字，無障礙網頁加分</li>
+<li>最少應包含<code>width</code>屬性，指定圖像的寬度，<code>max-width: 100%</code> 為響應式圖片寫法，會在必要時縮小</li>
+</ol>
+<ul>
+<li><strong>圖片的疑難雜症</strong>｜<a target="_blank" rel="noopener" href="https://www.shutterstock.com/zh-Hant/blog/resize-images-for-web">參考shutterstock</a>｜<a target="_blank" rel="noopener" href="https://www.casper.tw/design/2018/10/28/image-format/">卡斯伯應用參考</a><ul>
+<li>jpg：破壞性的檔案壓縮方式，降低檔案尺寸、但也會導致品質降低</li>
+<li>png：壓縮比較低的圖片格式，檔案較大、品質較好、背景可設定透明</li>
+<li>svg：向量的圖片格式，放大不會失真，以字標示產生，檔案較小</li>
+<li>滿版圖片 2400px x 1600px</li>
+<li>內容圖片 最寬1500px、最長1000px</li>
+<li>一張圖片的大小最好不要超過500KB</li>
+</ul>
+</li>
+<li>CSS<strong>屬性</strong><code>background-image: url(&#39;img_girl.jpg&#39;);</code>可以把圖片寫在HTML元素裡面<ul>
+<li>圖片無滿版，預設水平、垂直重複延伸</li>
+<li><code>background-repeat: no-repeat;</code>取消圖片重複</li>
+<li>圖片滿版請使用<code>background-attachment: fixed;</code>和<code>background-size: cover;</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a><strong>文本</strong></h3><h4 id="lt-h1-gt-96-96-｜顯示標題或副標題"><a href="#lt-h1-gt-96-96-｜顯示標題或副標題" class="headerlink" title="&lt;h1&gt;~&#96;&#96;｜顯示標題或副標題"></a><code>&lt;h1&gt;</code>~&#96;<h6>&#96;｜顯示標題或副標題</h4><ul>
+<li>應以少於三個層級為目標</li>
+<li>注意層級順序</li>
+<li>預設有一些邊距，下圖↓ 為<code>&lt;h1&gt;</code>在google開發者工具中，顯示的預設屬性<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    &lt;!--<span class="number">2em</span> = <span class="number">32</span> px --&gt;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">margin-block-start</span>: <span class="number">0.67em</span>;</span><br><span class="line">    <span class="attribute">margin-block-end</span>: <span class="number">0.67em</span>;</span><br><span class="line">    <span class="attribute">margin-inline-start</span>: <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">margin-inline-end</span>: <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="lt-p-gt-｜-Paragraph-定義一個段落"><a href="#lt-p-gt-｜-Paragraph-定義一個段落" class="headerlink" title="&lt;p&gt;｜(Paragraph) 定義一個段落"></a><code>&lt;p&gt;</code>｜(Paragraph) 定義一個段落</h3><ul>
+<li>對文本中某一段落文字有特別樣是需求，請使用<code>&lt;span&gt;</code>、勿用<code>&lt;div&gt;</code></li>
+<li>段落會從新行開始，預設有一些邊距，下圖↓ 為<code>&lt;p&gt;</code>在google開發者工具中顯示</li>
+<li>不管<code>&lt;p&gt;</code>標籤裡的文字內容多亂，HTML看到都是整齊一行的<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">margin-block-start</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">margin-block-end</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">margin-inline-start</span>: <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">margin-inline-end</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>整理一下 ↓ ( 另外em是相對單位，會繼承（父的屬性值）&#x2F; 倍數，可<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10240641">參考</a> )</li>
+</ul>
+<p>標籤 | 瀏覽器預設 | 實際<br>————- | ————-<br>html | 1em | 16px<br>p | 1em | 16px<br>h1 | 2em | 32px<br>h2 | 1.5em | 24px<br>h3 | 1.17em | 18.72px<br>h4 | 1.33em | 21.28px</p>
+<h4 id="lt-hr-gt-｜空元素-Empty-Elements-、顯示為水平線"><a href="#lt-hr-gt-｜空元素-Empty-Elements-、顯示為水平線" class="headerlink" title="&lt;hr&gt;｜空元素(Empty Elements)、顯示為水平線"></a><code>&lt;hr&gt;</code>｜空元素(Empty Elements)、顯示為水平線</h4><ul>
+<li>語意為 HTML 頁面中的主題中斷、分隔內容</li>
+</ul>
+<h4 id="lt-br-gt-｜空元素-Empty-Elements-、換行"><a href="#lt-br-gt-｜空元素-Empty-Elements-、換行" class="headerlink" title="&lt;br&gt;｜空元素(Empty Elements)、換行"></a><code>&lt;br&gt;</code>｜空元素(Empty Elements)、換行</h4><ul>
+<li>會打斷文章內容，若內容相同，應使用<code>&lt;span&gt;</code>換行</li>
+</ul>
+<h4 id="lt-pre-gt-｜定義了預格式化的文本"><a href="#lt-pre-gt-｜定義了預格式化的文本" class="headerlink" title="&lt;pre&gt;｜定義了預格式化的文本"></a><code>&lt;pre&gt;</code>｜定義了預格式化的文本</h4><ul>
+<li>使用<a target="_blank" rel="noopener" href="https://medium.com/unalai/%E8%AA%8D%E8%AD%98-html-pre-tag-3be6d5f32e54">參考</a></li>
+</ul>
+<h4 id="lt-span-gt-｜段落中，改變一小段"><a href="#lt-span-gt-｜段落中，改變一小段" class="headerlink" title="&lt;span&gt;｜段落中，改變一小段"></a><code>&lt;span&gt;</code>｜段落中，改變一小段</h4><ul>
+<li>預設為<code>行內元素</code>，無語意</li>
+</ul>
+<h4 id="lt-div-gt-｜多用在改變樣式"><a href="#lt-div-gt-｜多用在改變樣式" class="headerlink" title="&lt;div&gt;｜多用在改變樣式"></a><code>&lt;div&gt;</code>｜多用在改變樣式</h4><ul>
+<li>預設為<code>區塊元素</code>，無語意</li>
+</ul>
+<h4 id="HTML-文本元素-Text-Formatting-、引用-Quotation-、引用元素-Citation-Elements"><a href="#HTML-文本元素-Text-Formatting-、引用-Quotation-、引用元素-Citation-Elements" class="headerlink" title="HTML 文本元素(Text Formatting)、引用(Quotation)、引用元素(Citation Elements)"></a>HTML 文本元素(Text Formatting)、引用(Quotation)、引用元素(Citation Elements)</h4><p>看到實際顯示的樣子比較準確，所以有用CodePen整理了一下<a target="_blank" rel="noopener" href="https://codepen.io/momoninainai/pen/KKRNRXN">整理在這裡</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>沒什麼意義的粗體，應改用css設定or<span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">如果是重要文字應取代b，定義<span class="tag">&lt;<span class="name">strong</span>&gt;</span>重要的文本<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span>沒什麼意義的斜體<span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">屏幕閱讀器會用重音強調發音，定義<span class="tag">&lt;<span class="name">em</span>&gt;</span>強調的文本<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">定義<span class="tag">&lt;<span class="name">mark</span>&gt;</span>應標記或突出顯示的文本<span class="tag">&lt;/<span class="name">mark</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">small</span>&gt;</span>定義了較小的文本<span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line">定義已從<span class="tag">&lt;<span class="name">del</span>&gt;</span>文檔中刪除的文本<span class="tag">&lt;/<span class="name">del</span>&gt;</span></span><br><span class="line">定義<span class="tag">&lt;<span class="name">ins</span>&gt;</span>已插入文檔的文本<span class="tag">&lt;/<span class="name">ins</span>&gt;</span></span><br><span class="line">定義<span class="tag">&lt;<span class="name">sub</span>&gt;</span>下標<span class="tag">&lt;/<span class="name">sub</span>&gt;</span>文本</span><br><span class="line">定義<span class="tag">&lt;<span class="name">sup</span>&gt;</span>上標文本<span class="tag">&lt;/<span class="name">sup</span>&gt;</span></span><br><span class="line">定義了從另一個來源引用的部分</span><br><span class="line"><span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">cite</span>=<span class="string">&quot;http://www.worldwildlife.org/who/index.html&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>定義了一個<span class="tag">&lt;<span class="name">q</span>&gt;</span>簡短的引用<span class="tag">&lt;/<span class="name">q</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">定義縮寫或首字母縮略詞、可以為搜尋引擎、瀏覽器提供有用的信息</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>在<span class="tag">&lt;<span class="name">abbr</span> <span class="attr">title</span>=<span class="string">&quot;台北車站&quot;</span>&gt;</span>北車<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span>的火字下集合<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">address</span>&gt;</span>以斜體顯示，定義文檔或文章的作者/所有者的聯繫信息<span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;cite&gt;定義了創意作品的標題，不能用在人名--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">cite</span>&gt;</span>我現在在聽的歌<span class="tag">&lt;/<span class="name">cite</span>&gt;</span>街仔路雨落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;bdo&gt;文字左右鏡像--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bdo</span> <span class="attr">dir</span>=<span class="string">&quot;rtl&quot;</span>&gt;</span>This text will be written from right to left<span class="tag">&lt;/<span class="name">bdo</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="內聯框架"><a href="#內聯框架" class="headerlink" title="內聯框架"></a>內聯框架</h3><h4 id="iframe｜在目前的HTML嵌入另一個文檔"><a href="#iframe｜在目前的HTML嵌入另一個文檔" class="headerlink" title="iframe｜在目前的HTML嵌入另一個文檔"></a><code>iframe</code>｜在目前的HTML嵌入另一個文檔</h4><ul>
+<li>應包含在<code>&lt;title&gt;</code>中</li>
+<li>預設有邊框，可使用<code>border:none;</code>刪除</li>
+</ul>
+<hr>
+<h4 id="lt-註解內容-gt-｜註解標籤"><a href="#lt-註解內容-gt-｜註解標籤" class="headerlink" title="&lt;!-- 註解內容 --&gt;｜註解標籤"></a><code>&lt;!-- 註解內容 --&gt;</code>｜註解標籤</h4><ul>
+<li>瀏覽器不會顯示、不會讀取</li>
+<li>可以隱藏多行、用於HTTML代碼中間</li>
+<li><code>src</code>定義要嵌入的頁面的 URL</li>
+</ul>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a><strong>表格</strong></h3><p>為了有實際效果可以參考，用<a target="_blank" rel="noopener" href="https://codepen.io/momoninainai/pen/yLjVRqR?editors=1100">codepen</a>練習了一下</p>
+<h4 id="lt-table-gt-表格｜由行row-直-跟列column-橫-組成"><a href="#lt-table-gt-表格｜由行row-直-跟列column-橫-組成" class="headerlink" title="&lt;table&gt;表格｜由行row(直)跟列column(橫)組成"></a><code>&lt;table&gt;</code>表格｜由行row(直)跟列column(橫)組成</h4><ul>
+<li><code>&lt;td&gt;</code> 表格內容標籤<ul>
+<li>預設padding為0，border-spacing為2px</li>
+<li>可以包含HTML元素、圖片、列表、其他表格等…</li>
+</ul>
+</li>
+<li><code>&lt;caption&gt;</code>表格標題標籤 (應在<code>&lt;table&gt;</code>之後)</li>
+<li><code>&lt;tr&gt;</code> 行row(直)標籤   </li>
+<li><code>&lt;th&gt;</code> 行row(直)內標頭標籤<ul>
+<li>預設: 粗體置中、預設為橫式</li>
+<li>若為直式則在每一個tr加一個th</li>
+<li>合併列(橫) <code>&lt;th colspan=&quot;幾欄&quot;&gt;表格內容&lt;/th&gt;</code></li>
+<li>合併行(直) <code>&lt;th rowspan=&quot;幾欄&quot;&gt;表格內容&lt;/th&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="表格CSS樣式"><a href="#表格CSS樣式" class="headerlink" title="表格CSS樣式"></a><strong>表格CSS樣式</strong></h4><ul>
+<li><code>border</code>屬性｜添加表格邊框</li>
+<li><code>border-collapse: collapse;</code> 更改表格預設的雙線框，改為實心</li>
+<li><code>border-radius: 10px;</code> 儲存格邊框變圓角</li>
+<li><code>border-style</code> 更改邊框樣式<ul>
+<li>dotted 虛線</li>
+<li>dashed 底線</li>
+<li>solid  實心    </li>
+<li>none   定義無邊界</li>
+<li>hidden 定義隱藏邊框</li>
+</ul>
+</li>
+<li><code>border-color</code> 更改邊框顏色</li>
+<li><code>border-bottom</code> 屬性添加到所有 tr元素以獲得水平分隔符</li>
+<li><code>:nth-child(even)</code>橫的 斑馬紋<br>  -可寫成直的、也可直、橫交叉寫</li>
+<li>使用<code>:hover</code>讓滑鼠滑過時強調選擇器</li>
+</ul>
+<hr>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a><strong>列表</strong></h3><p>為了有實際效果可以參考，用<a target="_blank" rel="noopener" href="https://codepen.io/momoninainai/pen/zYjNxxZ?editors=1100">codepen</a>練習了一下</p>
+<h4 id="HTML-無序列的列表"><a href="#HTML-無序列的列表" class="headerlink" title="HTML 無序列的列表"></a><strong>HTML 無序列的列表</strong></h4><ul>
+<li>以<code>&lt;ul&gt;</code>標籤開頭<br>  －　每個列表項都以 <code>&lt;li&gt;</code>標記開頭。</li>
+<li><code>&lt;ul&gt;</code>還可以有<code>&lt;ul&gt;</code></li>
+<li><code>&lt;li&gt;</code>可以包圖像or連結</li>
+<li><code> list-style-type</code>屬性<ul>
+<li>disc 預設屬性</li>
+<li>circle 圓點</li>
+<li>square 正方形</li>
+<li>none 取消圖形</li>
+</ul>
+</li>
+<li><code>li &#123;float: left;&#125;</code>　可作為nav的寫法</li>
+</ul>
+<h4 id="HTML-有序的列表"><a href="#HTML-有序的列表" class="headerlink" title="HTML 有序的列表"></a><strong>HTML 有序的列表</strong></h4><ul>
+<li>以<code>&lt;ol&gt;</code>標籤開頭<br>  －　每個列表項都以<code>&lt;li&gt;</code>標記開頭。<ul>
+<li><code> &lt;ol&gt;</code>還可以有<code>&lt;ol&gt;</code></li>
+<li><code>&lt;li&gt;</code>可以包圖像or連結</li>
+<li><code>&lt;ol type=&quot;1&quot;&gt;</code> 更改有序數字的樣式<ul>
+<li>type&#x3D;”1” </li>
+<li>type&#x3D;”A” </li>
+<li>type&#x3D;”a” </li>
+<li>type&#x3D;”I” </li>
+<li>type&#x3D;”i”</li>
+</ul>
+</li>
+<li><code>&lt;ol start=&quot;50&quot;&gt;</code>控制序列從幾開始往下排列、</li>
+</ul>
+</li>
+</ul>
+<h4 id="HTML-描述列表"><a href="#HTML-描述列表" class="headerlink" title="HTML 描述列表"></a><strong>HTML 描述列表</strong></h4><ul>
+<li><code>&lt;dl&gt;</code>標籤定義描述列表<ul>
+<li>標籤<code>&lt;dt&gt;</code>定義術語（名稱），<code>&lt;dd&gt;</code>標籤描述每個術語</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="表單"><a href="#表單" class="headerlink" title="表單"></a>表單</h3><h4 id="lt-form-gt-｜收集用戶輸入發送到服務器進行處理-詳細"><a href="#lt-form-gt-｜收集用戶輸入發送到服務器進行處理-詳細" class="headerlink" title="&lt;form&gt;｜收集用戶輸入發送到服務器進行處理 詳細"></a><code>&lt;form&gt;</code>｜收集用戶輸入發送到服務器進行處理 <a target="_blank" rel="noopener" href="https://www.w3schools.com/html/html_form_input_types.asp">詳細</a></h4><ul>
+<li>在<code>from</code>中寫上<code>action</code>使用指定提交表單時要使用的HTTP方法<ul>
+<li>預設<code>HTTP</code>方法為<code>GET</code></li>
+<li>如果標單數據包含敏感信息、個人信息，請使用<code>POST</code></li>
+</ul>
+</li>
+<li><code>&lt;label&gt;</code>定義許多表單元素的標籤<ul>
+<li>同一個表單中<code>&lt;label&gt;</code>的<code>for</code>屬性應該和<code>&lt;input&gt;</code>的<code>id</code>屬性一樣，才能綁定</li>
+</ul>
+</li>
+<li><code>&lt;fieldset&gt;</code>為表單內容作群組(一個框框起來)<ul>
+<li><code>&lt;legend&gt;</code>為群組的標題</li>
+</ul>
+</li>
+<li><code>&lt;input&gt;</code> 搭配<code>type</code>可以用多種方式呈現<ul>
+<li><code>&lt;input type=&quot;text&quot;&gt;</code> 可以輸入文字(預設可輸入20字符)</li>
+<li><code>&lt;input type=&quot;radio&quot;&gt;</code> 圓點單選按鈕 (選擇多個選項之一)</li>
+<li><code>&lt;input type=&quot;radio&quot;&gt;</code> 勾勾選擇框 (選擇多個選項中零個或多個)</li>
+<li><code>&lt;input type=&quot;submit&quot;&gt;</code> 提交表單按鈕<ul>
+<li>指定表單數據用URL發送<code>method=&quot;get&quot;</code>，提交表單預設的<code>HTTP</code>方法是<code>GET</code></li>
+<li><code>target</code>指定提交表單後視窗的反應</li>
+</ul>
+</li>
+<li><code>&lt;input type=&quot;button&quot;&gt;</code> 可點擊的按鈕</li>
+<li><code>&lt;input list=&quot;名稱&quot;&gt;</code> + <code>&lt;datalist id=&quot;名稱&quot;&gt;</code> 可以做出下拉列表</li>
+</ul>
+</li>
+<li><code>&lt;select&gt;</code>指定一個下拉式選項<ul>
+<li>搭配<code>option</code>使用增加選項</li>
+<li>搭配<code>size</code>可以指定看見的選項數量</li>
+<li><code>autocomplete</code>用戶輸入完自動完成值</li>
+<li><code>novalidate</code>提交表單時，不會被驗證</li>
+<li><code>multiple</code>允許用戶選擇多個值</li>
+</ul>
+</li>
+<li><code>&lt;textarea&gt;</code>定義一個可以輸入很多字的框框<ul>
+<li><code>rows</code>屬性指定文本區域可見的行數</li>
+<li><code>cols</code>屬性指定文本區域可見的寬度</li>
+</ul>
+</li>
+<li><code>&lt;output&gt;</code>表示計算的結果<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">id</span>=<span class="string">&quot;選項&quot;</span> <span class="attr">name</span>=<span class="string">&quot;選項&quot;</span> <span class="attr">value</span>=<span class="string">&quot;選項&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;選項&quot;</span>&gt;</span>顯示給用戶看的的選項文字<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"><i class="fa fa-tag"></i> html</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/20/MySQL%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="prev" title="MySQL 基礎筆記">
+      <i class="fa fa-chevron-left"></i> MySQL 基礎筆記
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/13/CSS%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="next" title="css 基礎筆記">
+      css 基礎筆記 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+<div>
+    <section id="comments" class="comments">
+    <style>
+        .utterances{max-width: 100%;}
+      </style>
+      <script src="https://utteranc.es/client.js"
+              repo="22aliang/22aliang.github.io"
+              issue-term="title"
+              label="💬"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+      </script>
+  </section>
+</div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code"><span class="nav-number">1.</span> <span class="nav-text">VS Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%8D%B5"><span class="nav-number">1.1.</span> <span class="nav-text">快捷鍵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%B4%E5%85%85%E5%85%83%E4%BB%B6-Extensions"><span class="nav-number">1.2.</span> <span class="nav-text">擴充元件 Extensions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Emmt"><span class="nav-number">1.3.</span> <span class="nav-text">Emmt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%96%A6Google-Chrome%E6%8F%92%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">推薦Google Chrome插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80"><span class="nav-number">1.5.</span> <span class="nav-text">延伸閱讀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HyperText-Markup-Language-%E8%B6%85%E6%96%87%E6%9C%AC%E6%A8%99%E8%A8%98%E8%AA%9E%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">HyperText Markup Language 超文本標記語言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AFHTML"><span class="nav-number">2.2.</span> <span class="nav-text">什麼是HTML ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AFHTML%E7%9A%84%E5%B1%AC%E6%80%A7-attribute"><span class="nav-number">2.3.</span> <span class="nav-text">什麼是HTML的屬性(attribute) ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-%E8%AA%9E%E7%BE%A9%E5%85%83%E7%B4%A0-Semantic-Elements"><span class="nav-number">2.4.</span> <span class="nav-text">HTML 語義元素(Semantic Elements)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-main-gt-%EF%BD%9C%E9%87%8D%E9%BB%9E%E5%8D%80%E5%A1%8A"><span class="nav-number">2.4.1.</span> <span class="nav-text">&lt;main&gt;｜重點區塊</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-nav-gt-%EF%BD%9C%E5%B0%8E%E8%A6%BD%E5%88%97"><span class="nav-number">2.4.2.</span> <span class="nav-text">&lt;nav&gt;｜導覽列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-header-gt-%EF%BD%9C%E6%A8%99%E9%A1%8C"><span class="nav-number">2.4.3.</span> <span class="nav-text">&lt;header&gt;｜標題</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-aside-gt-%EF%BD%9C%E5%81%B4%E9%82%8A%E6%AC%84"><span class="nav-number">2.4.4.</span> <span class="nav-text">&lt;aside&gt;｜側邊欄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-section-gt-%EF%BD%9C%E5%AE%9A%E7%BE%A9%E6%96%87%E6%AA%94%E4%B8%AD%E7%9A%84%E4%B8%80%E5%80%8B%E9%83%A8%E5%88%86"><span class="nav-number">2.4.5.</span> <span class="nav-text">&lt;section&gt;｜定義文檔中的一個部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-article-gt-%EF%BD%9C%E6%8C%87%E5%AE%9A%E7%8D%A8%E7%AB%8B%E7%9A%84%E3%80%81%E8%87%AA%E5%8C%85%E5%90%AB%E7%9A%84%E5%85%A7%E5%AE%B9"><span class="nav-number">2.4.6.</span> <span class="nav-text">&lt;article&gt;｜指定獨立的、自包含的內容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-figure-gt-%E3%80%81-lt-figcaption-gt-%EF%BD%9C%E7%8D%A8%E7%AB%8B%E7%9A%84%E6%8F%92%E5%9C%96%E3%80%81%E5%9C%96%E8%A1%A8%E3%80%81%E7%85%A7%E7%89%87%E7%AD%89%E3%80%81%E5%8F%8A%E5%AE%83%E7%9A%84%E6%A8%99%E9%A1%8C"><span class="nav-number">2.4.7.</span> <span class="nav-text">&lt;figure&gt;、&lt;figcaption&gt;｜獨立的插圖、圖表、照片等、及它的標題</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-footer-gt-%EF%BD%9C%E5%AE%9A%E7%BE%A9%E6%96%87%E6%AA%94%E6%88%96%E9%83%A8%E5%88%86%E7%9A%84%E9%A0%81%E8%85%B3"><span class="nav-number">2.4.8.</span> <span class="nav-text">&lt;footer&gt;｜定義文檔或部分的頁腳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-details-gt-%EF%BD%9C%E5%AE%9A%E7%BE%A9%E7%94%A8%E6%88%B6%E5%8F%AF%E4%BB%A5%E6%89%93%E9%96%8B%E9%97%9C%E9%96%89%E5%85%B6%E4%BB%96%E8%A9%B3%E7%B4%B0%E4%BF%A1%E6%81%AF"><span class="nav-number">2.4.9.</span> <span class="nav-text">&lt;details&gt;｜定義用戶可以打開關閉其他詳細信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%8D%E5%A4%96%E6%94%B6%E5%85%A5-meta-tag"><span class="nav-number">2.5.</span> <span class="nav-text">額外收入 meta tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A4%8E"><span class="nav-number">2.6.</span> <span class="nav-text">基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-DOCTYPE-html-gt-%EF%BD%9C%E8%81%B2%E6%98%8E%E6%AD%A4%E6%96%87%E6%AA%94HTML5%E6%96%87%E6%AA%94"><span class="nav-number">2.6.1.</span> <span class="nav-text">&lt;!DOCTYPE html&gt;｜聲明此文檔HTML5文檔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-html-gt-%EF%BD%9C%E6%A0%B9%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text">&lt;html&gt;｜根元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-head-gt-%EF%BD%9C"><span class="nav-number">2.6.3.</span> <span class="nav-text">&lt;head&gt;｜</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-title-gt-%EF%BD%9C%E5%AE%9A%E7%BE%A9%E7%80%8F%E8%A6%BD%E5%99%A8%E9%A0%81%E7%B1%A4%E3%80%81%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%88%91%E7%9A%84%E6%9C%80%E6%84%9B%E3%80%81%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%AD%89%E6%A8%99%E9%A1%8C"><span class="nav-number">2.6.4.</span> <span class="nav-text">&lt;title&gt;｜定義瀏覽器頁籤、添加到我的最愛、搜尋引擎等標題</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%85%A7%E3%80%81%E5%A1%8A%E7%B4%9A%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.</span> <span class="nav-text">行內、塊級元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%A3%E7%B5%90"><span class="nav-number">2.8.</span> <span class="nav-text">連結</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-a-gt-%EF%BD%9C%E5%AE%9A%E7%BE%A9%E4%B8%80%E5%80%8B%E8%B6%85%E9%80%A3%E7%B5%90"><span class="nav-number">2.8.1.</span> <span class="nav-text">&lt;a&gt;｜定義一個超連結</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%96%E7%89%87"><span class="nav-number">2.9.</span> <span class="nav-text">圖片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-img-gt-%EF%BD%9C%E5%9C%A8-HTML-%E9%A0%81%E9%9D%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E5%9C%96%E5%83%8F"><span class="nav-number">2.9.1.</span> <span class="nav-text">&lt;img&gt;｜在 HTML 頁面中加入圖像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC"><span class="nav-number">2.10.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-h1-gt-96-96-%EF%BD%9C%E9%A1%AF%E7%A4%BA%E6%A8%99%E9%A1%8C%E6%88%96%E5%89%AF%E6%A8%99%E9%A1%8C"><span class="nav-number">2.10.1.</span> <span class="nav-text">&lt;h1&gt;~&#96;&#96;｜顯示標題或副標題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#lt-h1-gt-96-96-%EF%BD%9C%E9%A1%AF%E7%A4%BA%E6%A8%99%E9%A1%8C%E6%88%96%E5%89%AF%E6%A8%99%E9%A1%8C"><span class="nav-number">2.10.1.0.1.</span> <span class="nav-text">&#96;｜顯示標題或副標題</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-p-gt-%EF%BD%9C-Paragraph-%E5%AE%9A%E7%BE%A9%E4%B8%80%E5%80%8B%E6%AE%B5%E8%90%BD"><span class="nav-number">2.11.</span> <span class="nav-text">&lt;p&gt;｜(Paragraph) 定義一個段落</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-hr-gt-%EF%BD%9C%E7%A9%BA%E5%85%83%E7%B4%A0-Empty-Elements-%E3%80%81%E9%A1%AF%E7%A4%BA%E7%82%BA%E6%B0%B4%E5%B9%B3%E7%B7%9A"><span class="nav-number">2.11.1.</span> <span class="nav-text">&lt;hr&gt;｜空元素(Empty Elements)、顯示為水平線</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-br-gt-%EF%BD%9C%E7%A9%BA%E5%85%83%E7%B4%A0-Empty-Elements-%E3%80%81%E6%8F%9B%E8%A1%8C"><span class="nav-number">2.11.2.</span> <span class="nav-text">&lt;br&gt;｜空元素(Empty Elements)、換行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-pre-gt-%EF%BD%9C%E5%AE%9A%E7%BE%A9%E4%BA%86%E9%A0%90%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-number">2.11.3.</span> <span class="nav-text">&lt;pre&gt;｜定義了預格式化的文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-span-gt-%EF%BD%9C%E6%AE%B5%E8%90%BD%E4%B8%AD%EF%BC%8C%E6%94%B9%E8%AE%8A%E4%B8%80%E5%B0%8F%E6%AE%B5"><span class="nav-number">2.11.4.</span> <span class="nav-text">&lt;span&gt;｜段落中，改變一小段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-div-gt-%EF%BD%9C%E5%A4%9A%E7%94%A8%E5%9C%A8%E6%94%B9%E8%AE%8A%E6%A8%A3%E5%BC%8F"><span class="nav-number">2.11.5.</span> <span class="nav-text">&lt;div&gt;｜多用在改變樣式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-%E6%96%87%E6%9C%AC%E5%85%83%E7%B4%A0-Text-Formatting-%E3%80%81%E5%BC%95%E7%94%A8-Quotation-%E3%80%81%E5%BC%95%E7%94%A8%E5%85%83%E7%B4%A0-Citation-Elements"><span class="nav-number">2.11.6.</span> <span class="nav-text">HTML 文本元素(Text Formatting)、引用(Quotation)、引用元素(Citation Elements)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A7%E8%81%AF%E6%A1%86%E6%9E%B6"><span class="nav-number">2.12.</span> <span class="nav-text">內聯框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iframe%EF%BD%9C%E5%9C%A8%E7%9B%AE%E5%89%8D%E7%9A%84HTML%E5%B5%8C%E5%85%A5%E5%8F%A6%E4%B8%80%E5%80%8B%E6%96%87%E6%AA%94"><span class="nav-number">2.12.1.</span> <span class="nav-text">iframe｜在目前的HTML嵌入另一個文檔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-%E8%A8%BB%E8%A7%A3%E5%85%A7%E5%AE%B9-gt-%EF%BD%9C%E8%A8%BB%E8%A7%A3%E6%A8%99%E7%B1%A4"><span class="nav-number">2.12.2.</span> <span class="nav-text">&lt;!-- 註解內容 --&gt;｜註解標籤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">2.13.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-table-gt-%E8%A1%A8%E6%A0%BC%EF%BD%9C%E7%94%B1%E8%A1%8Crow-%E7%9B%B4-%E8%B7%9F%E5%88%97column-%E6%A9%AB-%E7%B5%84%E6%88%90"><span class="nav-number">2.13.1.</span> <span class="nav-text">&lt;table&gt;表格｜由行row(直)跟列column(橫)組成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BCCSS%E6%A8%A3%E5%BC%8F"><span class="nav-number">2.13.2.</span> <span class="nav-text">表格CSS樣式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">2.14.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-%E7%84%A1%E5%BA%8F%E5%88%97%E7%9A%84%E5%88%97%E8%A1%A8"><span class="nav-number">2.14.1.</span> <span class="nav-text">HTML 無序列的列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-%E6%9C%89%E5%BA%8F%E7%9A%84%E5%88%97%E8%A1%A8"><span class="nav-number">2.14.2.</span> <span class="nav-text">HTML 有序的列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-%E6%8F%8F%E8%BF%B0%E5%88%97%E8%A1%A8"><span class="nav-number">2.14.3.</span> <span class="nav-text">HTML 描述列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E5%96%AE"><span class="nav-number">2.15.</span> <span class="nav-text">表單</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-form-gt-%EF%BD%9C%E6%94%B6%E9%9B%86%E7%94%A8%E6%88%B6%E8%BC%B8%E5%85%A5%E7%99%BC%E9%80%81%E5%88%B0%E6%9C%8D%E5%8B%99%E5%99%A8%E9%80%B2%E8%A1%8C%E8%99%95%E7%90%86-%E8%A9%B3%E7%B4%B0"><span class="nav-number">2.15.1.</span> <span class="nav-text">&lt;form&gt;｜收集用戶輸入發送到服務器進行處理 詳細</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nell</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/22aliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;22aliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lisa5566407@gmail.com" title="E-Mail → mailto:lisa5566407@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nell</span>
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

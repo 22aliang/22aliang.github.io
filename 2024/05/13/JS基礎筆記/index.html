@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"width":150,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JavaScript 可以使用單引號也可以使用雙引號   JavaScrtop 引擎javascript 並不是任何程式語言所寫成，他是歐洲電腦製造協會 ECMA 所制定的標準。 瀏覽器內部的 JavaScript 引擎會遵從 ECMA 標準處理 JS 目前最有名的更新在 2015，被稱為 ECMA2015 或是 ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html基礎筆記">
+<meta property="og:url" content="https://22aliang.github.io/2024/05/13/JS%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="22Nell&#39;s Blog">
+<meta property="og:description" content="JavaScript 可以使用單引號也可以使用雙引號   JavaScrtop 引擎javascript 並不是任何程式語言所寫成，他是歐洲電腦製造協會 ECMA 所制定的標準。 瀏覽器內部的 JavaScript 引擎會遵從 ECMA 標準處理 JS 目前最有名的更新在 2015，被稱為 ECMA2015 或是 ES6">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08774e89-5705-4b54-9a9e-8803efd5bc5d/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d9e1dd4-184b-41e6-9040-91c75d623f61/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a0a76c9-8f7f-4686-8416-2a1adb40f859/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/205834ed-0ec2-4b4e-8632-b29d75a9f443/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca4821ff-f06d-4bc5-84ed-3928e20f5623/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/055d36bf-a32f-458f-957e-f91d6af71fa0/2023-03-04_20-16-59-bd94db907695dffaa154cd01e21ac530.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23630725-eef4-4016-98c2-ba9fd1635850/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/26ba49e3-69f6-436e-a068-f0afe9616e37/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36b02600-5d4b-4157-aae9-52a40453b0f3/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e564a6c1-bd82-4320-a20e-cb1b15f07d68/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9590670c-24e0-4b86-9833-2b18d68c39fc/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0b81a949-1a0f-4f59-bb81-b10abaddbf64/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/92c451b7-d3d5-4369-807a-f192b4cca5bb/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/578c9ecf-ad9c-4c1d-8241-c6c3695a3668/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f03a26c8-ed05-41bd-9728-8caadf6ce262/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb5ab7b7-5f75-4a43-b6ea-e73bdad54b81/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42d0b825-c95e-443d-99e5-13305d3fe8d9/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/188c37bf-1cf9-4423-b0b6-fcd14f185225/Untitled.png">
+<meta property="article:published_time" content="2024-05-13T11:26:30.746Z">
+<meta property="article:modified_time" content="2024-05-13T11:55:35.142Z">
+<meta property="article:author" content="Nell">
+<meta property="article:tag" content="html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08774e89-5705-4b54-9a9e-8803efd5bc5d/Untitled.png">
+
+<link rel="canonical" href="https://22aliang.github.io/2024/05/13/JS%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>html基礎筆記 | 22Nell's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="22Nell's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">22Nell's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Notes of a Rookie Engineer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/22aliang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://22aliang.github.io/2024/05/13/JS%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nell">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="22Nell's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          html基礎筆記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2024-05-13 19:26:30" itemprop="dateCreated datePublished" datetime="2024-05-13T19:26:30+08:00">2024-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B6%85%E6%96%B0%E6%89%8B%E6%99%82%E6%9C%9F%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">超新手時期基礎筆記</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><ul>
+<li>可以使用單引號也可以使用雙引號</li>
+<li></li>
+</ul>
+<h2 id="JavaScrtop-引擎"><a href="#JavaScrtop-引擎" class="headerlink" title="JavaScrtop 引擎"></a>JavaScrtop 引擎</h2><p>javascript 並不是任何程式語言所寫成，他是歐洲電腦製造協會 ECMA 所制定的標準。</p>
+<p>瀏覽器內部的 JavaScript 引擎會遵從 ECMA 標準處理 JS</p>
+<p>目前最有名的更新在 2015，被稱為 ECMA2015 或是 ES6</p>
+<span id="more"></span>
+
+<ul>
+<li>可以使用<code>getElementById()</code>更改HTML的內容</li>
+</ul>
+<p>以下程式碼舉例，只要點擊”點我”按鈕，就可以將”JavaScript 可以改變 HTML 的內容”這段文本內容，改成”變魔法囉”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;demo&quot;&gt;JavaScript 可以改變 HTML 的內容&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;button type=&quot;button&quot; onclick=&#x27;document.getElementById(&quot;demo&quot;).innerHTML = &quot;變魔法囉&quot;&#x27;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>可以使用<code>getElementById()</code>更改HTML的圖片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;document.getElementById(&#x27;myImage&#x27;).src=&#x27;pic_bulbon.gif&#x27;&quot;&gt;點我換成第一張圖片&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;img id=&quot;myImage&quot; src=&quot;pic_bulboff.gif&quot; style=&quot;width:100px&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;button onclick=&quot;document.getElementById(&#x27;myImage&#x27;).src=&#x27;pic_bulboff.gif&#x27;&quot;&gt;點我換成第二張圖片&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用<code>getElementById()</code>更改CSS的樣式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;demo&quot;&gt;JavaScript 可以更改 HTML 的樣式&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;button type=&quot;button&quot; onclick=&quot;document.getElementById(&#x27;demo&#x27;).style.fontSize=&#x27;35px&#x27;&quot;&gt;點擊我更換字體大小&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用<code>getElementById()</code>隱藏HTML元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;demo&quot;&gt;JavaScript 可以隱藏 HTML 的元素&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;button type=&quot;button&quot; onclick=&quot;document.getElementById(&#x27;demo&#x27;).style.display=&#x27;none&#x27;&quot;&gt;點擊我將HTML元素隱藏起來&lt;/button&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="JavaScript-顯示可能性"><a href="#JavaScript-顯示可能性" class="headerlink" title="JavaScript 顯示可能性"></a>JavaScript 顯示可能性</h3><ul>
+<li>JavaScript有幾種顯示屬性的方法<ul>
+<li>寫入 HTML 元素<code>innerHTML</code>，以下範例會跑出11<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;demo&quot;).innerHTML = 5 + 6;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>寫入 HTML 輸出<code>document.write()</code> <ul>
+<li>只用於測試，會刪除現有的HTML</li>
+</ul>
+</li>
+<li>寫入警報框<code>window.alert()</code><ul>
+<li><code>window</code>不寫也是預設屬性，且跳出的視窗可選擇文字，以下範例會跳出11</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">alert(5 + 6);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>- 寫入瀏覽器控制台`console.log()`
+    - 用於測試
+- 可列印當前網頁的`window.print()`指令
+</code></pre>
+<h3 id="JavaScript-語句Statements"><a href="#JavaScript-語句Statements" class="headerlink" title="JavaScript 語句Statements"></a>JavaScript 語句Statements</h3><ul>
+<li>大部分的JavaScript程序都有許多JavaScript語句，以順序一一執行</li>
+<li>由值Values, 運算符Operators, 表達式Expressions, 關鍵字Keywords,註解Comments組成<ul>
+<li>有兩種類型的值Values : 固定值Fixed values、變數值Variable values<ul>
+<li>固定值的字符串是文本，寫在雙引號貨單引號內</li>
+<li>變數值使用 <code>var</code>、<code>let</code>、<code>const</code>來聲明變數，等號 &#x3D; 賦予值</li>
+</ul>
+</li>
+<li>運算符Operators，使用<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>來計算值，等號 &#x3D; 變數為賦值<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let x, y;</span><br><span class="line">x = 5;</span><br><span class="line">y = 6;</span><br></pre></td></tr></table></figure></li>
+<li>表達式Expressions是值、變數、運算符的組合，計算一個值<ul>
+<li>可以包含未知數</li>
+<li>可以是各種類型，像數字+字符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5 * 10</span><br><span class="line">x * 10</span><br><span class="line">&quot;John&quot; + &quot; &quot; + &quot;Doe&quot;</span><br></pre></td></tr></table></figure>
+<pre><code>- 關鍵字Keywords是標示要執行的操作，使用`let`、`var`來定義
+- 註解Comments寫在`//`之後、或`/*`和`*/`之間
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>關鍵詞</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var</td>
+<td>聲明一個變量</td>
+</tr>
+<tr>
+<td>let</td>
+<td>聲明一個塊變量</td>
+</tr>
+<tr>
+<td>const</td>
+<td>聲明一個塊常量</td>
+</tr>
+<tr>
+<td>if</td>
+<td>標記要在條件下執行的語句塊</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>標記要在不同情況下執行的語句塊</td>
+</tr>
+<tr>
+<td>for</td>
+<td>標記要在循環中執行的語句塊</td>
+</tr>
+<tr>
+<td>function</td>
+<td>聲明一個函數</td>
+</tr>
+<tr>
+<td>return</td>
+<td>退出函數</td>
+</tr>
+<tr>
+<td>try</td>
+<td>對語句塊實施錯誤處理</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>關鍵字不能作為變數</p>
+</blockquote>
+<h3 id="JavaScript-的let"><a href="#JavaScript-的let" class="headerlink" title="JavaScript 的let"></a>JavaScript 的<code>let</code></h3><p><code>let</code>有以下幾種特性</p>
+<ul>
+<li>定義變數的let不能重新聲明<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let x = &quot;John Doe&quot;;</span><br><span class="line">let x = 0;</span><br><span class="line">打妹 ! </span><br></pre></td></tr></table></figure></li>
+<li>定義變數的let必須在使用前聲明</li>
+<li>定義變數的let具有塊範圍 Block Scope<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  let x = 2;</span><br><span class="line">&#125;</span><br><span class="line">// x 不能被使用在&#123;&#125;花括弧以外</span><br></pre></td></tr></table></figure>
+因此下面的情況可以被允許出現，且X變數的狀況會變成以下狀況<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let x = 10;</span><br><span class="line">// 這裡的X變數的值是10</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">let x = 2;</span><br><span class="line">// 這裡的X變數的值是2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 這裡的X變數的值是10</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="JavaScript-的const"><a href="#JavaScript-的const" class="headerlink" title="JavaScript 的const"></a>JavaScript 的<code>const</code></h3><p><code>const</code>有以下幾種特性</p>
+<ul>
+<li>定義變數的const不能重新聲明 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const PI = 3.141592653589793;</span><br><span class="line">PI = 3.14;      // const的變數不能更改，這行是錯的</span><br><span class="line">PI = PI + 10;   // 這行也是錯的</span><br></pre></td></tr></table></figure></li>
+<li>用定義變數的const不能重新分配<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const cars = [&quot;Saab&quot;, &quot;Volvo&quot;, &quot;BMW&quot;];</span><br><span class="line"></span><br><span class="line">//你可以改變元素</span><br><span class="line">cars[0] = &quot;Toyota&quot;;</span><br><span class="line"></span><br><span class="line">// 你可以增加元素</span><br><span class="line">cars.push(&quot;Audi&quot;);</span><br><span class="line"></span><br><span class="line">cars = [&quot;Toyota&quot;, &quot;Volvo&quot;, &quot;Audi&quot;];    // 但你不能重新分配 打妹 !</span><br></pre></td></tr></table></figure></li>
+<li>const變數在聲明時必須賦值<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const PI = 3.14159265359;</span><br></pre></td></tr></table></figure></li>
+<li>定義變數的const具有塊作用<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const x = 10;</span><br><span class="line">// 這裡的X變數的值是10</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">const x = 2;</span><br><span class="line">// 這裡的X變數的值是2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 這裡的X變數的值是10</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="JavaScript運算符"><a href="#JavaScript運算符" class="headerlink" title="JavaScript運算符"></a>JavaScript運算符</h3><ul>
+<li><code>=</code>為賦予值</li>
+<li><code>+</code>將值相加</li>
+<li><code>*</code>將值相乘</li>
+<li><code>/</code>將值相除<br>變數可以用值相加來取名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let text1 = &quot;我&quot;;</span><br><span class="line">let text2 = &quot;中途斷賽&quot;;</span><br><span class="line">let text3 = text1 + &quot; &quot; + text2;</span><br></pre></td></tr></table></figure>
+最後結果會變成<br><code>我 中途斷賽</code></li>
+</ul>
+<p><code>+=</code>可以變成合併技</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let text1 = &quot;斷賽&quot;;</span><br><span class="line">text1 += &quot;在第14天&quot;;</span><br></pre></td></tr></table></figure>
+<p>最終結果會變成<br><code>斷賽在第14天</code></p>
+<p>前面有說字串會用雙引號、單引號標註，那運用在數字就會有以下組合技的不同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let x = 5 + 5;</span><br><span class="line">let y = &quot;5&quot; + 5;</span><br><span class="line">let z = &quot;Hello&quot; + 5;</span><br></pre></td></tr></table></figure>
+<p>x &#x3D; 10<br>y &#x3D; 55<br>z &#x3D; Hello5</p>
+<h3 id="三元運算子Ternary-Operator"><a href="#三元運算子Ternary-Operator" class="headerlink" title="三元運算子Ternary Operator"></a>三元運算子Ternary Operator</h3><p>通常被用來當作 if 的簡潔寫法，一個條件後面跟著一個問號 ( ? )</p>
+<p>條件 truthy 在冒號 : 前的表達式會被執行、條件 falsy 冒號後面表達式會被執行</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">condition ? expressionfTrue : expressionIfFalse</span><br></pre></td></tr></table></figure>
+
+<!-- more -->
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">let</span> price;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( age &lt; <span class="number">18</span> ) &#123;</span><br><span class="line">	price = <span class="number">50</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	price = <span class="number">150</span>;</span><br><span class="line">&#125;</span><br><span class="line">---- 改寫 ----</span><br><span class="line">age &lt; <span class="number">18</span> ? <span class="number">50</span> : <span class="number">150</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Default-Parameters-預設參數"><a href="#Default-Parameters-預設參數" class="headerlink" title="Default Parameters 預設參數"></a>Default Parameters 預設參數</h3><p>當調用了 function 沒有給定足夠數量的 arguments 參數，parameter 會被設定 undefined </p>
+<p>若在 function 設定 Default Parameters 預設參數就可以避免這種情況</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">multiply</span> (a , b)  &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a,b) <span class="comment">// 5 undefined</span></span><br><span class="line">	<span class="keyword">return</span> a * b ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">multiply</span>(<span class="number">5</span>)) <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//----- 若沒有 Default Parameters 會寫成這樣 -----</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">multiply</span>(<span class="params">a , b</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> ( a == <span class="literal">undefined</span>) &#123;</span><br><span class="line">		a = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ( b == <span class="literal">undefined</span>) &#123;</span><br><span class="line">		b = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a * b ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//---- JS 有支援 Default Parameters -----</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">multiply</span>(<span class="params">a = <span class="number">1</span>, b = <span class="number">1</span></span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Backtick-反引號"><a href="#Backtick-反引號" class="headerlink" title="Backtick 反引號  "></a>Backtick 反引號 <code> </code></h3><p>跟單引號、雙引號是一樣的，但通常是一個句子中要用文字、變數中會用到</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = <span class="number">26</span></span><br><span class="line"><span class="string">`Wilson的年齡是<span class="subst">$&#123;age&#125;</span>`</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Stong-Typing-強型別-amp-Weak-Typing-弱型別"><a href="#Stong-Typing-強型別-amp-Weak-Typing-弱型別" class="headerlink" title="Stong Typing 強型別 &amp; Weak Typing 弱型別"></a>Stong Typing 強型別 &amp; Weak Typing 弱型別</h3><p>在電腦科學、程式設計中，經常將程式語言的型別系統分為 Stong 、 Weak 兩種</p>
+<p>這兩個術語並沒有非常明確的定義，主要是描述混入不同資料型別的值進行運算時的處理方式，</p>
+<h3 id="Dynamic-Typed-動態型別-amp-Static-Typed-靜態型別"><a href="#Dynamic-Typed-動態型別-amp-Static-Typed-靜態型別" class="headerlink" title="Dynamic Typed 動態型別 &amp; Static Typed 靜態型別"></a>Dynamic Typed 動態型別 &amp; Static Typed 靜態型別</h3><ul>
+<li>Static Typed 靜態型別是指，編譯器 compiler 在編譯時檢查資料類別 ( JAVA 會被編譯成 .class )</li>
+<li>Dynamic Types 動態型別，運行時才檢查  ( JavaScript )</li>
+</ul>
+<p>Static Typed 通常執行的更快，因為編譯器知道正在使用確切的數據類型時，它可以生成優化的機器代碼 machine code 來運行程式，因為也不用邊運行邊檢查，所以記憶體使用也比較少。</p>
+<h3 id="IIFE-Immediately-Invoked-Function-Expression-立即函數表達式"><a href="#IIFE-Immediately-Invoked-Function-Expression-立即函數表達式" class="headerlink" title="IIFE Immediately Invoked Function Expression 立即函數表達式"></a>IIFE Immediately Invoked Function Expression 立即函數表達式</h3><p>在定義後會立即運行，通常也只會一次，名字也不重要，所以就會用 IIFE 語法</p>
+<p>當我們在想要避免汙染 global namic space ，或立即執行匿名 function ( 例如伺服器程式碼內部 )</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123; <span class="comment">//這個括號是表達式，也可以放 arror</span></span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">&#125;)() <span class="comment">//()直接執行這個函式</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>)<span class="string">&#x27;</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//或是</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">(() =&gt; &#123;</span></span><br><span class="line"><span class="string">	console.log(&#x27;</span>hello<span class="string">&#x27;)&#x27;</span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hello = <span class="string">&#x27;你好嗎&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Destructuring-Assignment-解構"><a href="#Destructuring-Assignment-解構" class="headerlink" title="Destructuring Assignment 解構"></a>Destructuring Assignment 解構</h3><p>是一種 JS 語法，將 array 中的值 或 object 中的屬性 unpack 拆開到不同的變量中<br>常見在伺服器的程式碼中</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b] = array;</span><br><span class="line"><span class="keyword">const</span> [a, b, ...rest] = array;</span><br><span class="line"><span class="keyword">const</span> &#123;a, b&#125; = obj;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a1 = arr[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">let</span> a2 = arr[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//--- 可以改寫成 ---</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [ a1, a2, a3, a4, a5, a6, a7] = arr ; <span class="comment">//Destructuring Assignment </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a1) <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [a1, a2 ...everything]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Wilson</span> = &#123;</span><br><span class="line">	name : <span class="string">&quot;wilson Ren&quot;</span></span><br><span class="line">	<span class="attr">age</span>: <span class="number">26</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一般寫法</span></span><br><span class="line"><span class="keyword">let</span> location = <span class="title class_">Wilson</span>.<span class="property">age</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">//destruturing assigment</span></span><br><span class="line"><span class="keyword">let</span> &#123; age &#125; = wilson; </span><br><span class="line"><span class="comment">// 尋找 wilson 物件中 age 的屬性，並把它存到 age 這個新的變數裡</span></span><br><span class="line"><span class="comment">// 也可以一次解構很多</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age) <span class="comment">//26</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Switch-Statement"><a href="#Switch-Statement" class="headerlink" title="Switch Statement"></a>Switch Statement</h3><h3 id="錯誤處理"><a href="#錯誤處理" class="headerlink" title="錯誤處理"></a>錯誤處理</h3><p>在 JS 中，要執行一段可能會出錯的程式，則可以將程式放入 try… catch… 中，常在後端使用，避免一小段程式碼錯誤，導致整個程式不能使用的狀況。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//try 執行可能出錯的語句</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	tryStatments </span><br><span class="line"><span class="comment">//如果try出錯，執行 catch</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (exceptionVar) &#123; <span class="comment">//保存catch捕獲的錯誤</span></span><br><span class="line">	catchStatements</span><br><span class="line"><span class="comment">// 無論是否發生異常，都一定會執行 finally </span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	finallyStatements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//--- 可使用 ---</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>... <span class="keyword">catch</span>...</span><br><span class="line"><span class="keyword">try</span>... <span class="keyword">finally</span>...</span><br><span class="line"><span class="keyword">try</span>... <span class="keyword">catch</span>... <span class="keyword">finally</span>...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="title function_">whatevery</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`有<span class="subst">$&#123;err&#125;</span>導致的錯誤`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// JS 發生的錯誤</span></span><br><span class="line"><span class="comment">// 會自動被做成一個 Error Object</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="title function_">whatevery</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">	<span class="keyword">if</span> (e <span class="keyword">instanceof</span> <span class="title class_">TypeError</span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;TypeError錯誤&#x27;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> referenceError) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;referenceError錯誤&#x27;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;發生其他錯誤&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;不管有無錯誤，都會被執行的程式碼&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//----- 用到 finally 常見用法 ----</span></span><br><span class="line"><span class="comment">//用程式碼打開檔案</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">openMyFile</span>();</span><br><span class="line"><span class="comment">//如果電腦內存滿了、儲存空間滿了</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="title function_">writeFile</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">	<span class="title function_">handleWriteFileError</span>();</span><br><span class="line"><span class="comment">//不管有沒有打開，都要關起來</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	<span class="title function_">closeMyFile</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Instanceof-operator"><a href="#Instanceof-operator" class="headerlink" title="Instanceof operator"></a>Instanceof operator</h3><p>是 JS 中檢查物件是否為 class 類別的實例 instance</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object <span class="keyword">instanceof</span> <span class="title class_">Class</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">	<span class="title function_">constructuor</span>(<span class="params">name</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> mike = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mike&#x27;</span>) <span class="comment">//mike 是 Person 製作的新物件</span></span><br><span class="line"><span class="comment">// 在JS中 我們會說一個物件是 object , instance</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mike <span class="keyword">instanceof</span> <span class="title class_">Person</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">	<span class="title function_">counstrcutor</span>(<span class="params">name</span>) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Asynchronous-JavaScript-非同步"><a href="#Asynchronous-JavaScript-非同步" class="headerlink" title="Asynchronous JavaScript 非同步"></a>Asynchronous JavaScript 非同步</h1><p>Q: Promise 與 Async、Await 有什麼關係？</p>
+<p>Promise 是用來優化非同步的語法，而 Async、Await 可以基於 Promise 讓非同步的語法的結構類似於 “同步語言”，更易讀且好管理。</p>
+<p>async 強制讓 promise 乖乖排隊</p>
+<p>fetch() 處理 HTTP 寄送收發 、 async 創建非同步函式 ( 裡面可以用 await)</p>
+<p>Axios 是套件，提供了更簡單和一致的 API 設計，具有更好的可用性和支持性，取到的值也直接是JSON 不用 exce() 、json()。Fetch API 則是一個簡單的 Web API，可以在現代瀏覽器中直接使用，但需要更多的手動設置和處理</p>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p>AJAX 全名 Asynchronous JavaScript and XML 非同步的 JavaScript 與 XML 技術<br>是一套綜合了多項技術的瀏覽器端網頁開發技術</p>
+<p>AJAX 客戶端使用各種 Web 技術來創建異步 asynchronous Web 應用程序，可以在背景從服務器發送、獲得數據，而不干擾現有頁面的顯示和行為。</p>
+<p>透過將數據交換層和表示層分離，Ajax 允許網頁、擴展Web 應用程續動態更改內容，無須重新加載整個頁面，數據傳送常見 JSON。</p>
+<p>常見 Ajax 例子，YT 或 Google 搜尋時，會根據前面打的字猜測搜尋關鍵字。</p>
+<p>圖左是傳統、圖右是目前的方法<br>簡單來說舊的會傳送 html + css<br>新的會把 html + css 留在本地端，只跟 server 傳送 JSON 檔案，在渲染在檔案上</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08774e89-5705-4b54-9a9e-8803efd5bc5d/Untitled.png" alt="Untitled"></p>
+<h3 id="同步與異步"><a href="#同步與異步" class="headerlink" title="同步與異步"></a>同步與異步</h3><p>在計算機程式中，異步 asynchronous 代表一個 process 獨立於其他 process 運行<br>同步 synchronous 代表一個 process 僅在某個其他 process 完成或移交後運行</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d9e1dd4-184b-41e6-9040-91c75d623f61/Untitled.png" alt="Untitled"></p>
+<p>JavaScript 的特性是 single-threaded synchronous 一次只做一件事情的程式語言 也就是單線程 </p>
+<p>JS 有內建的 asynchronous function 例如 : setTimeout()，設置一個計時器，時間到就執行 function</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(code, delay)</span><br><span class="line"><span class="comment">// code 是 delay 結束時要執行的程式碼</span></span><br><span class="line"><span class="comment">// delay 是執行前計時器等待時間 ( 毫秒為單位 ) 預設為 0 ( 立即 )</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Here is the code&#x27;</span>)</span><br><span class="line">&#125;,<span class="number">2000</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line"><span class="comment">//start</span></span><br><span class="line"><span class="comment">//end</span></span><br><span class="line"><span class="comment">//Here is the code</span></span><br></pre></td></tr></table></figure>
+
+<p>在程式設計中，使用非同步方式需要使用特殊的技術，例如使用 Callback Function 回撥函數、Promise 物件或 async&#x2F;await 等方法。</p>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>是現代 JS 中異步編程的基礎，</p>
+<p>Promise 是由 asyncheronous function 所 return 的物件<br>async function return 的 value 一定是 Promise </p>
+<p>主要功能是 Promise 會代理一個建立不用預先得知結果的值 ( 是 pending 狀態 )</p>
+<p>向伺服器傳送 request ，需等待 resopnse 此時的 Promise 是一個擱置狀態 pending ， 在非同步操作後，會得到成功值 success value、失敗訊息 failure reason 的處理函式 handlers ，對照的 then 的 callback 就會被調用</p>
+<p>一個 Promise 物件有以下 3 種狀態 : </p>
+<ol>
+<li>擱置 pending : 初始狀態，並不是 fulfilled、rejected (不會執行</li>
+<li>實現 fulfilled : 操作成功</li>
+<li>拒絕 rejected : 操作失敗</li>
+</ol>
+<p>fetch() 就是一個 async function ，.then()、.catch()都是在 fetch() 回傳 status code 後觸發</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 向一個網址寄出 HTTP Request，是一個 async</span></span><br><span class="line"><span class="comment">// JS fetch api 允許我們 send HTTP requests</span></span><br><span class="line"><span class="keyword">let</span> promiseObject = <span class="title function_">fetch</span>(<span class="variable constant_">URL</span>); </span><br><span class="line">promiseObject.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">//data 是feth(URL) 得到的 HTTP Response</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">---- 示範 ----</span><br><span class="line"><span class="keyword">let</span> fetchPromis = <span class="title function_">fetch</span>(<span class="string">&quot;https://example.com/data&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fetchPromise);</span><br><span class="line"></span><br><span class="line">fetchPromise.<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123; </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(fetchPromise);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會得到</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a0a76c9-8f7f-4686-8416-2a1adb40f859/Untitled.png" alt="Untitled"></p>
+<p>Promise 的好處會繼續執行 forloop 等到 server 結束才會調用 .then() 、 catch()</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/205834ed-0ec2-4b4e-8632-b29d75a9f443/Untitled.png" alt="Untitled"></p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca4821ff-f06d-4bc5-84ed-3928e20f5623/Untitled.png" alt="Untitled"></p>
+<h3 id="fetch-API"><a href="#fetch-API" class="headerlink" title="fetch() API"></a>fetch() API</h3><p>本身是 JS 提供，可以寄送 HTTP request 的方法，會 return 一個 promise ，接到 response 時會從pending轉變成fulfilled，fetch()所return的promise做.then(callback)時，JavaScript自動帶入callback的參數，會是一個「Response Object」。這個Response Object代表HTTP response。</p>
+<p>如果遇到404的情況，fetch()的promise並不會出現rejected狀態，而是會變成fulfilled狀態。但我們可以用使用Response Object的屬性status或ok來確定我們得到的Response是200 OK還是404 Not Found</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;http://example.com/movies.json&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>();</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">myJson</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(myJson);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//------ 範例 來發個 POST Request</span></span><br><span class="line"><span class="title function_">postData</span>(<span class="string">&#x27;http://example.com/answer&#x27;</span>, &#123;<span class="attr">answer</span>: <span class="number">42</span>&#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(data)) <span class="comment">// JSON from `response.json()` call</span></span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(error))</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">postData</span>(<span class="params">url, data</span>) &#123;</span><br><span class="line">  <span class="comment">// Default options are marked with *</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">fetch</span>(url, &#123;</span><br><span class="line">    <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data), <span class="comment">// must match &#x27;Content-Type&#x27; header</span></span><br><span class="line">    <span class="attr">cache</span>: <span class="string">&#x27;no-cache&#x27;</span>, <span class="comment">// *default, no-cache, reload, force-cache, only-if-cached</span></span><br><span class="line">    <span class="attr">credentials</span>: <span class="string">&#x27;same-origin&#x27;</span>, <span class="comment">// include, same-origin, *omit</span></span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;user-agent&#x27;</span>: <span class="string">&#x27;Mozilla/4.0 MDN Example&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>, <span class="comment">// *GET, POST, PUT, DELETE, etc.</span></span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;cors&#x27;</span>, <span class="comment">// no-cors, cors, *same-origin</span></span><br><span class="line">    <span class="attr">redirect</span>: <span class="string">&#x27;follow&#x27;</span>, <span class="comment">// manual, *follow, error</span></span><br><span class="line">    <span class="attr">referrer</span>: <span class="string">&#x27;no-referrer&#x27;</span>, <span class="comment">// *client, no-referrer</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">json</span>()) <span class="comment">// 輸出成 json</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//------ 上傳 JSON 資料</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&#x27;https://example.com/profile&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> data = &#123;<span class="attr">username</span>: <span class="string">&#x27;example&#x27;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(url, &#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>, <span class="comment">// or &#x27;PUT&#x27;</span></span><br><span class="line">  <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data), <span class="comment">// data can be `string` or &#123;object&#125;!</span></span><br><span class="line">  <span class="attr">headers</span>: <span class="keyword">new</span> <span class="title class_">Headers</span>(&#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> res.<span class="title function_">json</span>())</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error))</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Success:&#x27;</span>, response));</span><br><span class="line"></span><br><span class="line"><span class="comment">//------ 上傳檔案</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line"><span class="keyword">var</span> fileField = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input[type=&#x27;file&#x27;]&quot;</span>);</span><br><span class="line"></span><br><span class="line">formData.<span class="title function_">append</span>(<span class="string">&#x27;username&#x27;</span>, <span class="string">&#x27;abc123&#x27;</span>);</span><br><span class="line">formData.<span class="title function_">append</span>(<span class="string">&#x27;avatar&#x27;</span>, fileField.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://example.com/profile/avatar&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&#x27;PUT&#x27;</span>,</span><br><span class="line">  <span class="attr">body</span>: formData</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">json</span>())</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error))</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Success:&#x27;</span>, response));</span><br></pre></td></tr></table></figure>
+
+<h3 id="包含憑證-Credentials-的-Request-用法"><a href="#包含憑證-Credentials-的-Request-用法" class="headerlink" title="包含憑證 Credentials 的 Request 用法"></a>包含憑證 Credentials 的 Request 用法</h3><p>跟 CORS 有關</p>
+<p>要讓瀏覽器將 credentials 跟著 request 一起送出, 方式就是在 <code>init</code><br> object 加上 <code>credentials: &#39;include&#39;</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://example.com&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">credentials</span>: <span class="string">&#x27;include&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//同源</span></span><br><span class="line"><span class="comment">// The calling script is on the origin &#x27;https://example.com&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://example.com&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">credentials</span>: <span class="string">&#x27;same-origin&#x27;</span></span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line"><span class="comment">//確保瀏覽器不會帶著 credentials 請求，可以用 credentials: &#x27;omit&#x27;</span></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://example.com&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">credentials</span>: <span class="string">&#x27;omit&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查-Fetch-有沒有成功"><a href="#檢查-Fetch-有沒有成功" class="headerlink" title="檢查 Fetch() 有沒有成功"></a>檢查 Fetch() 有沒有成功</h3><p>當<code>[fetch()</code>](<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/fetch">https://developer.mozilla.org/en-US/docs/Web/API/fetch</a>) <br>遇到 CORS 或 server 設定錯誤導致 network error 時, promise 會 reject 並附上<code>[TypeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)</code><br>的回應, 但在權限或類似問題導致 404 的常見狀況下, 卻不會導致 network error.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;flowers.jpg&#x27;</span>).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(response.<span class="property">ok</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">blob</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Network response was not ok.&#x27;</span>);</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">myBlob</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> objectURL = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(myBlob);</span><br><span class="line">  myImage.<span class="property">src</span> = objectURL;</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;There has been a problem with your fetch operation: &#x27;</span>, error.<span class="property">message</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON()"></a>JSON()</h3><p>這個 method 也是 async ，會 reuren Promise Object</p>
+<p>.json() 方法接讀取Response Object直到完成。此method會return一個Promise，</p>
+<p>該Promise以將body text解析為 JSON。</p>
+<p><strong>使用.json()就可以將fetch(URL)所回傳的Response Object內部的文本資料取出。</strong></p>
+<p>用 fetch() 得到的 HTTP Response </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">HTTP</span>/<span class="number">1.1</span> <span class="number">200</span> <span class="variable constant_">OK</span></span><br><span class="line"><span class="title class_">Content</span>-<span class="title class_">Length</span>: <span class="number">300</span></span><br><span class="line"><span class="title class_">Content</span>-<span class="title class_">Type</span>: text/json; charset=<span class="variable constant_">UTF</span>-<span class="number">8</span></span><br><span class="line"> </span><br><span class="line">[&#123;<span class="attr">name</span>: <span class="string">&quot;bake beans&quot;</span>, <span class="attr">price</span>: <span class="number">0.4</span>, <span class="attr">image</span>:<span class="string">&quot;beans.jpg&quot;</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">&quot;hot dogs&quot;</span>, <span class="attr">price</span>: <span class="number">1.99</span>, <span class="attr">image</span>:<span class="string">&quot;hotdogs.jpg&quot;</span>&#125;, ...]</span><br></pre></td></tr></table></figure>
+
+<p>這個 HTTP Response 會被 JavaScript 製作成 「Response Object」</p>
+<p>但我們只能看到跟Header有關的資訊，例如status 200、okay是true等等，而無法看到HTTP Response中的message section的數據。</p>
+<p>我們需要使用JavaScript中Response Object的.json() method</p>
+<p>將message section中的文字轉成JSON格式後，才能夠使用。這就是.json()的目的。</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/055d36bf-a32f-458f-957e-f91d6af71fa0/2023-03-04_20-16-59-bd94db907695dffaa154cd01e21ac530.png" alt="2023-03-04_20-16-59-bd94db907695dffaa154cd01e21ac530.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```jsx</span><br><span class="line">let fetchPromise = fetch(</span><br><span class="line">  &quot;https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json&quot;</span><br><span class="line">);</span><br><span class="line">  // 把 response 變成 JSON</span><br><span class="line">  // .json () method is also async</span><br><span class="line">  // return Promise object</span><br><span class="line">  //let jsonPromise = response.json(); 這樣寫不對</span><br><span class="line">  //console.log(jsonPromise); //status pending</span><br><span class="line">fetchPromise.then((response) =&gt; &#123;</span><br><span class="line">  response.json().then((data) =&gt; &#123;// 因為是async 所以then要加在Json後面</span><br><span class="line">    console.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">//會得到下圖</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23630725-eef4-4016-98c2-ba9fd1635850/Untitled.png" alt="Untitled"></p>
+<p>對一個promise來說 .then() 完成後，可以在繼續 .then()<br>會變成傳說中的波動拳 callback hell</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/26ba49e3-69f6-436e-a068-f0afe9616e37/Untitled.png" alt="Untitled"></p>
+<h3 id="在-Promise-中-使用-fetchPromise-可以連續寫"><a href="#在-Promise-中-使用-fetchPromise-可以連續寫" class="headerlink" title="在 Promise 中 使用 fetchPromise 可以連續寫"></a>在 Promise 中 使用 fetchPromise 可以連續寫</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fetchPromise = <span class="title function_">fetch</span>(</span><br><span class="line">  <span class="string">&quot;https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json&quot;</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fetchPromise</span></span><br><span class="line"><span class="comment">.then((response) =&gt; &#123;</span></span><br><span class="line"><span class="comment">  return response.json();</span></span><br><span class="line"><span class="comment">&#125;).then((data) =&gt; &#123;</span></span><br><span class="line"><span class="comment">  console.log(data)</span></span><br><span class="line"><span class="comment">&#125;)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//因為 arrow function 省略 &#123;&#125; 會自動 return 所以可以簡寫</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">fetchPromise</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> response.<span class="title function_">json</span>())</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Catching-Error"><a href="#Catching-Error" class="headerlink" title="Catching Error"></a>Catching Error</h3><p>Promise 物件提供 catch() 方法，跟then()很像，在 async 失敗時會自動被JS 調用</p>
+<p>.catch() 放在最後面，不管前面哪一個 .then() 失敗都會執行</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fetchPromise</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>();</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Combining-Multiple-Promises"><a href="#Combining-Multiple-Promises" class="headerlink" title="Combining Multiple Promises"></a>Combining Multiple Promises</h3><p>很多 .then() .then() 串再一起，每一個 Promise 都會互相依賴，前項 .then()  callbackFn 的 return 值，都會被帶入後項參數。</p>
+<p>但有時需要啟動所有 Promise 且不互相依賴，全部 fulfulled 時收到通知，這時候就可以用 Promise.all() ，他接受一個array並返回一個 promise</p>
+<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>(); <span class="comment">//返回的 Promise 是</span></span><br><span class="line">fulfilled</span><br><span class="line">rejected <span class="comment">//只要有一個失敗全部失敗</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fetchPromise1 = <span class="title function_">fetch</span>(</span><br><span class="line">  <span class="string">&quot;https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json&quot;</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> fetchPromise2 = <span class="title function_">fetch</span>(</span><br><span class="line">  <span class="string">&quot;https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found&quot;</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> fetchPromise3 = <span class="title function_">fetch</span>(</span><br><span class="line">  <span class="string">&quot;https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json&quot;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>([fetchPromise1, fetchPromise2, fetchPromise3])</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">Response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">Response</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">url</span>, response.<span class="property">status</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//404 不算錯誤</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36b02600-5d4b-4157-aae9-52a40453b0f3/Untitled.png" alt="Untitled"></p>
+<h3 id="Promise-any"><a href="#Promise-any" class="headerlink" title="Promise.any()"></a>Promise.any()</h3><p>執行一組 Promise 的任何一個，不關心哪一個，就可以使用 Promise.any()<br>只要Promise array 任何一個變成 fulfulled 就執行 .then，所有 promise 被拒絕就 .catch()</p>
+<h3 id="Async-amp-Await-關鍵字"><a href="#Async-amp-Await-關鍵字" class="headerlink" title="Async &amp; Await 關鍵字"></a>Async &amp; Await 關鍵字</h3><p>async 用來創建非同步函式</p>
+<p>await 會暫停函式執行，值到 promise 解決</p>
+<p>提供更簡單的方式來處理基於 async promise 的 code</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//This an async function</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在調用會 return Promise 的函數之前使用 awit 關鍵字，使該點等待 Promise 被 fulfilled 或 rejected </p>
+<p>await 關鍵字只能放在 asyne function 內部 </p>
+<p>JS 設定 所有的 async function 都一定會 return 一個 Promise Object ，不論在 async function return 什麼值，Promise 變成 fulfilled時，執行 .then() callback function 內部自動變成參數</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">Fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> promise = <span class="title class_">Fn</span>(); <span class="comment">//在這裡的 promise 不是 10 而是一個 promise object</span></span><br><span class="line">promise.<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(data) &#125;) <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// async return promise object</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">myFunc</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="title function_">myFunc</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e564a6c1-bd82-4320-a20e-cb1b15f07d68/Untitled.png" alt="Untitled"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 要 + .then()才會有值</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">myFunc</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="title function_">myFunc</span>();</span><br><span class="line">result.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>)=&gt;</span><span class="variable language_">console</span>.<span class="title function_">log</span>(result));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9590670c-24e0-4b86-9833-2b18d68c39fc/Untitled.png" alt="Untitled"></p>
+<p>請注意，若程式碼是 </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">fetchSomething</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="variable constant_">URL</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原本 fetch() 一定會 retrun Promise<br>但因為調用了 await fetch()，response 並不會是一個 Promise !<br>而是獲得 URL 回應完整的 Response Object<br>有點像 async async 負負得正，這段程式碼變成像是 synchrounous </p>
+<p>( 像同步，但本質還是非同步  )</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">fetchProduct</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> response = <span class="keyword">await</span> fetch (<span class="string">&quot;https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json&quot;</span></span><br><span class="line">    );</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetchProduct</span>()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0b81a949-1a0f-4f59-bb81-b10abaddbf64/Untitled.png" alt="Untitled"></p>
+<p>這個語法跟 fetch() .then()、.catch() 是可以互通的</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">fetchProduct</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch (</span><br><span class="line">      <span class="string">&quot;https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">  &#125;<span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="title function_">fetchProduct</span>()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/92c451b7-d3d5-4369-807a-f192b4cca5bb/Untitled.png" alt="Untitled"></p>
+<h3 id="Node-js-Event-Loop"><a href="#Node-js-Event-Loop" class="headerlink" title="Node.js Event Loop"></a>Node.js Event Loop</h3><p>在 Node.js 有需要等待結果，都會被放在 Event loop 中等待</p>
+<p>Node.js 可以保持忙碌且高效率 ( 和瀏覽器的 Event Loop 不盡相同 ) </p>
+<p>Queue 和 Stack 是相似但原則相反的資料結構</p>
+<p>Queue 是列隊式結構，先進先出 FIFO ( First In First Out )</p>
+<p>Stack  是 堆狀結構，後進先出 LIFO  ( Last In First Out )</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/578c9ecf-ad9c-4c1d-8241-c6c3695a3668/Untitled.png" alt="Untitled"></p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f03a26c8-ed05-41bd-9728-8caadf6ce262/Untitled.png" alt="Untitled"></p>
+<h3 id="Node-js-Event-Loop-的-Queue"><a href="#Node-js-Event-Loop-的-Queue" class="headerlink" title="Node.js Event Loop 的 Queue"></a>Node.js Event Loop 的 Queue</h3><ol>
+<li><p>優先級別 : nextTick queue 、micro Task Queue</p>
+<p> 給定 Promise.nextTick ( callbackFn ) 都會被放入這個 queue</p>
+</li>
+<li><p>普通級別 : macrotask queue ( task queue ) </p>
+<p> 當 Promise Object 由 Pending 轉成 fulfilled 、 rejected 所執行的 callback 會被排在這個 Queue</p>
+<p> 又有六種 :<br> timers :</p>
+<p> setTimeout ( callbackFn ) 跟 setInterval ( callback) 設定時間倒數完畢會被執行</p>
+<p> pending callbacks :</p>
+<p> 給作業系統座使用 socket 連線、傳輸控制協定層</p>
+<p> Idle, prepare :</p>
+<p> Node.js 內部使用的</p>
+<p> polling :</p>
+<p> 當 I&#x2F;O 有callback function 使用的 queue ( 印表機等… )</p>
+<p> check</p>
+<p> setImmediate() 使用的</p>
+<p> close callback</p>
+<p> socket 關閉用</p>
+<h3 id="Node-js-運行程式碼的順序"><a href="#Node-js-運行程式碼的順序" class="headerlink" title="Node.js 運行程式碼的順序"></a>Node.js 運行程式碼的順序</h3><ol>
+<li>整份程式碼先掃描一次</li>
+<li>遇到異步函式，將callback function 分配到各歸屬的 queue</li>
+<li>整份code完成掃描後，Node,js會重複 event loop 循環可能尚未觸發的 callback</li>
+<li>queue 可執行 把內部 callback 先進先出</li>
+<li>有 nextTick Queue 可以執行，優先清空</li>
+<li>microtask Queue 同上</li>
+</ol>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;start&quot;</span>);</span><br><span class="line"></span><br><span class="line">process.<span class="title function_">nextTick</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;nextTick1&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout&quot;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 是 sync function</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span> (<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;promise&quot;</span>);</span><br><span class="line">  <span class="title function_">resolve</span>(<span class="string">&quot;resolve&quot;</span>);</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;promise then&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// IIFE</span></span><br><span class="line">(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;async&quot;</span>);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setImmediate&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.<span class="title function_">nextTick</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;nextTick2&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;end&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//運行結果 </span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">start</span></span><br><span class="line"><span class="comment">promise</span></span><br><span class="line"><span class="comment">async</span></span><br><span class="line"><span class="comment">end</span></span><br><span class="line"><span class="comment">nextTick1</span></span><br><span class="line"><span class="comment">nextTick2</span></span><br><span class="line"><span class="comment">promise then</span></span><br><span class="line"><span class="comment">setTimeout</span></span><br><span class="line"><span class="comment">setImmediate</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="製作-mutex"><a href="#製作-mutex" class="headerlink" title="製作 mutex"></a>製作 mutex</h3><p> <img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb5ab7b7-5f75-4a43-b6ea-e73bdad54b81/Untitled.png" alt="Untitled"></p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mutex = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>();</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">doingSomethingCritical</span>(<span class="params"></span>) &#123;</span><br><span class="line">	mutex = mutex.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">//do .. stuff on the critiical path</span></span><br><span class="line">&#125;) .<span class="title function_">catch</span>() =&gt; &#123;</span><br><span class="line">	<span class="comment">//manage errors on the critical path</span></span><br><span class="line">)</span><br><span class="line"> <span class="keyword">return</span> mutex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> balance = <span class="number">0</span>; <span class="comment">// shared resource</span></span><br><span class="line"><span class="keyword">let</span> mutex = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(); <span class="comment">// return fulfilled Promise object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">randomDelay</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// return value is a Promise</span></span><br><span class="line">  <span class="comment">// and the time for this promise changing from pending to fulfilled</span></span><br><span class="line">  <span class="comment">// is random (0s-0.1s)</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">100</span>));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">loadBalance</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">randomDelay</span>(); <span class="comment">// 等個隨機的0s~0.1s</span></span><br><span class="line">  <span class="keyword">return</span> balance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">saveBalance</span>(<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">randomDelay</span>();</span><br><span class="line">  balance = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">sellGrapes</span>(<span class="params"></span>) &#123;</span><br><span class="line">  mutex = mutex</span><br><span class="line">    .<span class="title function_">then</span>(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> balance = <span class="keyword">await</span> <span class="title function_">loadBalance</span>();</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`賣葡萄前，帳戶金額為: <span class="subst">$&#123;balance&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">const</span> newBalance = balance + <span class="number">50</span>;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">saveBalance</span>(newBalance);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`賣葡萄後，帳戶金額為: <span class="subst">$&#123;newBalance&#125;</span>`</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="keyword">return</span> mutex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">sellOlives</span>(<span class="params"></span>) &#123;</span><br><span class="line">  mutex = mutex</span><br><span class="line">    .<span class="title function_">then</span>(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> balance = <span class="keyword">await</span> <span class="title function_">loadBalance</span>();</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`賣橄欖前，帳戶金額為: <span class="subst">$&#123;balance&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">const</span> newBalance = balance + <span class="number">50</span>;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">saveBalance</span>(newBalance);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`賣橄欖後，帳戶金額為: <span class="subst">$&#123;newBalance&#125;</span>`</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="keyword">return</span> mutex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>([</span><br><span class="line">    <span class="title function_">sellGrapes</span>(),</span><br><span class="line">    <span class="title function_">sellOlives</span>(),</span><br><span class="line">    <span class="title function_">sellOlives</span>(),</span><br><span class="line">    <span class="title function_">sellOlives</span>(),</span><br><span class="line">    <span class="title function_">sellGrapes</span>(),</span><br><span class="line">    <span class="title function_">sellGrapes</span>(),</span><br><span class="line">    <span class="title function_">sellGrapes</span>(),</span><br><span class="line">  ]);</span><br><span class="line">  <span class="keyword">const</span> balance = <span class="keyword">await</span> <span class="title function_">loadBalance</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`賣葡萄與橄欖後的帳戶金額是$<span class="subst">$&#123;balance&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="Promise-based-API"><a href="#Promise-based-API" class="headerlink" title="Promise based API"></a>Promise based API</h3><p> 算是做一個API</p>
+<p> API ( Application Programming Interface ) 的中文是應用程式介面</p>
+<p> Application  是指任何具有功能的程式，Interface 接口，可以被認為是兩個程式之間的服務契約，這套標準就是 API </p>
+<p> 使用 API 需要知道三件事 : </p>
+<ol>
+<li>API 上面要求提供什麼資料才能溝通 ?</li>
+<li>成功回復</li>
+<li>失敗回復</li>
+</ol>
+<p> 若我們想要製作一個 API ，裡面的 function 會 return promise object 使得調用這些 function 時，可以使用 .then()、.catch() 等 … ，我們必須使用 Promise class 的 constructor</p>
+<p> Promise constructor 接受一個函數作為參數，稱為 executor</p>
+<p> executor 有兩個參數，都是函數成功被調用的 resolve、失敗被調用的 reject  這兩個的參數可以是任何 data type</p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">alarm</span>(<span class="params">person, delay</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (delay &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="title function_">reject</span>(<span class="string">&quot;delay不能小於 0&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(person + <span class="string">&quot;起床&quot;</span>);</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> promiseObject = <span class="title function_">alarm</span>(name.<span class="property">value</span>, delay.<span class="property">value</span>);</span><br><span class="line">  promiseObject.<span class="title function_">then</span>(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = message;</span><br><span class="line">  &#125;).<span class="title function_">catch</span>( <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = e;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">alarm</span>(<span class="params">person, delay</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = person + <span class="string">&quot;起床!!&quot;</span>;</span><br><span class="line">  &#125;, delay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">alarm</span>(name.<span class="property">value</span>, delay.<span class="property">value</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="title class_">Promise</span> object</span><br><span class="line"><span class="comment">//pending 的 delay 秒 =&gt; fulfilled</span></span><br><span class="line"><span class="comment">//若 delay &lt; 0 返回 reject</span></span><br></pre></td></tr></table></figure>
+
+<p>共用鬧鐘 寫法差別 ( 就是 Promise-based API )</p>
+<p>共用 html </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-Hant-TW&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">id</span>=<span class="string">&quot;delay&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;set-alarm&quot;</span>&gt;</span>設定鬧鐘<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>寫法一</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#name&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> delay = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#delay&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> button = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#set-alarm&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> output = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#output&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">alarm</span>(<span class="params">person, delay</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = person + <span class="string">&quot;起床!!&quot;</span>;</span><br><span class="line">  &#125;, delay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// return Promise object</span></span><br><span class="line"><span class="comment">// pending 的 delay 秒 =&gt; fulfilled</span></span><br><span class="line"><span class="comment">// 若 delay &lt; 0 返回 reject</span></span><br><span class="line"></span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> promiseObject = <span class="title function_">alarm</span>(name.<span class="property">value</span>, delay.<span class="property">value</span>);</span><br><span class="line">  promiseObject.<span class="title function_">then</span>(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = message;</span><br><span class="line">  &#125;).<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = e;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>寫法二</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#name&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> delay = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#delay&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> button = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#set-alarm&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> output = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#output&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">alarm</span>(<span class="params">person, delay</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (delay &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="title function_">reject</span>(<span class="string">&quot;delay不能小於 0&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(person + <span class="string">&quot;起床&quot;</span>);</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> <span class="title function_">alarm</span>(name.<span class="property">value</span>, delay.<span class="property">value</span>)</span><br><span class="line">    output.<span class="property">innerHTML</span> = result;</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    output.<span class="property">innerHTML</span> = e;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>笑話 API 執行的樣子</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-Hant-TW&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;new-joke&quot;</span>&gt;</span>新增笑話<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> output = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#output&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> <span class="title function_">fetch</span>(</span><br><span class="line">      <span class="string">&quot;https://v2.jokeapi.dev/joke/Programming?type=single&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> result.<span class="title function_">json</span>();</span><br><span class="line">    output.<span class="property">innerText</span> += data.<span class="property">joke</span> + <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">joke</span>); <span class="comment">//只剩下笑話</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> button = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#new-joke&quot;</span>);</span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">hello</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Execution-Context-執行環境"><a href="#Execution-Context-執行環境" class="headerlink" title="Execution Context 執行環境"></a>Execution Context 執行環境</h2><p>當 JS 在執行 script 時，會創建 2 種 exencution contexts (執行環境)</p>
+<ol>
+<li>全域執行環境 ( Global Execution Context  ) GEC</li>
+<li>函式執行環境 ( Function Ececution Coontxet ) FEC</li>
+</ol>
+<p>每種 execition context 都包含兩個階段 : 創造階段 creation phase、執行階段 execution phase</p>
+<h3 id="全域執行環境"><a href="#全域執行環境" class="headerlink" title="全域執行環境"></a>全域執行環境</h3><p>當第一次執行 JS 程式碼時，JS 引擎會創造第一種 exencution contexts ，叫 Global Execution Context 會先進入  creation phase</p>
+<ol>
+<li>創建 global object ( 瀏覽器的 windows object、Node.js global object )</li>
+<li>建立 scope</li>
+<li>創建 this 關鍵字，並綁定 global object</li>
+<li>將 variables 變數、class 類、function 函式分配至記憶體 ( hosting 步驟 )</li>
+</ol>
+<p>creation phase 結束後，會進入 execution phase</p>
+<aside>
+💡 function 會在 execution phase 先被做好，所以呼叫時不管放哪裡都可以
+
+</aside>
+
+<ol>
+<li>逐行 line by line 執行 JS 程式碼</li>
+<li>遇到遞迴時，使用 call stack 排定工作順序</li>
+</ol>
+<h3 id="函式執行環境"><a href="#函式執行環境" class="headerlink" title="函式執行環境"></a>函式執行環境</h3><p>每次的 function call ， JS 引擎也會創造類似 function execution context，一樣有creation phase、execution phase  差別在於，函式執行環境創建 argument object。</p>
+<p>函式執行環境的 creatuon phase</p>
+<ol>
+<li>創建 argument object</li>
+<li>建立 scope ( 依照 closure 準則 )</li>
+<li>創建 this </li>
+<li>將 varibles、class、function 分配至記憶體 ( hositing 步驟 )</li>
+</ol>
+<p>進入 execution phase</p>
+<ol>
+<li>逐行 line by line 執行 JS 程式碼</li>
+<li>遇到遞迴時，使用 call stack 排定工作順序</li>
+</ol>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42d0b825-c95e-443d-99e5-13305d3fe8d9/Untitled.png" alt="Untitled"></p>
+<h3 id="Constructor-Function-建構函數"><a href="#Constructor-Function-建構函數" class="headerlink" title="Constructor Function 建構函數"></a>Constructor Function 建構函數</h3><p>通常首字母為大寫，用來區別</p>
+<p>並用 this 引用來即將被創建的新對象</p>
+<p>製作出來的每個物件都是獨立的，會單獨佔據記憶體的位置</p>
+<p>用這個寫程式碼容易撰寫且好維護</p>
+<p>寫的好可以節省記憶體空間 ( 共用 attributes 、 methods</p>
+<p>在函式執行環境的 creation phase 當中，每個 function 都有創建 this 關鍵字這個步驟，this 指目前正在執行 method 的 object ，如果被調用的 function 是常規 function 而非 method ，那 this 會被指向 global object ( 因為 closure 會向外找 this 這個關鍵字 ) </p>
+<p>如果調用 function 使用 new 關鍵字，則 function 會被當成 constructor function 來使用 </p>
+<ol>
+<li>有寫 new 的 function 會被認定為 constructor function</li>
+<li>RAM 會預留空間給這個 { } 新製作的物件</li>
+<li>this 會指向新製作的物件</li>
+<li>會 return</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通常用大寫開頭</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wilson = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;wilson&quot;</span>,<span class="number">27</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(wilson); <span class="comment">//Person &#123;name:&#x27;wilson&#x27; , age: 27&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/188c37bf-1cf9-4423-b0b6-fcd14f185225/Untitled.png" alt="Untitled"></p>
+<h3 id="Hoisting-提升"><a href="#Hoisting-提升" class="headerlink" title="Hoisting 提升"></a>Hoisting 提升</h3><p>JS 的 Hoistion 是指 JS 引擎在執行 code 之前，將 function 、variables、class 的 declaration 移動到範圍頂部的過程。</p>
+<p>注意 : </p>
+<p>被宣告的 function 不算，他只會先被當變數往上提升，等 JS 往下執行時 function 才會被執行</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>) &#123;</span><br><span class="line">	conlog.<span class="title function_">loe</span>(<span class="string">&quot;hello  &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><p>Scope 是指在當前的 exceution context中，變數的可訪問性 accessiblility ，他能被訪問的範圍是 scpoe ，JS 有以下幾種 scope</p>
+<ol>
+<li>Globel scope : 全域變數</li>
+<li>Module scope : 網頁後端才會使用到</li>
+<li>Function scope : 在 function 內宣告的變數，只活在 function 中</li>
+<li>用 let、const 去宣告的 Block scope : 在 { } 中被稱為 block，常見在 loop 、if</li>
+</ol>
+<h3 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a>Closure</h3><p>Closure 的規則是</p>
+<ol>
+<li>從 Arhument Object 、 Local varibale { } 內的變數、和內部的變數</li>
+<li>若從 1. 找不到，則從記憶體被分配給函數的位置開始尋找</li>
+<li>若在目前的 ecectyion context找不到，就繼續往外層找，往全域一層一層的去找</li>
+</ol>
+<h3 id="在-function-中去執行另外一個-function-就會-Call-Stack"><a href="#在-function-中去執行另外一個-function-就會-Call-Stack" class="headerlink" title="在 function 中去執行另外一個 function 就會 Call Stack"></a>在 function 中去執行另外一個 function 就會 Call Stack</h3><p>是 JS 引擎追蹤，再調用多個函數的程式碼中位置的機制 ( 資料結構的一種 )</p>
+<p>Call Stack 幫助我們知道 JS 引擎 當前在正運行什麼函式，以及從函數中調用了甚麼函式</p>
+<p>Stack 是堆的意思，特性是後進先出 LIFO </p>
+<p>當 f2 執行完畢後，JS 引擎會把 f2 從 call stack 中取出，並從 f1 停止的位置繼續執行</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="property">log</span> (<span class="string">&quot;start&quot;</span>);</span><br><span class="line">	<span class="title function_">f2</span>()</span><br><span class="line">	<span class="variable language_">console</span>.<span class="property">log</span> (<span class="string">&quot;end&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f2</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="property">log</span> (<span class="string">&quot;2start&quot;</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="property">log</span> (<span class="string">&quot;2end&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">f1</span>()</span><br><span class="line"><span class="comment">//start</span></span><br><span class="line"><span class="comment">//2start</span></span><br><span class="line"><span class="comment">//2end</span></span><br><span class="line"><span class="comment">//end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 call stack 堆疊過高，高出記憶體分配給 call stack 最大空間，會導致 stack overflow 溢出的問題 </p>
+<p>code 中 如果 function 中執行自己的 function 叫做遞迴 stack overflow</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">	consloe.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">	<span class="title function_">f</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">f</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Recursion-遞迴"><a href="#Recursion-遞迴" class="headerlink" title="Recursion 遞迴"></a>Recursion 遞迴</h3><p>在數學中，遞迴 recurrence relation 是定義數列的方式: 數列的每一項定義為前面項的函數，在 code 中，遞迴演算法有類似的概念。</p>
+<p>在遞迴演算法中，需要定義一個 base case 避免 call stack 變成 stack oberflow</p>
+<ol>
+<li>A base S(1) &#x3D; 2</li>
+<li>S(n) &#x3D; 2*S(n-1)f or n≥2</li>
+</ol>
+<p>由上面規則可知，S 會是等比數列 2,4,8,16,32</p>
+<h3 id="費波那契數列"><a href="#費波那契數列" class="headerlink" title="費波那契數列"></a>費波那契數列</h3><h3 id="Inheritance-繼承"><a href="#Inheritance-繼承" class="headerlink" title="Inheritance 繼承"></a>Inheritance 繼承</h3><p>JS，每個物件都有一個 private attribute 叫做 _<em>proto</em>_，若物件A的 <em>proto</em> 屬性值設物件B，則物件A會繼承物件B所有 attrubutes、methods</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> wilson = &#123;</span><br><span class="line">	name = <span class="string">&#x27;wilson&#x27;</span></span><br><span class="line">	say <span class="title class_">Hi</span>() &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;你好&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mike = &#123;</span><br><span class="line">	<span class="attr">_proto_</span>: whilson;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mike.<span class="property">name</span>);</span><br><span class="line">mike.<span class="title function_">sayHi</span>();</span><br></pre></td></tr></table></figure>
+
+<p>每個 Constructor Function 都可以設定 prototype 屬性 ( 本質是一個 empty object ) </p>
+<p>所有從 Constructor Function 製作出來的物件，其 <em>proto</em> 屬性都自動指向 Constructor Function的 prototype</p>
+<p>我們可以根據這個特性，節省記憶體空間</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> wilson = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;wilson&quot;</span>,<span class="number">27</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>) <span class="comment">// &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//這叫做 Prototpye Inheritance </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(wilson.<span class="property">_proto_</span> == <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(wilson.<span class="property">hello</span> == mike.<span class="property">hello</span>)<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">hello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">type</span> = <span class="string">&#x27;人類&#x27;</span> </span><br><span class="line"><span class="keyword">let</span> mike = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;mike&quot;</span>,<span class="number">22</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mike.<span class="property">type</span>); <span class="comment">// 人類</span></span><br></pre></td></tr></table></figure>
+
+<p>設定 A.prototype &#x3D; Object.create(B.prototype)</p>
+<p>不能寫 A.prototype  &#x3D; B.prototype  <strong>(</strong> 因為它們是 reference data type ) </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">hello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Student</span>(<span class="params">name, age, major, grade</span>) &#123;</span><br><span class="line">	<span class="title class_">Person</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>) <span class="comment">//this他會指定Student做的物件</span></span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">grade</span> = grade;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">study</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;正在努力讀&#x27;</span> + <span class="variable language_">this</span>.<span class="property">major</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mike = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;mike&quot;</span>, <span class="number">26</span>, <span class="string">&#x27;chinese&#x27;</span>, <span class="number">2.5</span>)</span><br><span class="line"><span class="comment">//繼承物件屬性後就可以執行 say hi</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-Chain"><a href="#Prototype-Chain" class="headerlink" title="Prototype Chain"></a>Prototype Chain</h3><p>JS 內建的資料類型都有繼承其他的 prototype，不斷往上連結的結果就叫做 Prototype chain</p>
+<h3 id="Function-Methods"><a href="#Function-Methods" class="headerlink" title="Function Methods"></a>Function Methods</h3><p>在 JS 中 function 是一個特別的物件 object，Function.prototype 有 3 種常見的 methods </p>
+<ol>
+<li>function.bind (obj) : 將function 的 this 綁定為 obj</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Lisa</span> = &#123;</span><br><span class="line">	name = <span class="string">&#x27;Lisa&#x27;</span></span><br><span class="line">	age = <span class="number">33</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getAge</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">age</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bind 會綁定另外一個 function</span></span><br><span class="line"><span class="keyword">let</span> newFunction = getAge.<span class="title function_">bind</span>(<span class="title class_">Lisa</span>)</span><br><span class="line">consoloe.<span class="title function_">log</span>(<span class="title function_">newFunction</span>()) <span class="comment">//33</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>function.call(obj, argm &#x2F;* …., *&#x2F; argN ) 使用obj 當作 this 值來調用函數</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Lisa</span> = &#123;</span><br><span class="line">	name = <span class="string">&#x27;Lisa&#x27;</span></span><br><span class="line">	age = <span class="number">33</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getAge</span>(<span class="params">country, height</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;來自&#x27;</span> + conutry + <span class="string">&#x27;身高為&#x27;</span> + height + <span class="string">&#x27;cm&#x27;</span>) </span><br><span class="line">	<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">age</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">get.<span class="title function_">call</span>(<span class="title class_">Lisa</span>,<span class="string">&#x27;台灣&#x27;</span>,<span class="number">160</span>) <span class="comment">//Lisa來自台灣，身高為160cm</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>function.apply(obj,argsArrat) 與 call 相同，但他的參數是 array</li>
+</ol>
+<h3 id="Class-類別-ES6-新增的語法糖-建立新物件的模板"><a href="#Class-類別-ES6-新增的語法糖-建立新物件的模板" class="headerlink" title="Class  類別  : ES6 新增的語法糖 建立新物件的模板"></a>Class  類別  : ES6 新增的語法糖 建立新物件的模板</h3><p>ECMA Script 2015 引入 JavaScript Class 語法，可以用來取代 Constructor Function ，class 基於 JS 現有的 prototype inheritance 的法糖。</p>
+<p>若一個 Constructor Function 要繼承另一個 Constructor 的 prototype 則可以使用 extends 關鍵字。</p>
+<p>Static 關鍵字是用於給定class的所有物件一個共享的相同 attriubute 或 method ，Static 所設定的 attriubute 和 method 屬於 class 本身，不屬於由 class 製作出的物件。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Student</span>(<span class="params">name, age, major</span>) &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span> )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---- <span class="keyword">class</span> 用語法糖改寫 ----</span><br><span class="line"><span class="comment">//第一個字母通常要大寫</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">name, age, major</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	sayHi () &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">hello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Student</span>(<span class="params">name, age, major, grade</span>) &#123;</span><br><span class="line">	<span class="title class_">Person</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>) <span class="comment">//this他會指定Student做的物件</span></span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">grade</span> = grade;</span><br><span class="line">&#125;</span><br><span class="line">------ 用 <span class="keyword">extends</span> 改寫 -------</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">sayHi</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//super 離散數學可以看到他</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">name, age, major, grade</span>) &#123;</span><br><span class="line">		<span class="variable language_">super</span>(name, age);</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">grade</span> = grage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">study</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;正在努力讀&#x27;</span> + <span class="variable language_">this</span>.<span class="property">major</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mike = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;mike&quot;</span>, <span class="number">26</span>, <span class="string">&#x27;chinese&#x27;</span>, <span class="number">2.5</span>);</span><br><span class="line">mike.<span class="title function_">sayHi</span>();</span><br><span class="line">mike.<span class="title function_">study</span>();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Student</span>(<span class="params">name, age, major</span>) &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="property">exampleProperty</span> = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="property">exampleFunction</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;這是沒有功能的function&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Student</span>.<span class="title function_">exampleFunction</span>();</span><br><span class="line"><span class="title class_">Student</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mike = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;mike&quot;</span>, <span class="number">26</span>, <span class="string">&#x27;chinese&#x27;</span>, <span class="number">2.5</span>);</span><br><span class="line">mike.<span class="title function_">sayHi</span>() <span class="comment">//可以</span></span><br><span class="line">mike.<span class="title function_">exampleProperty</span>() <span class="comment">//不能運行</span></span><br><span class="line"></span><br><span class="line">-------- 改寫 --------</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">	<span class="keyword">static</span> exampleProperty = <span class="number">10</span>;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">name, age, major</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">major</span> = major;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;說你好&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="title function_">exampleFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;這是一個沒有特別功能的fun&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mike = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;mike&quot;</span>, <span class="number">26</span>, <span class="string">&#x27;chinese&#x27;</span>, <span class="number">2.5</span>);</span><br><span class="line">mike.<span class="title function_">exampleFunction</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Static-Methods-amp-Attributes"><a href="#Static-Methods-amp-Attributes" class="headerlink" title="Static Methods &amp; Attributes"></a>Static Methods &amp; Attributes</h3><p>靜態</p>
+<p>JS 內建的 class 有許多 static properties 靜態屬性 , static methods , instance properties, instance methods </p>
+<p>例如  : Array 的 Array.isArray() 就是 Array Class 的 static method，可用來確認某個資料是不是Array</p>
+<p>若用 typeof operator 確認 attay 的資料類型只能看到 objecct，若要確認變數是否為 array 就要用 Array.isArray()</p>
+<p>另一個例子，Math Class 所以的 properties 以及 methods 都是 static 、ex: Math.E、Math.floor()</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用物件導向來做很多圓型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> &#123; </span><br><span class="line">	<span class="comment">//用 circle class 來追蹤在這裏面做的圓所有的面積總和</span></span><br><span class="line">	<span class="keyword">static</span> allCircles = [];</span><br><span class="line"></span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">radius</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">radius</span> = radius;</span><br><span class="line">		allCircle.<span class="title function_">push</span>(<span class="variable language_">this</span>); <span class="comment">//每執行一次都在陣列塞一次</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">getArea</span>(<span class="params"></span>) &#123; <span class="comment">//算圓的面積</span></span><br><span class="line">		<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="property">PO</span> * <span class="variable language_">this</span>.<span class="property">radius</span> * <span class="variable language_">this</span>.<span class="property">radius</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="title function_">getPerimeter</span>(<span class="params"></span>) &#123; <span class="comment">//算圓半徑</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="variable language_">this</span>.<span class="property">redius</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// static</span></span><br><span class="line">	<span class="comment">// 去拿到圓面積的工具</span></span><br><span class="line">	<span class="keyword">static</span> <span class="title function_">getAreaFormule</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> 圓面積公式為 pi * r * r ;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//static method</span></span><br><span class="line">	<span class="comment">//拿到所有圓的面積的總和</span></span><br><span class="line">	<span class="keyword">static</span> <span class="title function_">grtAllCircleAreaTotal</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">let</span> total = <span class="number">0</span> ;</span><br><span class="line">		<span class="title class_">Circle</span>.<span class="property">allCircles</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">circle</span> =&gt;</span> &#123;</span><br><span class="line">			total += circle.<span class="title function_">getArea</span>();</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">//算完之後要塞回去變數裡面</span></span><br><span class="line">		<span class="keyword">return</span> total; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c1 = <span class="keyword">new</span> <span class="title class_">Circle</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c1.<span class="title function_">getArea</span>());</span><br><span class="line"><span class="keyword">let</span> c2 = <span class="keyword">new</span> <span class="title class_">Circle</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">let</span> c3 = <span class="keyword">new</span> <span class="title class_">Circle</span>(<span class="number">15</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Circle</span>.<span class="title function_">getAllCirclesAreaTotal</span>());</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"><i class="fa fa-tag"></i> html</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/13/CSS%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="prev" title="css 基礎筆記">
+      <i class="fa fa-chevron-left"></i> css 基礎筆記
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/13/User%20Snippet%20%E8%87%AA%E8%A8%82%E5%BF%AB%E6%8D%B7%E9%8D%B5/" rel="next" title="User Snippet 自訂快捷鍵">
+      User Snippet 自訂快捷鍵 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+<div>
+    <section id="comments" class="comments">
+    <style>
+        .utterances{max-width: 100%;}
+      </style>
+      <script src="https://utteranc.es/client.js"
+              repo="22aliang/22aliang.github.io"
+              issue-term="title"
+              label="💬"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+      </script>
+  </section>
+</div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScrtop-%E5%BC%95%E6%93%8E"><span class="nav-number"></span> <span class="nav-text">JavaScrtop 引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-%E9%A1%AF%E7%A4%BA%E5%8F%AF%E8%83%BD%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 顯示可能性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-%E8%AA%9E%E5%8F%A5Statements"><span class="nav-number">2.</span> <span class="nav-text">JavaScript 語句Statements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-%E7%9A%84let"><span class="nav-number">3.</span> <span class="nav-text">JavaScript 的let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-%E7%9A%84const"><span class="nav-number">4.</span> <span class="nav-text">JavaScript 的const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript%E9%81%8B%E7%AE%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">JavaScript運算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E9%81%8B%E7%AE%97%E5%AD%90Ternary-Operator"><span class="nav-number">6.</span> <span class="nav-text">三元運算子Ternary Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-Parameters-%E9%A0%90%E8%A8%AD%E5%8F%83%E6%95%B8"><span class="nav-number">7.</span> <span class="nav-text">Default Parameters 預設參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backtick-%E5%8F%8D%E5%BC%95%E8%99%9F"><span class="nav-number">8.</span> <span class="nav-text">Backtick 反引號  </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stong-Typing-%E5%BC%B7%E5%9E%8B%E5%88%A5-amp-Weak-Typing-%E5%BC%B1%E5%9E%8B%E5%88%A5"><span class="nav-number">9.</span> <span class="nav-text">Stong Typing 強型別 &amp; Weak Typing 弱型別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Typed-%E5%8B%95%E6%85%8B%E5%9E%8B%E5%88%A5-amp-Static-Typed-%E9%9D%9C%E6%85%8B%E5%9E%8B%E5%88%A5"><span class="nav-number">10.</span> <span class="nav-text">Dynamic Typed 動態型別 &amp; Static Typed 靜態型別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IIFE-Immediately-Invoked-Function-Expression-%E7%AB%8B%E5%8D%B3%E5%87%BD%E6%95%B8%E8%A1%A8%E9%81%94%E5%BC%8F"><span class="nav-number">11.</span> <span class="nav-text">IIFE Immediately Invoked Function Expression 立即函數表達式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Destructuring-Assignment-%E8%A7%A3%E6%A7%8B"><span class="nav-number">12.</span> <span class="nav-text">Destructuring Assignment 解構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch-Statement"><span class="nav-number">13.</span> <span class="nav-text">Switch Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86"><span class="nav-number">14.</span> <span class="nav-text">錯誤處理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instanceof-operator"><span class="nav-number">15.</span> <span class="nav-text">Instanceof operator</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Asynchronous-JavaScript-%E9%9D%9E%E5%90%8C%E6%AD%A5"><span class="nav-number"></span> <span class="nav-text">Asynchronous JavaScript 非同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">1.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E8%88%87%E7%95%B0%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">同步與異步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">3.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch-API"><span class="nav-number">4.</span> <span class="nav-text">fetch() API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E6%86%91%E8%AD%89-Credentials-%E7%9A%84-Request-%E7%94%A8%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">包含憑證 Credentials 的 Request 用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5-Fetch-%E6%9C%89%E6%B2%92%E6%9C%89%E6%88%90%E5%8A%9F"><span class="nav-number">6.</span> <span class="nav-text">檢查 Fetch() 有沒有成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">7.</span> <span class="nav-text">JSON()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-Promise-%E4%B8%AD-%E4%BD%BF%E7%94%A8-fetchPromise-%E5%8F%AF%E4%BB%A5%E9%80%A3%E7%BA%8C%E5%AF%AB"><span class="nav-number">8.</span> <span class="nav-text">在 Promise 中 使用 fetchPromise 可以連續寫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Catching-Error"><span class="nav-number">9.</span> <span class="nav-text">Catching Error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combining-Multiple-Promises"><span class="nav-number">10.</span> <span class="nav-text">Combining Multiple Promises</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-all"><span class="nav-number">11.</span> <span class="nav-text">Promise.all()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-any"><span class="nav-number">12.</span> <span class="nav-text">Promise.any()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Async-amp-Await-%E9%97%9C%E9%8D%B5%E5%AD%97"><span class="nav-number">13.</span> <span class="nav-text">Async &amp; Await 關鍵字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-Event-Loop"><span class="nav-number">14.</span> <span class="nav-text">Node.js Event Loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-Event-Loop-%E7%9A%84-Queue"><span class="nav-number">15.</span> <span class="nav-text">Node.js Event Loop 的 Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-%E9%81%8B%E8%A1%8C%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%9A%84%E9%A0%86%E5%BA%8F"><span class="nav-number">16.</span> <span class="nav-text">Node.js 運行程式碼的順序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%BD%E4%BD%9C-mutex"><span class="nav-number">17.</span> <span class="nav-text">製作 mutex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-based-API"><span class="nav-number">18.</span> <span class="nav-text">Promise based API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Execution-Context-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83"><span class="nav-number"></span> <span class="nav-text">Execution Context 執行環境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%9F%9F%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">全域執行環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">函式執行環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor-Function-%E5%BB%BA%E6%A7%8B%E5%87%BD%E6%95%B8"><span class="nav-number">3.</span> <span class="nav-text">Constructor Function 建構函數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hoisting-%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">Hoisting 提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scope"><span class="nav-number">5.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Closure"><span class="nav-number">6.</span> <span class="nav-text">Closure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-function-%E4%B8%AD%E5%8E%BB%E5%9F%B7%E8%A1%8C%E5%8F%A6%E5%A4%96%E4%B8%80%E5%80%8B-function-%E5%B0%B1%E6%9C%83-Call-Stack"><span class="nav-number">7.</span> <span class="nav-text">在 function 中去執行另外一個 function 就會 Call Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursion-%E9%81%9E%E8%BF%B4"><span class="nav-number">8.</span> <span class="nav-text">Recursion 遞迴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B2%BB%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B8%E5%88%97"><span class="nav-number">9.</span> <span class="nav-text">費波那契數列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inheritance-%E7%B9%BC%E6%89%BF"><span class="nav-number">10.</span> <span class="nav-text">Inheritance 繼承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-Chain"><span class="nav-number">11.</span> <span class="nav-text">Prototype Chain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-Methods"><span class="nav-number">12.</span> <span class="nav-text">Function Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-%E9%A1%9E%E5%88%A5-ES6-%E6%96%B0%E5%A2%9E%E7%9A%84%E8%AA%9E%E6%B3%95%E7%B3%96-%E5%BB%BA%E7%AB%8B%E6%96%B0%E7%89%A9%E4%BB%B6%E7%9A%84%E6%A8%A1%E6%9D%BF"><span class="nav-number">13.</span> <span class="nav-text">Class  類別  : ES6 新增的語法糖 建立新物件的模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-Methods-amp-Attributes"><span class="nav-number">14.</span> <span class="nav-text">Static Methods &amp; Attributes</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nell</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/22aliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;22aliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lisa5566407@gmail.com" title="E-Mail → mailto:lisa5566407@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nell</span>
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
