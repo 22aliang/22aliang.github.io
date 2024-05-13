@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
@@ -238,6 +238,24 @@
 
       
           <h3 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h3><p>利用 cmd 檢查</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java --version </span><br></pre></td></tr></table></figure>
+
+<p><strong>物件導向 JAVA SE</strong></p>
+<ul>
+<li>組件有屬性有行為<ul>
+<li>class 類型</li>
+<li>inheritance 繼承</li>
+<li>polymorphism 多型</li>
+</ul>
+</li>
+<li>常見操作<ul>
+<li>String 字串操作</li>
+<li>Collection 集合 (List , Set , Map)</li>
+<li>generic 泛型</li>
+</ul>
+</li>
+<li>可重複利用、可擴展</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/java%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98_2/" rel="contents">
@@ -314,6 +332,29 @@
           <h3 id="歷史"><a href="#歷史" class="headerlink" title="歷史"></a>歷史</h3><p><strong>J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言</strong></p>
 <p>1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本</p>
 <p>Java 語言只是 Java SE 的一部分</p>
+<ol>
+<li><p>Java EE ( 企業版 ) Java Platform, Enterprise Edition、Jakarta EE</p>
+</li>
+<li><p>Java SE ( 標準版 ) Java Platform, Standard Edition</p>
+<ul>
+<li><p><strong>JDK</strong> (Java SE Development Kit): 開發程式 javac、jaba…</p>
+</li>
+<li><p><strong>JRE</strong> (Java SE Runtime Environment): 執行環境</p>
+</li>
+<li><p><strong>JVM</strong> (Java Virtual Machine): 虛擬機</p>
+<p>  Java SE 17 規範在 <a target="_blank" rel="noopener" href="https://openjdk.org/projects/jdk/17/spec/">JSR 392</a> 文件中 <a target="_blank" rel="noopener" href="https://jcp.org/en/jsr/detail?id=392">文件</a></p>
+<p>  Java 8 ~ Java SE 17 之前的 Oracle 須付費</p>
+</li>
+</ul>
+</li>
+<li><p><del>Java ME ( 微型版 )</del>  幾乎沒人在用</p>
+</li>
+</ol>
+<p>Oracle JDK &amp; Open JDK 是兩個不同的 JDK，Open 是開源ㄉ、安全ㄉ</p>
+<p>現有 JDK 選擇很多，確認來源信任、授權、提供服務、支援時程等問題 !  </p>
+<p>JDK包含 javac、javadoc 等工具程式</p>
+<p>前面提到授權問題，就企業而言，LTS( long trem support ) 版本有 Java SE 8、11、17<br>Java 8 2014年很久惹，建議使用 Java SE 11 以後的 LTS 版本 </p>
+<p>p.s Java SE 17 開始，LTS釋出速度加快為2年一次</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/java%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98_1/" rel="contents">
@@ -388,6 +429,15 @@
 
       
           <h3 id="儲存格式"><a href="#儲存格式" class="headerlink" title="儲存格式"></a>儲存格式</h3><p>NoSQL 是用 object 來儲存</p>
+<h3 id="JSON-amp-BSON"><a href="#JSON-amp-BSON" class="headerlink" title="JSON &amp; BSON"></a>JSON &amp; BSON</h3><p>JavaScript Object Notation 通常被稱為 JSON </p>
+<p>JavaScript 物件是簡單的容器，其中一個 String key 可以映射到一個 value ( 可以是 number、string、function、object … )</p>
+<p>JSON 普遍性，成為 MongoDB 開發數據結構第一選擇</p>
+<p>但有幾個問題讓 JSON 不太適合使用在數據庫</p>
+<ol>
+<li>JSON 是純文字格式、解析慢</li>
+<li>JSON 高可讀性無法節省儲存空間</li>
+<li>JSON 僅支援有限數量基本 data types</li>
+<li>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/Mongodb%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="contents">
@@ -462,6 +512,10 @@
 
       
           <p>MVC ( Model View Controller ) 是軟體工程的一種 design pattern 軟體架構模式<br>把軟體系統分為三個基本部分 : 模型 Model 、視圖 View、控制器 Controller</p>
+<p>Contranster Controller ⇒ 調用 模型Model ⇒ Render View</p>
+<p>MVC模式目的是實現一種動態的程式設計，使後續修改、擴充簡化，並使程式某一部分重複利用</p>
+<p>透過對複雜度簡化、使結構更直覺，對自身基本分離同時，賦予各基本部分應有的功能</p>
+<p>現代網頁開發框架有 : Java Swing、ASP.NET、Ruby on Rails、Django、Laravel … 都是標準MVC design pattern</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/MVC%E6%A8%A1%E5%BC%8F%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="contents">
@@ -536,6 +590,86 @@
 
       
           <p>.gitigonre 檔案會讓檔案不被 git 追蹤</p>
+<table>
+<thead>
+<tr>
+<th>Git command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git init</td>
+<td>初始化 &#x2F; 開始追蹤 git</td>
+</tr>
+<tr>
+<td>git config –list</td>
+<td>在 git 裡面的設定</td>
+</tr>
+<tr>
+<td>git config –global <a target="_blank" rel="noopener" href="http://user.name/">http://user.name</a> “name”</td>
+<td>設定使用者</td>
+</tr>
+<tr>
+<td>git config –global <a target="_blank" rel="noopener" href="http://user.nameemail/">http://user.nameemail</a> “name”</td>
+<td>設定聯絡信箱</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>目前狀態</td>
+</tr>
+<tr>
+<td>git add .</td>
+<td>新增所有檔案到 Staging Area</td>
+</tr>
+<tr>
+<td>git add *.html</td>
+<td>新增所有 html 檔案到 Staging Area</td>
+</tr>
+<tr>
+<td>git commit -m “Creat : 新東東”</td>
+<td>新增 commit &amp; 他的訊息</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>git 日誌</td>
+</tr>
+<tr>
+<td>git branch branchName</td>
+<td>新增 branch 分支 ( Feature 新功能分支 )</td>
+</tr>
+<tr>
+<td>git checkout branchName</td>
+<td>切換 git branch 分支</td>
+</tr>
+<tr>
+<td>git merge branchName</td>
+<td>合併分支</td>
+</tr>
+<tr>
+<td>git remote add origin gitSSH</td>
+<td>增加遠端資料庫</td>
+</tr>
+<tr>
+<td>git push -u origin master</td>
+<td></td>
+</tr>
+<tr>
+<td>設定完後，之後可以省略成 git push</td>
+<td>從本地端推指定 branch 到 遠端</td>
+</tr>
+<tr>
+<td>git remote remove origin</td>
+<td>移除遠端資料庫的設定</td>
+</tr>
+<tr>
+<td>git pull gitSSH</td>
+<td>更新遠端新版本到本地端</td>
+</tr>
+<tr>
+<td>git clone gitSSH</td>
+<td>如過電腦上沒有就用 clone</td>
+</tr>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/Git%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="contents">
@@ -612,6 +746,21 @@
           <ul>
 <li>類別圖描述了系統的類別集合，類別的屬性和類別之間的關係。</li>
 </ul>
+<h2 id="使用規則"><a href="#使用規則" class="headerlink" title="使用規則"></a>使用規則</h2><h3 id="關聯-Association"><a href="#關聯-Association" class="headerlink" title="關聯 (Association)"></a><strong>關聯 (Association)</strong></h3><blockquote>
+<p><strong>以實線箭頭表示。</strong></p>
+</blockquote>
+<p>關聯關係使一個類別知道另外一個類別的屬性和方法；<br>通常含有「知道」、「瞭解」的含義。</p>
+<ul>
+<li>貓咪<strong>知道</strong>天氣情況</li>
+</ul>
+<h3 id="實作-Implementation"><a href="#實作-Implementation" class="headerlink" title="實作 (Implementation)"></a><strong>實作 (Implementation)</strong></h3><blockquote>
+<p><strong>以空心三角形的虛線箭頭表示。</strong></p>
+</blockquote>
+<p>實作關係指的是一個 class 類別實現 interface 介面。</p>
+<p>• 飛機<strong>實作</strong>可飛行介面</p>
+<h3 id="聚合（Aggregation）"><a href="#聚合（Aggregation）" class="headerlink" title="聚合（Aggregation）"></a><strong>聚合（Aggregation）</strong></h3><blockquote>
+<p><strong>以空心菱形的實線表示。</strong></p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/Class%20Diagram%20%E9%A1%9E%E5%88%A5%E5%9C%96%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/" rel="contents">
@@ -686,6 +835,44 @@
 
       
           <h1 id="NPM-套件管理工具"><a href="#NPM-套件管理工具" class="headerlink" title="NPM 套件管理工具"></a>NPM 套件管理工具</h1><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">NPM</a>(Node Package Manager) 是 Node.js 的套件管理工具，負責管理專案使用的模組，像是模組的下載、版本、移除…等</p>
+<ol>
+<li>下載 Node.js <a target="_blank" rel="noopener" href="https://nodejs.org/en/">官網</a><ol>
+<li>安裝 LTS 長期支援版本 ( 最新可能不穩定 )</li>
+</ol>
+</li>
+<li>vs code terminal 中輸入 <code>node -v</code>  <code>npm -v</code> 回覆版本號即成功</li>
+<li><code>npm init</code> 初始化<ul>
+<li>name - 專案名稱：全小寫，單字之間用 - 隔開</li>
+<li>version - 專案版本</li>
+<li>description - 專案描述</li>
+<li>main - 程式起始點 (非套件的前端專案不用理會，預設為 index.js)</li>
+<li>script - 自定義腳本</li>
+<li>author - 專案作者：格式請用 ”姓名 <Email> (個人網站連結)“</li>
+<li>license - 授權許可</li>
+</ul>
+</li>
+<li>產生 <code>package.json</code><ol>
+<li>後續安裝的套件會同步紀錄再此文件裡</li>
+<li>專案初始化，並提供預設值 <code>npm init -y</code></li>
+</ol>
+</li>
+<li>npm <a target="_blank" rel="noopener" href="https://www.npmjs.com/">官網</a></li>
+<li>搜尋套件 輸入以下指令 會下載套件到專案裡<ol>
+<li>輸入指令  <code>npm i bootstrap</code>  、 <code>npm install bootstrap</code></li>
+<li><code>npm install</code> 會偵測 package.json 裡面的 dependencies 有的模組，再下載安裝 ( 別人的npm 專案不會有<code>node_modules</code> )</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/be661f24-b603-402b-8ec0-bbf3a49b5d17/Untitled.png" alt="Untitled"></p>
+<ol>
+<li><p>下載套件會放在 <code>node_modules</code> 的資料夾裡</p>
+<ol>
+<li><code>package-lock.json</code> 會同時自動產生相關紀錄</li>
+</ol>
+</li>
+<li><p><code>npm install webpack ==save=dev</code></p>
+</li>
+</ol>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/NPM%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98%20Node%20Package%20Manager/" rel="contents">
@@ -760,6 +947,32 @@
 
       
           <p>Ctrl + H：尋找&#x2F;取代當前視窗</p>
+<p>Ctrl + Shift + H：尋找&#x2F;取代所有工作區檔案</p>
+<p>Ctrl + W：關閉當前視窗</p>
+<p>Ctrl + K + W：關閉所有視窗</p>
+<p>Alt + Shift + F：格式化(縮排對齊)整份文件</p>
+<p>Alt + B：開啟網頁 (需安裝 open in browser 套件才有效果)</p>
+<p>Alt + L + O：開啟網頁 (需安裝 Live server 套件才有效果)</p>
+<pre><code>→ 請確認，電腦針對 *.html類型 預設開啟的應用程式是什麼? ←
+
+→ 若擴充套件採用電腦中預設的應用程式打開需另外調整此設定 ←
+</code></pre>
+<p>Alt + ↑ &#x2F; ↓：可以搬移程式碼(可以多行)</p>
+<p>Alt + Shift + ↑ &#x2F; ↓：可以複製一行</p>
+<p>Alt + Shift + 滑鼠左鍵：直欄選取</p>
+<p>Ctrl + N：開啟新視窗</p>
+<p>Ctrl + S：存檔</p>
+<p>Ctrl + Z：回上一步</p>
+<p>Ctrl + R：切換工作區</p>
+<p>Ctrl + P：開啟選單輸入檔案名稱直接開啟檔案</p>
+<p>Ctrl + &#x2F;：註解 或取消註解</p>
+<p>Ctrl + K + C：註解 或取消註解</p>
+<p>Ctrl + D：可以針對範圍內所選取到相同的文字進行集體修改</p>
+<p>Ctrl + Shift + L 一次選取檔案內所有相同的文字</p>
+<p>Ctrl + Shift + K 整行刪除</p>
+<blockquote>
+<p>官方 | <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/getstarted/keybindings">https://code.visualstudio.com/docs/getstarted/keybindings</a></p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/VS%20Code%20%E5%B8%B8%E8%A6%8B%E5%BF%AB%E6%8D%B7%E9%8D%B5%20Keyboard%20shortcut/" rel="contents">
@@ -835,7 +1048,14 @@
       
           <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul>
 <li>每個 user snippet 可以設定名稱、程式碼主體、描述以及trigger，trigger是指我們要打什麼才會觸發 snippet</li>
-<li>在 <a target="_blank" rel="noopener" href="https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode">snippet-generator</a> 中貼上你的語言 user snippet
+<li>在 <a target="_blank" rel="noopener" href="https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode">snippet-generator</a> 中貼上你的語言 user snippet</li>
+</ul>
+<p><img src="https://i.imgur.com/0nDe5Zx.png" alt="Untitled"></p>
+<ul>
+<li>右下角 copy</li>
+<li>打開文字編輯器 vs code</li>
+<li>右下角 &gt; 使用者程式片段</li>
+<li>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/13/User%20Snippet%20%E8%87%AA%E8%A8%82%E5%BF%AB%E6%8D%B7%E9%8D%B5/" rel="contents">

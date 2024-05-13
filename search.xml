@@ -8,14 +8,13 @@
 <li>Dark theme.</li>
 <li>Lightweight. Vanilla TypeScript</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="安裝步驟"><a href="#安裝步驟" class="headerlink" title="安裝步驟"></a>安裝步驟</h2><ol>
 <li><p>在 Github 上檢查你要存放留言 issue 的 repository 是不是 public ，這樣 utterances 才可以放issues</p>
 </li>
 <li><p>同意在你的 Github 上安裝 <a href="https://github.com/apps/utterances">utterances app</a></p>
 <p><img src="https://i.imgur.com/4uwcueA.png" alt="utterances app Repository assess"></p>
 <p>Repository access 的 radio option 選擇 Only select repositories，下拉選單 dropdown menu 選擇你要放 issues 的資料庫 repository，有看到別人的部落格是新建一個專門放置 issues 的 repository。</p>
+<span id="more"></span>
 </li>
 <li><p><a href="https://utteranc.es/">utteranc</a> 的官網填上 repo <code>owner/repo</code> </p>
 </li>
@@ -50,14 +49,15 @@
     <content><![CDATA[<h2 id="Web-是怎麼運作的呢"><a href="#Web-是怎麼運作的呢" class="headerlink" title="Web 是怎麼運作的呢 ?"></a>Web 是怎麼運作的呢 ?</h2><p>  <img src="https://i.imgur.com/eavypn1.jpg" alt="Server-side website programming"></p>
 <p>當你在瀏覽器輸入網址或點選鏈接時，瀏覽器會透過超文本傳輸協定（HTTP）向遠端的網頁伺服器發送請求（HTTP Request），網頁伺服器收到請求後，處理完成並回傳相對應的內容（HTTP Response）。</p>
 <p>全球透過海底電纜通訊，網路以網路協定相連。</p>
-<span id="more"></span>
-
 <h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p>domain name servers 轉換IP與URL的服務</p>
 <p>真正的網址 : 四個範圍 0-255  &#x2F; 2的8次方 8bit 256種 0~255</p>
 <h3 id="靜態網頁-Static-sites"><a href="#靜態網頁-Static-sites" class="headerlink" title="靜態網頁 Static sites"></a>靜態網頁 Static sites</h3><p>  <img src="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview/basic_static_app_server.png" alt="Static sites | 圖源1"></p>
 <p>  靜態網頁主要由 HTML、CSS 以及 JavaScript 構成。當瀏覽器請求這些文件時，伺服器直接返回文件內容。</p>
 <h3 id="動態網頁-Dynamic-sites"><a href="#動態網頁-Dynamic-sites" class="headerlink" title="動態網頁 Dynamic sites"></a>動態網頁 Dynamic sites</h3><p>  <img src="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview/web_application_with_html_and_steps.png" alt="Dynamic sites | 圖源1 "></p>
 <p>  動態網頁則是在伺服器端處理，動態生成網頁內容。伺服器將數據和模板結合，生成 HTML，再返回給瀏覽器。</p>
+  <span id="more"></span>
+
+
 <h3 id="用戶端-Client-side"><a href="#用戶端-Client-side" class="headerlink" title="用戶端 Client side"></a>用戶端 Client side</h3><p>用戶端的技術主要包括 HTML、CSS 和 JavaScript，用來構建用戶界面並處理與用戶的互動。</p>
 <h3 id="伺服器端-Sever-side"><a href="#伺服器端-Sever-side" class="headerlink" title="伺服器端 Sever-side"></a>伺服器端 Sever-side</h3><p>伺服器端的開發使用如 PHP、Python、Java、C# 和 NodeJS 等語言，負責數據處理、用戶驗證、存儲管理等後端任務。</p>
 <h2 id="什麼是-HTTP"><a href="#什麼是-HTTP" class="headerlink" title="什麼是 HTTP ?"></a>什麼是 HTTP ?</h2><p>HTTP 是建立在 TCP&#x2F;IP 協議之上的應用層協議，用於在網路上傳輸超文本數據。HTTPS 則是帶有安全層的 HTTP，使用 SSL&#x2F;TLS 進行加密處理，預設端口為 443。</p>
@@ -836,28 +836,28 @@
     <url>/2024/05/13/User%20Snippet%20%E8%87%AA%E8%A8%82%E5%BF%AB%E6%8D%B7%E9%8D%B5/</url>
     <content><![CDATA[<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul>
 <li>每個 user snippet 可以設定名稱、程式碼主體、描述以及trigger，trigger是指我們要打什麼才會觸發 snippet</li>
-<li>在 <a href="https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode">snippet-generator</a> 中貼上你的語言 user snippet<span id="more"></span></li>
+<li>在 <a href="https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode">snippet-generator</a> 中貼上你的語言 user snippet</li>
 </ul>
 <p><img src="https://i.imgur.com/0nDe5Zx.png" alt="Untitled"></p>
 <ul>
 <li>右下角 copy</li>
 <li>打開文字編輯器 vs code</li>
 <li>右下角 &gt; 使用者程式片段</li>
+<li><span id="more"></span></li>
 </ul>
 ]]></content>
       <categories>
         <category>超新手時期基礎筆記</category>
       </categories>
       <tags>
-        <tag>html,tips</tag>
+        <tag>html</tag>
+        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
     <title>VS Code 常見快捷鍵 Keyboard shortcut</title>
     <url>/2024/05/13/VS%20Code%20%E5%B8%B8%E8%A6%8B%E5%BF%AB%E6%8D%B7%E9%8D%B5%20Keyboard%20shortcut/</url>
     <content><![CDATA[<p>Ctrl + H：尋找&#x2F;取代當前視窗</p>
-<span id="more"></span>
-
 <p>Ctrl + Shift + H：尋找&#x2F;取代所有工作區檔案</p>
 <p>Ctrl + W：關閉當前視窗</p>
 <p>Ctrl + K + W：關閉所有視窗</p>
@@ -884,12 +884,13 @@
 <blockquote>
 <p>官方 | <a href="https://code.visualstudio.com/docs/getstarted/keybindings">https://code.visualstudio.com/docs/getstarted/keybindings</a></p>
 </blockquote>
-]]></content>
+ <span id="more"></span>]]></content>
       <categories>
         <category>超新手時期基礎筆記</category>
       </categories>
       <tags>
-        <tag>html,tips</tag>
+        <tag>html</tag>
+        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
@@ -897,8 +898,6 @@
     <url>/2023/03/20/MySQL%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/</url>
     <content><![CDATA[<p>** 電子表格雖然可以進行排序和過濾，但資料庫具有廣泛的查詢功能，可以檢索、匹配、多個表個交叉引用紀錄，資料越龐大，差別越明顯。 </p>
 <p>常見 |資料庫管理系統 ( Database Management System，所寫 DBMS )，有名的資料庫有 : Miceosoft SQL Sever、MongoDB；MySQL、PostgreSQL等…</p>
-<span id="more"></span>
-
 <p>資料庫再概念上分成 2 種 關聯式資料庫 Relational Database、非關聯式資料庫NoSQL Database </p>
 <h3 id="資料庫的通用定義"><a href="#資料庫的通用定義" class="headerlink" title="資料庫的通用定義"></a>資料庫的通用定義</h3><p>資料庫正式的定義有很多種，比較通用的定義為 「資料庫」是一個儲存資料的電子文件檔案櫃，</p>
 <p>是一個</p>
@@ -911,6 +910,7 @@
 </ul>
 <blockquote>
 <p>資料庫的結構是由資料模型 Data Model 來決定，它是一個高階模型，也是描述資料庫的結構。</p>
+<span id="more"></span>
 </blockquote>
 <ul>
 <li>存儲並提供彼此相關數據點訪問的資料庫，下圖是一個 ER Diagram 實體關係圖，主要由三個元素組成 : 實體 Entity ( 系統中存在的對象 )、屬性 Attribute ( 實體的特性或描述 )、關係 ( 前者之間的聯繫握互動 ) Relationship</li>
@@ -1647,7 +1647,8 @@
         <category>超新手時期基礎筆記</category>
       </categories>
       <tags>
-        <tag>mysql, database</tag>
+        <tag>database</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -1656,9 +1657,6 @@
     <content><![CDATA[<ul>
 <li>類別圖描述了系統的類別集合，類別的屬性和類別之間的關係。</li>
 </ul>
-<span id="more"></span>
-
-
 <h2 id="使用規則"><a href="#使用規則" class="headerlink" title="使用規則"></a>使用規則</h2><h3 id="關聯-Association"><a href="#關聯-Association" class="headerlink" title="關聯 (Association)"></a><strong>關聯 (Association)</strong></h3><blockquote>
 <p><strong>以實線箭頭表示。</strong></p>
 </blockquote>
@@ -1674,6 +1672,8 @@
 <h3 id="聚合（Aggregation）"><a href="#聚合（Aggregation）" class="headerlink" title="聚合（Aggregation）"></a><strong>聚合（Aggregation）</strong></h3><blockquote>
 <p><strong>以空心菱形的實線表示。</strong></p>
 </blockquote>
+<span id="more"></span>
+
 <p>聚合關係是整體與部分的「弱」包含關係。部分類別可單獨存在，也可以屬於多個整體物件。</p>
 <p><strong>描述has-a的關係</strong></p>
 <ul>
@@ -1817,8 +1817,6 @@
     <title>NPM 基礎筆記 Node Package Manager</title>
     <url>/2024/05/13/NPM%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98%20Node%20Package%20Manager/</url>
     <content><![CDATA[<h1 id="NPM-套件管理工具"><a href="#NPM-套件管理工具" class="headerlink" title="NPM 套件管理工具"></a>NPM 套件管理工具</h1><p><a href="https://www.npmjs.com/">NPM</a>(Node Package Manager) 是 Node.js 的套件管理工具，負責管理專案使用的模組，像是模組的下載、版本、移除…等</p>
-<span id="more"></span>
-
 <ol>
 <li>下載 Node.js <a href="https://nodejs.org/en/">官網</a><ol>
 <li>安裝 LTS 長期支援版本 ( 最新可能不穩定 )</li>
@@ -1857,6 +1855,8 @@
 <li><p><code>npm install webpack ==save=dev</code></p>
 </li>
 </ol>
+<span id="more"></span>
+
 <h3 id="NPM-全域安裝-g"><a href="#NPM-全域安裝-g" class="headerlink" title="NPM 全域安裝 -g"></a>NPM 全域安裝 -g</h3><p>如果專案資料夾沒有套件，它會往電腦的根目錄上找</p>
 <p><code>npm install 套件 -g</code>  會安裝到全域 ( 自己電腦裡 ) 的預設資料夾內</p>
 <p>mac : 權限問題 sudo &#x2F; 帳號密碼</p>
@@ -1952,15 +1952,15 @@
         <category>超新手時期基礎筆記</category>
       </categories>
       <tags>
-        <tag>npm, tips, tool</tag>
+        <tag>tips</tag>
+        <tag>npm</tag>
+        <tag>tool</tag>
       </tags>
   </entry>
   <entry>
     <title>Git 常用指令</title>
     <url>/2024/05/13/Git%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<p>.gitigonre 檔案會讓檔案不被 git 追蹤</p>
-<span id="more"></span>
-
 <table>
 <thead>
 <tr>
@@ -2041,6 +2041,8 @@
 <td>如過電腦上沒有就用 clone</td>
 </tr>
 </tbody></table>
+<span id="more"></span>
+
 <p>git merge conflict 合併衝突<br>通常在 vscode 可以看衝突在哪裡發生<br>README.md<br>讓別人很快知道這個 project 在幹嘛</p>
 ]]></content>
       <categories>
@@ -2054,8 +2056,6 @@
     <title>Mongodb 基礎筆記</title>
     <url>/2024/05/13/Mongodb%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/</url>
     <content><![CDATA[<h3 id="儲存格式"><a href="#儲存格式" class="headerlink" title="儲存格式"></a>儲存格式</h3><p>NoSQL 是用 object 來儲存</p>
-<span id="more"></span>
-
 <h3 id="JSON-amp-BSON"><a href="#JSON-amp-BSON" class="headerlink" title="JSON &amp; BSON"></a>JSON &amp; BSON</h3><p>JavaScript Object Notation 通常被稱為 JSON </p>
 <p>JavaScript 物件是簡單的容器，其中一個 String key 可以映射到一個 value ( 可以是 number、string、function、object … )</p>
 <p>JSON 普遍性，成為 MongoDB 開發數據結構第一選擇</p>
@@ -2064,6 +2064,7 @@
 <li>JSON 是純文字格式、解析慢</li>
 <li>JSON 高可讀性無法節省儲存空間</li>
 <li>JSON 僅支援有限數量基本 data types</li>
+<li><span id="more"></span></li>
 </ol>
 <p>所以人們發明了 BSON 代表 Binary JSON</p>
 <p>BSON 二進制結構對 data types 和 長度信息進行編碼，可以快解析</p>
@@ -2332,12 +2333,12 @@ update 並不會管 schema 的設定，必須要加第三個參數
     <title>MVC 模式</title>
     <url>/2024/05/13/MVC%E6%A8%A1%E5%BC%8F%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/</url>
     <content><![CDATA[<p>MVC ( Model View Controller ) 是軟體工程的一種 design pattern 軟體架構模式<br>把軟體系統分為三個基本部分 : 模型 Model 、視圖 View、控制器 Controller</p>
-<span id="more"></span>
-
 <p>Contranster Controller ⇒ 調用 模型Model ⇒ Render View</p>
 <p>MVC模式目的是實現一種動態的程式設計，使後續修改、擴充簡化，並使程式某一部分重複利用</p>
 <p>透過對複雜度簡化、使結構更直覺，對自身基本分離同時，賦予各基本部分應有的功能</p>
 <p>現代網頁開發框架有 : Java Swing、ASP.NET、Ruby on Rails、Django、Laravel … 都是標準MVC design pattern</p>
+<span id="more"></span>
+
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/400px-MVC-Process.svg.png"></p>
 <ul>
 <li><p>模型 Model</p>
@@ -2367,7 +2368,7 @@ update 並不會管 schema 的設定，必須要加第三個參數
         <category>超新手時期基礎筆記</category>
       </categories>
       <tags>
-        <tag>backend,</tag>
+        <tag>backend</tag>
       </tags>
   </entry>
   <entry>
@@ -2384,8 +2385,6 @@ update 並不會管 schema 的設定，必須要加第三個參數
 <li>支援Emmt</li>
 <li>豐富的擴充元件等…</li>
 </ul>
-<span id="more"></span>
-
 <blockquote>
 <p>官方安裝流程<a href="https://docs.microsoft.com/zh-tw/learn/modules/develop-web-apps-with-vs-code/2-installation-and-tour">官方文件</a></p>
 </blockquote>
@@ -2394,6 +2393,7 @@ update 並不會管 schema 的設定，必須要加第三個參數
 <blockquote>
 <p>詳細<a href="https://github.com/Microsoft/vscode-tips-and-tricks">官方文件</a></p>
 </blockquote>
+<span id="more"></span>
 <hr>
 <h3 id="擴充元件-Extensions"><a href="#擴充元件-Extensions" class="headerlink" title="擴充元件 Extensions"></a>擴充元件 Extensions</h3><ul>
 <li><p><strong>Chinese (Traditional)</strong> 中文化</p>
@@ -2783,8 +2783,6 @@ update 並不會管 schema 的設定，必須要加第三個參數
 <li>Selector 選擇器、Declaration 宣告、Properties 屬性、Value 值，多個屬性以<code>;</code>分號分開。</li>
 <li>屬性值和單位之間不能加空白 錯誤示範<code>margin-left: 20 px;</code> 正確示範<code>margin-left: 20px;</code></li>
 </ul>
-<span id="more"></span>
-
 <h3 id="類選擇器-class"><a href="#類選擇器-class" class="headerlink" title="類選擇器 class"></a>類選擇器 class</h3><ul>
 <li>為級聯樣式表</li>
 <li>可用於任何HTML元素</li>
@@ -2799,6 +2797,7 @@ update 並不會管 schema 的設定，必須要加第三個參數
 <blockquote>
 <p>優先權 HTML元素內的style &gt; ID &gt; tag &gt; class &gt; 瀏覽器預設</p>
 </blockquote>
+<span id="more"></span>
 <hr>
 <h3 id="CSS-背景屬性介紹"><a href="#CSS-背景屬性介紹" class="headerlink" title="CSS 背景屬性介紹"></a>CSS 背景屬性介紹</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--指定背景顏色--&gt;</span></span><br><span class="line">background-color</span><br><span class="line"><span class="comment">&lt;!--指定URL當作背景圖片，預設重複、覆蓋整個元素--&gt;</span></span><br><span class="line">background-image: url(&quot;paper.gif&quot;);</span><br><span class="line">可水平重複圖像 background-repeat: repeat-x;</span><br><span class="line">可垂直重覆圖像 background-repeat: repeat-y;</span><br><span class="line">不重覆圖片 background-repeat: no-repeat;</span><br><span class="line">改變圖像位置 background-position: right top;</span><br><span class="line">固定背景圖像不跟隨頁面滾動 background-attachment: fixed;</span><br><span class="line">背景圖像與頁面一起滾動 background-attachment: scroll;</span><br><span class="line">// 以上屬性都可以使用速記屬性，縮寫為同一排 舉例: //</span><br><span class="line">body &#123;background: #ffffff url(&quot;img_tree.png&quot;) no-repeat right top;&#125;</span><br><span class="line">使用速記屬性時的順序為 : </span><br><span class="line">background-color</span><br><span class="line">background-image</span><br><span class="line">background-repeat</span><br><span class="line">background-position</span><br><span class="line">缺少一個屬性值不重要，按照順序排列即可。</span><br><span class="line"><span class="comment">&lt;!--不透明度0.0 ~ 1.0，值越低，越透明，ps也可透過RGBA來指定透明度--&gt;</span></span><br><span class="line">opacity </span><br></pre></td></tr></table></figure>
 
@@ -3030,8 +3029,6 @@ update 並不會管 schema 的設定，必須要加第三個參數
     <content><![CDATA[<h3 id="歷史"><a href="#歷史" class="headerlink" title="歷史"></a>歷史</h3><p><strong>J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言</strong></p>
 <p>1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本</p>
 <p>Java 語言只是 Java SE 的一部分</p>
-<span id="more"></span>
-
 <ol>
 <li><p>Java EE ( 企業版 ) Java Platform, Enterprise Edition、Jakarta EE</p>
 </li>
@@ -3055,6 +3052,8 @@ update 並不會管 schema 的設定，必須要加第三個參數
 <p>JDK包含 javac、javadoc 等工具程式</p>
 <p>前面提到授權問題，就企業而言，LTS( long trem support ) 版本有 Java SE 8、11、17<br>Java 8 2014年很久惹，建議使用 Java SE 11 以後的 LTS 版本 </p>
 <p>p.s Java SE 17 開始，LTS釋出速度加快為2年一次</p>
+<span id="more"></span>
+
 <h2 id="JVM-Java-Virtual-Machine-虛擬機"><a href="#JVM-Java-Virtual-Machine-虛擬機" class="headerlink" title="JVM Java Virtual Machine 虛擬機"></a>JVM Java Virtual Machine 虛擬機</h2><p>會架構在 Linux 、Windows、iOS 等作業系統上</p>
 <p>對電腦而言，只認識 0 1 ，Java是高階語言，需要被 編譯器 compiler 翻譯<br>不過 Java 會先被翻譯成中介格式 位元碼 Byte code</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">*.java =&gt; *.class =&gt; JVM =&gt; compiler <span class="type">Byte</span> <span class="variable">code</span> <span class="operator">=</span>&gt; <span class="number">0</span> <span class="number">1</span> </span><br></pre></td></tr></table></figure>
@@ -3934,8 +3933,6 @@ update 並不會管 schema 的設定，必須要加第三個參數
     <title>java 基礎筆記_2</title>
     <url>/2024/05/13/java%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98_2/</url>
     <content><![CDATA[<h3 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h3><p>利用 cmd 檢查</p>
-<span id="more"></span>
-
 <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">java --version </span><br></pre></td></tr></table></figure>
 
 <p><strong>物件導向 JAVA SE</strong></p>
@@ -3954,6 +3951,7 @@ update 並不會管 schema 的設定，必須要加第三個參數
 </li>
 <li>可重複利用、可擴展</li>
 </ul>
+<span id="more"></span>
 <hr>
 <h2 id="🦖管理原始碼-amp-位元碼"><a href="#🦖管理原始碼-amp-位元碼" class="headerlink" title="🦖管理原始碼 &amp; 位元碼"></a>🦖管理原始碼 &amp; 位元碼</h2><h2 id="🦖什麼是-JAVA"><a href="#🦖什麼是-JAVA" class="headerlink" title="🦖什麼是 JAVA ?"></a>🦖什麼是 JAVA ?</h2><p>( 寫一份程式碼，就可以在多個平台使用 ) 跨平台、物件導向、強型別的程式語言</p>
 <h3 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h3><ol>

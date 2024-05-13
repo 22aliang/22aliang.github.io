@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
@@ -21,17 +21,17 @@
     var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"width":150,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="歷史J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言 1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本 Java 語言只是 Java SE 的一部分">
+  <meta name="description" content="歷史J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言 1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本 Java 語言只是 Java SE 的一部分  Java EE ( 企業版 ) Java Platform, Enterprise Edition、Jakarta EE  Ja">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 基礎筆記_1">
 <meta property="og:url" content="https://22aliang.github.io/2024/05/13/java%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98_1/index.html">
 <meta property="og:site_name" content="22Nell&#39;s Blog">
-<meta property="og:description" content="歷史J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言 1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本 Java 語言只是 Java SE 的一部分">
+<meta property="og:description" content="歷史J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言 1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本 Java 語言只是 Java SE 的一部分  Java EE ( 企業版 ) Java Platform, Enterprise Edition、Jakarta EE  Ja">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e070a94-9def-4eca-bb5d-266e42e3a46e/Untitled.png">
 <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de299f2c-bb7a-476a-8625-3cfe1a15e178/Untitled.png">
 <meta property="article:published_time" content="2024-05-13T12:47:10.047Z">
-<meta property="article:modified_time" content="2024-05-13T12:54:05.269Z">
+<meta property="article:modified_time" content="2024-05-13T13:04:02.398Z">
 <meta property="article:author" content="Nell">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -255,8 +255,6 @@
         <h3 id="歷史"><a href="#歷史" class="headerlink" title="歷史"></a>歷史</h3><p><strong>J2SE 則是平台名稱，包含了 JDK 與 Java 程式語言</strong></p>
 <p>1990年被 昇陽 Sun MicroSystems 由 James Gosling 在1994年 寫出，2009年被 Oracle 收購，目前有三個版本</p>
 <p>Java 語言只是 Java SE 的一部分</p>
-<span id="more"></span>
-
 <ol>
 <li><p>Java EE ( 企業版 ) Java Platform, Enterprise Edition、Jakarta EE</p>
 </li>
@@ -280,6 +278,8 @@
 <p>JDK包含 javac、javadoc 等工具程式</p>
 <p>前面提到授權問題，就企業而言，LTS( long trem support ) 版本有 Java SE 8、11、17<br>Java 8 2014年很久惹，建議使用 Java SE 11 以後的 LTS 版本 </p>
 <p>p.s Java SE 17 開始，LTS釋出速度加快為2年一次</p>
+<span id="more"></span>
+
 <h2 id="JVM-Java-Virtual-Machine-虛擬機"><a href="#JVM-Java-Virtual-Machine-虛擬機" class="headerlink" title="JVM Java Virtual Machine 虛擬機"></a>JVM Java Virtual Machine 虛擬機</h2><p>會架構在 Linux 、Windows、iOS 等作業系統上</p>
 <p>對電腦而言，只認識 0 1 ，Java是高階語言，需要被 編譯器 compiler 翻譯<br>不過 Java 會先被翻譯成中介格式 位元碼 Byte code</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.java =&gt; *.class =&gt; JVM =&gt; compiler <span class="type">Byte</span> <span class="variable">code</span> <span class="operator">=</span>&gt; <span class="number">0</span> <span class="number">1</span> </span><br></pre></td></tr></table></figure>

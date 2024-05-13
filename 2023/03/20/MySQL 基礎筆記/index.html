@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
@@ -21,18 +21,19 @@
     var CONFIG = {"hostname":"22aliang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"width":150,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="** 電子表格雖然可以進行排序和過濾，但資料庫具有廣泛的查詢功能，可以檢索、匹配、多個表個交叉引用紀錄，資料越龐大，差別越明顯。  常見 |資料庫管理系統 ( Database Management System，所寫 DBMS )，有名的資料庫有 : Miceosoft SQL Sever、MongoDB；MySQL、PostgreSQL等…">
+  <meta name="description" content="** 電子表格雖然可以進行排序和過濾，但資料庫具有廣泛的查詢功能，可以檢索、匹配、多個表個交叉引用紀錄，資料越龐大，差別越明顯。  常見 |資料庫管理系統 ( Database Management System，所寫 DBMS )，有名的資料庫有 : Miceosoft SQL Sever、MongoDB；MySQL、PostgreSQL等… 資料庫再概念上分成 2 種 關聯式資料庫 Relat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 基礎筆記">
 <meta property="og:url" content="https://22aliang.github.io/2023/03/20/MySQL%20%E5%9F%BA%E7%A4%8E%E7%AD%86%E8%A8%98/index.html">
 <meta property="og:site_name" content="22Nell&#39;s Blog">
-<meta property="og:description" content="** 電子表格雖然可以進行排序和過濾，但資料庫具有廣泛的查詢功能，可以檢索、匹配、多個表個交叉引用紀錄，資料越龐大，差別越明顯。  常見 |資料庫管理系統 ( Database Management System，所寫 DBMS )，有名的資料庫有 : Miceosoft SQL Sever、MongoDB；MySQL、PostgreSQL等…">
+<meta property="og:description" content="** 電子表格雖然可以進行排序和過濾，但資料庫具有廣泛的查詢功能，可以檢索、匹配、多個表個交叉引用紀錄，資料越龐大，差別越明顯。  常見 |資料庫管理系統 ( Database Management System，所寫 DBMS )，有名的資料庫有 : Miceosoft SQL Sever、MongoDB；MySQL、PostgreSQL等… 資料庫再概念上分成 2 種 關聯式資料庫 Relat">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/faea416c-c8d5-45ed-bfaf-1d1c92d62c55/Untitled.png">
 <meta property="article:published_time" content="2023-03-20T03:57:53.019Z">
-<meta property="article:modified_time" content="2024-05-13T12:22:49.342Z">
+<meta property="article:modified_time" content="2024-05-13T13:04:39.318Z">
 <meta property="article:author" content="Nell">
-<meta property="article:tag" content="mysql, database">
+<meta property="article:tag" content="database">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/faea416c-c8d5-45ed-bfaf-1d1c92d62c55/Untitled.png">
 
@@ -253,8 +254,6 @@
       
         <p>** 電子表格雖然可以進行排序和過濾，但資料庫具有廣泛的查詢功能，可以檢索、匹配、多個表個交叉引用紀錄，資料越龐大，差別越明顯。 </p>
 <p>常見 |資料庫管理系統 ( Database Management System，所寫 DBMS )，有名的資料庫有 : Miceosoft SQL Sever、MongoDB；MySQL、PostgreSQL等…</p>
-<span id="more"></span>
-
 <p>資料庫再概念上分成 2 種 關聯式資料庫 Relational Database、非關聯式資料庫NoSQL Database </p>
 <h3 id="資料庫的通用定義"><a href="#資料庫的通用定義" class="headerlink" title="資料庫的通用定義"></a>資料庫的通用定義</h3><p>資料庫正式的定義有很多種，比較通用的定義為 「資料庫」是一個儲存資料的電子文件檔案櫃，</p>
 <p>是一個</p>
@@ -267,6 +266,7 @@
 </ul>
 <blockquote>
 <p>資料庫的結構是由資料模型 Data Model 來決定，它是一個高階模型，也是描述資料庫的結構。</p>
+<span id="more"></span>
 </blockquote>
 <ul>
 <li>存儲並提供彼此相關數據點訪問的資料庫，下圖是一個 ER Diagram 實體關係圖，主要由三個元素組成 : 實體 Entity ( 系統中存在的對象 )、屬性 Attribute ( 實體的特性或描述 )、關係 ( 前者之間的聯繫握互動 ) Relationship</li>
@@ -1018,7 +1018,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/mysql-database/" rel="tag"><i class="fa fa-tag"></i> mysql, database</a>
+              <a href="/tags/database/" rel="tag"><i class="fa fa-tag"></i> database</a>
+              <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
           </div>
 
         
